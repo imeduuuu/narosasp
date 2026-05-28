@@ -1,646 +1,875 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Narosa Sweet Party · Globos y Decoración Fiestas Infantiles · Barcelona</title>
-<meta name="description" content="Especialistas en globos y decoración para fiestas infantiles en Barcelona. Packs temáticos, bouquets con helio y presupuestos automáticos 24h.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎈</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<style>
-/* ═══════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth}
-body{background:#fff;color:#1a1a2e;font-family:'Nunito',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Narosa Sweet Party · Globos y Decoración de Fiestas Infantiles · Barcelona</title>
+  <meta name="description" content="Especialistas en globos y decoración para fiestas infantiles en Barcelona. Bouquets con helio, packs temáticos, arcos de globos y decoración de eventos. Presupuesto en minutos." />
+  <link rel="canonical" href="https://narosasp.com/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎈</text></svg>" />
 
-/* ═══════════════════════════════════════
-   SCROLL ANIMATIONS
-═══════════════════════════════════════ */
-[data-reveal]{
-  opacity:0;
-  transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);
-}
-[data-reveal="up"]   { transform:translateY(40px) }
-[data-reveal="left"] { transform:translateX(-40px) }
-[data-reveal="right"]{ transform:translateX(40px) }
-[data-reveal="scale"]{ transform:scale(.92) }
-[data-reveal].visible{ opacity:1; transform:none }
-.delay-1{ transition-delay:.1s }
-.delay-2{ transition-delay:.2s }
-.delay-3{ transition-delay:.3s }
-.delay-4{ transition-delay:.4s }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-/* ═══════════════════════════════════════
-   NAVEGACIÓN — idéntica a la referencia
-═══════════════════════════════════════ */
-.navbar{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  background:#fff;
-  height:72px;
-  display:flex;align-items:center;
-  box-shadow:0 2px 20px rgba(111,76,232,.07);
-}
-.navbar-inner{
-  width:100%;max-width:1280px;margin:0 auto;
-  padding:0 40px;
-  display:flex;align-items:center;
-}
-/* Logo */
-.logo{
-  display:flex;align-items:center;gap:6px;
-  font-weight:900;font-size:18px;color:#6f4ce8;
-  flex-shrink:0;line-height:1;
-}
-.logo-icon{font-size:22px;display:flex;align-items:center}
-.logo-text span{display:block}
-.logo-text .t1{font-size:18px;font-weight:900;color:#6f4ce8;line-height:1}
-.logo-text .t2{font-size:18px;font-weight:900;color:#6f4ce8;line-height:1}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Narosa Sweet Party",
+    "description": "Especialistas en globos y decoración para fiestas infantiles en Barcelona.",
+    "url": "https://narosasp.com",
+    "telephone": "+34640921671",
+    "email": "hola@narosasp.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "María Aguiló 129",
+      "addressLocality": "Barcelona",
+      "addressRegion": "Cataluña",
+      "postalCode": "08005",
+      "addressCountry": "ES"
+    },
+    "priceRange": "€-€€"
+  }
+  </script>
 
-/* Nav links — centrados */
-.nav-links{
-  display:flex;align-items:center;gap:4px;
-  position:absolute;left:50%;transform:translateX(-50%);
-}
-.nav-links a{
-  font-size:14px;font-weight:700;color:#9ca3af;
-  padding:6px 14px;border-radius:8px;
-  transition:color .2s;
-  white-space:nowrap;position:relative;
-}
-.nav-links a:hover{color:#6f4ce8}
-.nav-links a.active{color:#6f4ce8}
-.nav-links a.active::after{
-  content:'';
-  position:absolute;bottom:-6px;left:14px;right:14px;
-  height:2px;background:#6f4ce8;border-radius:2px;
-}
-
-/* CTA derecha */
-.nav-btn{
-  margin-left:auto;flex-shrink:0;
-  background:#6f4ce8;color:#fff;
-  font-size:13px;font-weight:800;
-  padding:11px 24px;border-radius:100px;
-  transition:background .2s,box-shadow .2s,transform .2s;
-  white-space:nowrap;
-}
-.nav-btn:hover{background:#5a38d0;transform:translateY(-1px);box-shadow:0 6px 20px rgba(111,76,232,.35)}
-
-/* Hamburger */
-.nav-ham{display:none;background:none;border:none;font-size:26px;cursor:pointer;color:#1a1a2e;margin-left:16px}
-.mob-menu{display:none;position:fixed;top:72px;left:0;right:0;background:#fff;border-top:1px solid #ede9fe;padding:16px 24px 28px;z-index:199;flex-direction:column;gap:4px;box-shadow:0 12px 32px rgba(111,76,232,.1)}
-.mob-menu.open{display:flex}
-.mob-menu a{font-size:15px;font-weight:700;color:#1a1a2e;padding:12px 14px;border-radius:12px;transition:background .15s,color .15s}
-.mob-menu a:hover{background:#f3effe;color:#6f4ce8}
-.mob-menu .mob-cta{margin-top:8px;background:#6f4ce8;color:#fff;text-align:center;border-radius:100px;padding:14px}
-
-@media(max-width:900px){
-  .nav-links{display:none}
-  .nav-ham{display:block}
-  .nav-btn{display:none}
-}
-
-/* ═══════════════════════════════════════
-   HERO — Split layout idéntico
-═══════════════════════════════════════ */
-.hero{
-  padding-top:72px;
-  background:#fff;
-}
-.hero-grid{
-  max-width:1280px;margin:0 auto;
-  padding:64px 40px 52px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:48px;
-  min-height:calc(100vh - 72px - 100px);
-}
-
-/* ── LEFT ── */
-.hero-left{}
-.hero-pretag{
-  font-size:10.5px;font-weight:800;letter-spacing:3px;
-  text-transform:uppercase;color:#b0aec0;
-  margin-bottom:24px;display:block;
-}
-.hero-left h1{
-  font-weight:900;
-  font-size:clamp(38px,4.8vw,60px);
-  line-height:1.1;
-  color:#1a1a2e;
-  margin-bottom:18px;
-}
-.hero-left h1 .highlight{
-  color:#6f4ce8;
-  font-style:italic;
-  position:relative;display:inline-block;
-}
-.hero-left h1 .arrow-wrap{
-  display:inline-block;
-  margin-left:8px;
-  vertical-align:middle;
-}
-.hero-left p{
-  font-size:16px;font-weight:600;
-  color:#7c7a90;line-height:1.75;
-  max-width:400px;margin-bottom:32px;
-}
-.hero-btns{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.btn-fill{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#6f4ce8;color:#fff;
-  font-size:14px;font-weight:800;
-  padding:13px 30px;border-radius:100px;
-  transition:background .2s,transform .2s,box-shadow .2s;
-}
-.btn-fill:hover{background:#5a38d0;transform:translateY(-2px);box-shadow:0 8px 24px rgba(111,76,232,.35)}
-.btn-outline{
-  display:inline-flex;align-items:center;gap:6px;
-  background:transparent;color:#6f4ce8;
-  font-size:14px;font-weight:800;
-  padding:12px 26px;border-radius:100px;
-  border:1.5px solid #d6d0f5;
-  transition:border-color .2s,background .2s;
-}
-.btn-outline:hover{border-color:#6f4ce8;background:#f3effe}
-
-/* ── RIGHT — círculo idéntico ── */
-.hero-right{
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
-  min-height:580px;
-}
-/* Forma ondulada (blob orgánico) con borde degradado */
-.img-circle{
-  width:540px;height:540px;
-  border-radius:42% 58% 57% 43% / 48% 44% 56% 52%;
-  position:relative;z-index:2;
-  padding:6px;
-  background:linear-gradient(135deg,#a78bfa,#f472b6,#fbbf24,#6f4ce8);
-  box-shadow:0 24px 70px rgba(111,76,232,.22);
-  flex-shrink:0;
-  animation:blobMorph 12s ease-in-out infinite;
-}
-.img-circle-inner{
-  width:100%;height:100%;
-  border-radius:inherit;
-  overflow:hidden;
-  background:#f5eeff;
-}
-.img-circle-inner img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-}
-@keyframes blobMorph{
-  0%,100%{ border-radius:42% 58% 57% 43% / 48% 44% 56% 52%; }
-  33%    { border-radius:56% 44% 43% 57% / 52% 57% 43% 48%; }
-  66%    { border-radius:44% 56% 52% 48% / 57% 43% 57% 43%; }
-}
-
-/* Decoraciones flotantes */
-.deco{
-  position:absolute;z-index:3;
-  animation:floatUp 3.5s ease-in-out infinite;
-  pointer-events:none;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.12));
-}
-.deco-crown{font-size:38px;top:6%;left:5%;animation-delay:0s}
-.deco-star-y{font-size:22px;top:10%;right:5%;animation-delay:.8s}
-.deco-star-p{
-  width:18px;height:18px;
-  background:#f472b6;
-  border-radius:50%;
-  bottom:18%;right:-2%;
-  animation-delay:1.4s;
-}
-.deco-dot-y{
-  width:12px;height:12px;
-  background:#fbbf24;border-radius:50%;
-  bottom:32%;left:2%;
-  animation-delay:.4s;
-}
-.deco-squiggle{
-  position:absolute;bottom:12%;left:10%;z-index:3;
-  animation:floatUp 4s ease-in-out infinite;animation-delay:1s;
-}
-@keyframes floatUp{
-  0%,100%{transform:translateY(0) rotate(0deg)}
-  50%{transform:translateY(-14px) rotate(6deg)}
-}
-
-/* Flecha curvada amarilla — SVG inline */
-.arrow-svg{
-  display:inline-block;vertical-align:middle;
-  margin-left:8px;margin-top:-4px;
-}
-
-/* ═══════════════════════════════════════
-   FEATURES STRIP
-═══════════════════════════════════════ */
-.features-strip{
-  background:#f9f8ff;
-  border-top:1px solid #ede9fe;
-  padding:36px 0;
-}
-.features-inner{
-  max-width:1280px;margin:0 auto;padding:0 40px;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
-}
-.feat-item{display:flex;align-items:flex-start;gap:16px}
-.feat-icon-wrap{
-  width:52px;height:52px;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;flex-shrink:0;
-}
-.fi-purple{background:#ede9fe}
-.fi-yellow{background:#fef3c7}
-.fi-pink  {background:#fce7f3}
-.fi-teal  {background:#ccfbf1}
-.feat-title{font-size:15px;font-weight:800;color:#1a1a2e;margin-bottom:4px;line-height:1.2}
-.feat-desc {font-size:13px;font-weight:600;color:#9ca3af;line-height:1.55}
-
-/* ═══════════════════════════════════════
-   SECCIONES INTERNAS
-═══════════════════════════════════════ */
-.section{padding:96px 0}
-.container{max-width:1080px;margin:0 auto;padding:0 40px}
-.center{text-align:center}
-.eyebrow-chip{
-  display:inline-block;font-size:11px;font-weight:800;
-  letter-spacing:2.5px;text-transform:uppercase;
-  color:#6f4ce8;background:#f3effe;
-  padding:5px 14px;border-radius:50px;margin-bottom:18px;
-}
-.section-h{
-  font-weight:900;
-  font-size:clamp(28px,4vw,46px);
-  line-height:1.12;margin-bottom:14px;color:#1a1a2e;
-}
-.section-h em{font-style:italic;color:#6f4ce8}
-.section-p{font-size:15.5px;font-weight:600;line-height:1.75;color:#7c7a90;max-width:560px}
-
-/* PAIN CARDS */
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}
-@media(max-width:640px){.grid-2{grid-template-columns:1fr}}
-.pain-card{
-  background:#fff;border:1.5px solid #ede9fe;
-  border-radius:20px;padding:30px 26px;
-  position:relative;overflow:hidden;
-  transition:transform .35s,box-shadow .35s;
-}
-.pain-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,#6f4ce8,#f472b6);
-}
-.pain-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(111,76,232,.1)}
-.pain-card .icon{font-size:30px;margin-bottom:14px}
-.pain-card h3{font-weight:800;font-size:18px;margin-bottom:8px;color:#1a1a2e}
-.pain-card p{font-size:14px;font-weight:600;line-height:1.65;color:#7c7a90}
-
-/* SOL CARDS */
-.sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}
-@media(max-width:640px){.sol-grid{grid-template-columns:1fr}}
-.sol-card{
-  display:block;border-radius:22px;padding:34px 28px;
-  transition:transform .35s,box-shadow .35s;
-}
-.sol-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(29,14,44,.1)}
-.sol-card.c1{background:#f3effe}
-.sol-card.c2{background:#fef3c7}
-.sol-card.c3{background:#e0f2fe}
-.sol-card.c4{background:#fce7f3}
-.sol-card .icon{font-size:34px;margin-bottom:16px}
-.sol-card h3{font-weight:800;font-size:19px;margin-bottom:10px}
-.sol-card.c1 h3{color:#5a38d0}
-.sol-card.c2 h3{color:#b45309}
-.sol-card.c3 h3{color:#0891b2}
-.sol-card.c4 h3{color:#be185d}
-.sol-card p{font-size:14px;font-weight:600;line-height:1.65;color:#7c7a90;margin-bottom:16px}
-.sol-link{font-weight:800;font-size:13px;letter-spacing:.3px}
-.sol-card.c1 .sol-link{color:#6f4ce8}
-.sol-card.c2 .sol-link{color:#b45309}
-.sol-card.c3 .sol-link{color:#0891b2}
-.sol-card.c4 .sol-link{color:#be185d}
-
-/* DARK SECTION */
-.dark-bg{background:#1a1a2e;color:#fff}
-.flow-nodes{display:flex;flex-direction:column;max-width:500px;margin:0 auto}
-.flow-node{display:flex;align-items:flex-start;gap:16px;padding:18px 0}
-.flow-line{width:2px;background:rgba(255,255,255,.08);height:28px;margin-left:22px}
-.f-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.fi1{background:rgba(111,76,232,.3)}
-.fi2{background:rgba(251,191,36,.2)}
-.fi3{background:rgba(34,211,238,.2)}
-.fi4{background:rgba(244,114,182,.2)}
-.f-text h4{font-weight:800;font-size:16px;color:#fff;margin-bottom:3px}
-.f-text p{font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.55;font-weight:600}
-
-/* CTA */
-.cta-bg{background:#1a1a2e;text-align:center}
-.cta-h{font-weight:900;font-size:clamp(26px,3.5vw,44px);color:#fff;line-height:1.12;margin-bottom:14px}
-.cta-h em{font-style:italic;color:#fbbf24}
-.cta-p{font-size:16px;font-weight:600;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 32px;line-height:1.7}
-.cta-row{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
-.btn-cta1{display:inline-flex;align-items:center;gap:8px;background:#6f4ce8;color:#fff;font-size:14px;font-weight:800;padding:13px 28px;border-radius:100px;transition:background .2s,transform .2s}
-.btn-cta1:hover{background:#5a38d0;transform:translateY(-2px)}
-.btn-cta2{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.8);font-size:14px;font-weight:800;padding:12px 26px;border-radius:100px;border:1.5px solid rgba(255,255,255,.2);transition:border-color .2s}
-.btn-cta2:hover{border-color:rgba(255,255,255,.6)}
-.balloon-anim{font-size:52px;display:block;margin-bottom:20px;animation:ballFloat 4s ease-in-out infinite}
-@keyframes ballFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-16px) rotate(5deg)}}
-
-/* STORE SPLIT */
-.store-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-@media(max-width:768px){.store-split{grid-template-columns:1fr;gap:36px}}
-.store-img{width:100%;border-radius:24px;box-shadow:0 24px 60px rgba(111,76,232,.15);object-fit:cover;aspect-ratio:4/5}
-.store-h{font-weight:900;font-size:clamp(24px,3.5vw,38px);line-height:1.15;color:#1a1a2e;margin-bottom:16px}
-.store-p{font-size:15px;font-weight:600;line-height:1.7;color:#7c7a90}
-.mt16{margin-top:16px}.mt32{margin-top:32px}
-.btn-inline{display:inline-flex;align-items:center;gap:8px;background:#6f4ce8;color:#fff;font-size:14px;font-weight:800;padding:13px 28px;border-radius:100px;transition:background .2s}
-.btn-inline:hover{background:#5a38d0}
-.btn-inline2{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#1a1a2e;font-size:14px;font-weight:800;padding:12px 24px;border-radius:100px;border:1.5px solid #ede9fe;transition:border-color .2s,color .2s}
-.btn-inline2:hover{border-color:#6f4ce8;color:#6f4ce8}
-.gap-row{display:flex;gap:12px;flex-wrap:wrap}
-
-/* FOOTER */
-footer{background:#1a1a2e;color:rgba(255,255,255,.4);text-align:center;padding:36px 28px;font-size:13.5px}
-.foot-logo{font-weight:900;font-size:20px;color:rgba(255,255,255,.8);margin-bottom:8px}
-
-/* RESPONSIVE HERO */
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;text-align:center;padding-top:40px;gap:36px}
-  .hero-left p{margin-left:auto;margin-right:auto}
-  .hero-btns{justify-content:center}
-  .hero-right{min-height:360px}
-  .img-circle{width:360px;height:360px}
-  .features-inner{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:480px){.features-inner{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-
-<!-- ═══ NAV ═══ -->
-<nav class="navbar">
-  <div class="navbar-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-icon">🎈</span>
-      <span class="logo-text">
-        <span class="t1">Narosa</span>
-        <span class="t2">Sweet Party</span>
-      </span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Inicio</a>
-      <a href="sistema.html">Servicios</a>
-      <a href="sistema.html">Paquetes</a>
-      <a href="flujo.html">Galería</a>
-      <a href="beneficios.html">Nosotros</a>
-      <a href="propuesta.html">Contacto</a>
-    </div>
-    <a href="https://wa.me/34640921671?text=Hola!%20Quiero%20solicitar%20información" class="nav-btn" target="_blank">Solicitar cotización</a>
-    <button class="nav-ham" onclick="document.querySelector('.mob-menu').classList.toggle('open')">☰</button>
-  </div>
-</nav>
-<div class="mob-menu">
-  <a href="index.html">Inicio</a>
-  <a href="sistema.html">Servicios</a>
-  <a href="sistema.html">Paquetes</a>
-  <a href="flujo.html">Galería</a>
-  <a href="beneficios.html">Nosotros</a>
-  <a href="propuesta.html">Contacto</a>
-  <a href="https://wa.me/34640921671" class="mob-cta" target="_blank">💬 Solicitar cotización</a>
-</div>
-
-<!-- ═══ HERO ═══ -->
-<section class="hero">
-  <div class="hero-grid">
-
-    <!-- IZQUIERDA -->
-    <div class="hero-left">
-      <span class="hero-pretag" data-reveal="up">DIRECCIÓN QUE SE RECUERDA</span>
-      <h1 data-reveal="up" class="delay-1">
-        Hacemos de su día<br>
-        una aventura<br>
-        <span class="highlight">inolvidable</span>
-        <span class="arrow-wrap">
-          <!-- Flecha curvada amarilla — idéntica a la referencia -->
-          <svg class="arrow-svg" width="46" height="36" viewBox="0 0 46 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M42 4C42 4 28 2 18 10C8 18 4 30 4 30" stroke="#FBBF24" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 30L10 22M4 30L13 32" stroke="#FBBF24" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </h1>
-      <p data-reveal="up" class="delay-2">Fiestas infantiles temáticas, decoración, juegos y todo lo que necesitáis para un día perfecto.</p>
-      <div class="hero-btns" data-reveal="up" class="delay-3">
-        <a href="sistema.html" class="btn-fill">Ver paquetes</a>
-        <a href="presupuesto.html" class="btn-outline">Cotización ♥</a>
-      </div>
-    </div>
-
-    <!-- DERECHA: IMAGEN CIRCULAR -->
-    <div class="hero-right" data-reveal="scale" class="delay-2">
-      <!-- Decoraciones geométricas sutiles (sin emojis) -->
-      <div class="deco deco-star-p"></div>
-      <div class="deco deco-dot-y"></div>
-      <!-- Triángulo decorativo -->
-      <svg class="deco deco-squiggle" width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <polygon points="14,2 26,24 2,24" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linejoin="round"/>
-      </svg>
-      <!-- Forma ondulada con foto de niños -->
-      <div class="img-circle">
-        <div class="img-circle-inner">
-          <img src="assets/img/kids.jpg" alt="Niños felices en una fiesta infantil · Narosa Sweet Party · Barcelona" loading="eager">
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- TIRA DE FEATURES — idéntica a la referencia -->
-  <div class="features-strip">
-    <div class="features-inner">
-      <div class="feat-item" data-reveal="up">
-        <div class="feat-icon-wrap fi-purple">⭐</div>
-        <div>
-          <div class="feat-title">Fiestas dedicadas</div>
-          <div class="feat-desc">Fiestas personalizadas con tus paquetes favoritos.</div>
-        </div>
-      </div>
-      <div class="feat-item" data-reveal="up" class="delay-1">
-        <div class="feat-icon-wrap fi-yellow">😊</div>
-        <div>
-          <div class="feat-title">Juegos y actividades</div>
-          <div class="feat-desc">Entretenimiento seguro y divertido para todos los niños.</div>
-        </div>
-      </div>
-      <div class="feat-item" data-reveal="up" class="delay-2">
-        <div class="feat-icon-wrap fi-pink">🧁</div>
-        <div>
-          <div class="feat-title">Alimentación</div>
-          <div class="feat-desc">Menú delicioso y opciones para todos los niños.</div>
-        </div>
-      </div>
-      <div class="feat-item" data-reveal="up" class="delay-3">
-        <div class="feat-icon-wrap fi-teal">✨</div>
-        <div>
-          <div class="feat-title">Momentos únicos</div>
-          <div class="feat-desc">Decoraciones únicas que transforman cada celebración.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROBLEMA ═══ -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow-chip" data-reveal="up">Lo que pasa hoy</div>
-    <h2 class="section-h" data-reveal="up" style="margin-top:4px">Tu negocio merece estar<br><em>donde están tus clientes.</em></h2>
-    <p class="section-p" data-reveal="up" class="delay-1">Cada semana llegan familias buscando el cumpleaños perfecto. La mayoría se va sin comprar — no porque no quieran, sino porque nadie las atendió a tiempo.</p>
-    <div class="grid-2">
-      <div class="pain-card" data-reveal="up">
-        <div class="icon">🌐</div>
-        <h3>La web no convierte</h3>
-        <p>Quien busca globos en Barcelona va a la tienda que sí está online y responde al instante.</p>
-      </div>
-      <div class="pain-card" data-reveal="up" class="delay-1">
-        <div class="icon">📱</div>
-        <h3>WhatsApp sin responder</h3>
-        <p>Una madre escribe el domingo a las 7 de la tarde. Para el lunes ya reservó en otro sitio.</p>
-      </div>
-      <div class="pain-card" data-reveal="up" class="delay-2">
-        <div class="icon">🧾</div>
-        <h3>Presupuestos a mano</h3>
-        <p>Cada presupuesto desde cero: fecha, niños, temática, precio. Horas perdidas en gestión.</p>
-      </div>
-      <div class="pain-card" data-reveal="up" class="delay-3">
-        <div class="icon">📉</div>
-        <h3>Instagram parado</h3>
-        <p>Sin contenido constante no hay clientes nuevos. Publicar cada día a mano es imposible.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOLUCIÓN ═══ -->
-<section class="section" style="background:#f9f8ff;">
-  <div class="container">
-    <div class="eyebrow-chip" data-reveal="up">La solución</div>
-    <h2 class="section-h" data-reveal="up" style="margin-top:4px">Tu negocio entero,<br><em>funcionando solo.</em></h2>
-    <p class="section-p" data-reveal="up" class="delay-1">Cuatro piezas conectadas: tienda online, Instagram automático, WhatsApp 24h y presupuestos que llegan solos al correo del cliente.</p>
-    <div class="sol-grid">
-      <a href="sistema.html" class="sol-card c1" data-reveal="up">
-        <div class="icon">🛍️</div>
-        <h3>Tienda Online</h3>
-        <p>Catálogo completo de globos y packs. El cliente elige, paga y reserva.</p>
-        <span class="sol-link">Ver cómo funciona →</span>
-      </a>
-      <a href="flujo.html" class="sol-card c2" data-reveal="up" class="delay-1">
-        <div class="icon">📸</div>
-        <h3>Instagram Automático</h3>
-        <p>Publica cada día, responde DMs y filtra leads. Sin tocar el móvil.</p>
-        <span class="sol-link">Ver el flujo →</span>
-      </a>
-      <a href="presupuesto.html" class="sol-card c3" data-reveal="up" class="delay-2">
-        <div class="icon">💬</div>
-        <h3>WhatsApp 24/7</h3>
-        <p>IA responde en menos de 10 segundos. El domingo a las 11 de la noche, también.</p>
-        <span class="sol-link">Ver la demo →</span>
-      </a>
-      <a href="presupuesto.html" class="sol-card c4" data-reveal="up" class="delay-3">
-        <div class="icon">✉️</div>
-        <h3>Presupuesto Automático</h3>
-        <p>Plan completo de fiesta en el correo del cliente en menos de 3 minutos.</p>
-        <span class="sol-link">Ver el ejemplo →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MOTOR N8N ═══ -->
-<section class="section dark-bg">
-  <div class="container center">
-    <div style="display:inline-block;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(251,191,36,.8);background:rgba(251,191,36,.08);padding:5px 14px;border-radius:50px;margin-bottom:18px;" data-reveal="up">Lo que hay por dentro</div>
-    <h2 class="section-h" style="color:#fff;" data-reveal="up">El motor que conecta todo:<br><em style="color:#fbbf24;font-style:normal;">n8n</em></h2>
-    <p class="section-p" style="color:rgba(255,255,255,.55);margin:0 auto 48px;" data-reveal="up" class="delay-1">Cada conversación, publicación y presupuesto atraviesa un flujo automático. Sin que nadie toque nada.</p>
-    <div class="flow-nodes">
-      <div class="flow-node" data-reveal="up">
-        <div class="f-icon fi1">📥</div>
-        <div class="f-text"><h4>Entra el lead</h4><p>Mensaje de Instagram, WhatsApp o formulario web.</p></div>
-      </div>
-      <div class="flow-line"></div>
-      <div class="flow-node" data-reveal="up" class="delay-1">
-        <div class="f-icon fi2">🤖</div>
-        <div class="f-text"><h4>La IA conversa y cualifica</h4><p>Pregunta fecha, niños, temática y presupuesto.</p></div>
-      </div>
-      <div class="flow-line"></div>
-      <div class="flow-node" data-reveal="up" class="delay-2">
-        <div class="f-icon fi3">🧾</div>
-        <div class="f-text"><h4>Genera el presupuesto</h4><p>Plan completo con productos y precio ajustado.</p></div>
-      </div>
-      <div class="flow-line"></div>
-      <div class="flow-node" data-reveal="up" class="delay-3">
-        <div class="f-icon fi4">✉️</div>
-        <div class="f-text"><h4>Envía y notifica</h4><p>Correo al cliente y aviso a la tienda. Lead en el CRM.</p></div>
-      </div>
-    </div>
-    <div style="margin-top:40px;" data-reveal="up" class="delay-4">
-      <a href="beneficios.html" class="btn-cta1">Ver el impacto →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA ═══ -->
-<section class="section cta-bg">
-  <div class="container">
-    <div style="max-width:580px;margin:0 auto;text-align:center;">
-      <span class="balloon-anim" data-reveal="scale">🎈</span>
-      <h2 class="cta-h" data-reveal="up">Tu tienda merece<br>estar donde están<br><em>tus clientes.</em></h2>
-      <p class="cta-p" data-reveal="up" class="delay-1">Sin compromiso, sin letra pequeña. Te enseño cómo funciona y decidimos juntos si encaja.</p>
-      <div class="cta-row" data-reveal="up" class="delay-2">
-        <a href="https://wa.me/34640921671?text=Hola!%20Quiero%20saber%20más%20sobre%20el%20sistema%20para%20Narosa" class="btn-cta1" target="_blank">💬 Escribir por WhatsApp</a>
-        <a href="sistema.html" class="btn-cta2">Ver el sistema completo</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="foot-logo">🎈 Narosa Sweet Party</div>
-  <p>Automatización IA · Globos y fiestas infantiles · narosasp.com · Barcelona</p>
-</footer>
-
-<script>
-// Scroll reveal con IntersectionObserver
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      io.unobserve(e.target);
+  <style>
+    :root {
+      --bg: #fffdfc;
+      --bg-soft: #fbf8ff;
+      --card: rgba(255, 255, 255, 0.88);
+      --text: #2b2430;
+      --muted: #6f6877;
+      --purple: #7c5ce7;
+      --purple-dark: #5d3fd3;
+      --pink: #ff78a8;
+      --yellow: #ffc842;
+      --mint: #75d9c2;
+      --line: rgba(124, 92, 231, 0.14);
+      --shadow: 0 22px 70px rgba(98, 71, 168, 0.12);
+      --shadow-soft: 0 16px 40px rgba(44, 32, 70, 0.08);
+      --radius: 28px;
+      --max: 1180px;
     }
-  });
-}, { threshold: 0.1 });
 
-document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 15% 10%, rgba(255, 120, 168, .10), transparent 28%),
+                  radial-gradient(circle at 85% 0%, rgba(124, 92, 231, .10), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-// Nav ham
-document.querySelector('.nav-ham').addEventListener('click', () => {
-  document.querySelector('.mob-menu').classList.toggle('open');
-});
+    img { width: 100%; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font-family: inherit; }
 
-// Nav scroll shadow
-window.addEventListener('scroll', () => {
-  document.querySelector('.navbar').style.boxShadow =
-    window.scrollY > 10 ? '0 4px 24px rgba(111,76,232,.12)' : '0 2px 20px rgba(111,76,232,.07)';
-});
-</script>
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    .browser-frame {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffffff 0%, #fffdfc 36%, #fbf8ff 100%);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, .76);
+      border-bottom: 1px solid rgba(124, 92, 231, .10);
+    }
+
+    .nav {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 800;
+      line-height: .85;
+      font-size: 26px;
+      letter-spacing: -1px;
+    }
+
+    .logo span:first-child { color: var(--purple); }
+    .logo span:nth-child(2) { color: var(--pink); display: block; }
+    .balloon {
+      width: 22px;
+      height: 28px;
+      border: 3px solid var(--purple);
+      border-radius: 50% 50% 48% 48%;
+      position: relative;
+      transform: rotate(-12deg);
+    }
+    .balloon:after {
+      content: "";
+      width: 14px;
+      height: 18px;
+      border-left: 2px solid var(--pink);
+      border-bottom: 2px solid var(--pink);
+      position: absolute;
+      left: 7px;
+      top: 24px;
+      border-radius: 0 0 0 20px;
+    }
+
+    .menu { display: flex; align-items: center; gap: 34px; font-size: 14px; font-weight: 700; color: #393142; }
+    .menu a { position: relative; transition: color .25s ease; }
+    .menu a:hover, .menu a.active { color: var(--purple); }
+    .menu a.active:after {
+      content: "";
+      height: 3px;
+      width: 100%;
+      border-radius: 10px;
+      background: var(--purple);
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 14px 26px;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      box-shadow: 0 15px 32px rgba(124, 92, 231, .26);
+    }
+    .btn-light {
+      color: var(--purple-dark);
+      background: #fff;
+      border: 1px solid rgba(124, 92, 231, .20);
+      box-shadow: 0 10px 24px rgba(48, 36, 78, .06);
+    }
+
+    .hero {
+      position: relative;
+      padding: 70px 0 58px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      align-items: center;
+      gap: 52px;
+      min-height: 520px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      font-weight: 900;
+      color: var(--pink);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; }
+    h1 {
+      font-size: clamp(48px, 5.3vw, 74px);
+      line-height: .96;
+      letter-spacing: -1.8px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    h1 .accent { color: var(--purple); position: relative; }
+    h1 .accent:after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: 24px;
+      width: 34px;
+      height: 34px;
+      background: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 28h15M25 9l-5 14M39 20l-13 9' stroke='%23FFC842' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    .hero p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 17px;
+      max-width: 485px;
+      margin-bottom: 28px;
+    }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+    .hero-art {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-photo {
+      position: relative;
+      height: 450px;
+      width: 100%;
+      border-radius: 52% 48% 46% 54% / 36% 36% 64% 64%;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+      transform: translateZ(0);
+    }
+    .hero-photo:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.05), transparent 40%);
+    }
+    .hero-photo img { height: 100%; }
+
+    .doodle { position: absolute; pointer-events: none; z-index: 4; }
+    .crown { width: 76px; height: 58px; left: -45px; top: 36px; animation: float 4.2s ease-in-out infinite; }
+    .squiggle { width: 42px; height: 88px; left: 60px; top: 112px; animation: float 5s ease-in-out infinite reverse; }
+    .star { width: 24px; height: 24px; left: 188px; top: 10px; animation: pulse 2.5s ease-in-out infinite; }
+
+    .wave {
+      position: absolute;
+      left: -5vw;
+      right: -5vw;
+      bottom: -1px;
+      height: 110px;
+      background: #fff;
+      border-radius: 50% 50% 0 0 / 45% 45% 0 0;
+      transform: rotate(-1deg);
+    }
+
+    .benefits-wrap { position: relative; margin-top: -22px; z-index: 5; }
+    .benefits {
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(124, 92, 231, .11);
+      box-shadow: var(--shadow-soft);
+      border-radius: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+    }
+    .benefit {
+      padding: 26px 22px;
+      text-align: center;
+      position: relative;
+    }
+    .benefit:not(:last-child):after {
+      content: "";
+      width: 1px;
+      height: 48%;
+      background: rgba(124, 92, 231, .13);
+      position: absolute;
+      right: 0;
+      top: 26%;
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      margin-bottom: 12px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.75);
+    }
+    .i-purple { background: rgba(124, 92, 231, .13); color: var(--purple); }
+    .i-yellow { background: rgba(255, 200, 66, .18); color: #e2a100; }
+    .i-pink { background: rgba(255, 120, 168, .15); color: var(--pink); }
+    .i-mint { background: rgba(117, 217, 194, .18); color: #2ab89c; }
+    .benefit h4 { font-size: 14px; margin-bottom: 7px; }
+    .benefit p { font-size: 12px; line-height: 1.55; color: var(--muted); }
+
+    section { padding: 82px 0; position: relative; }
+    .section-head { text-align: center; margin-bottom: 34px; }
+    .section-head .label { color: var(--purple); font-weight: 900; font-size: 13px; margin-bottom: 6px; }
+    .section-head .label.pink { color: var(--pink); }
+    .section-head h2 { font-size: clamp(32px, 3.4vw, 48px); font-weight: 500; letter-spacing: -.5px; }
+
+    .services { background: linear-gradient(180deg, #fff 0%, var(--bg-soft) 100%); }
+    .cards-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .service-card, .price-card, .testimonial, .gallery-card {
+      background: var(--card);
+      border: 1px solid rgba(124, 92, 231, .12);
+      border-radius: 22px;
+      box-shadow: 0 16px 34px rgba(54, 44, 93, .07);
+      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    .service-card:hover, .price-card:hover, .testimonial:hover, .gallery-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 54px rgba(88, 61, 165, .13);
+      border-color: rgba(124, 92, 231, .28);
+    }
+    .service-card { padding: 18px; }
+    .service-card .top { display: flex; gap: 13px; align-items: flex-start; margin-bottom: 14px; }
+    .mini-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex: 0 0 48px;
+    }
+    .service-card h3 { font-family: Inter, sans-serif; font-size: 16px; font-weight: 900; margin-bottom: 6px; }
+    .service-card p { color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .service-card .photo { height: 142px; border-radius: 16px; overflow: hidden; margin-top: 16px; }
+
+    .packages {
+      background: radial-gradient(circle at 15% 15%, rgba(255,200,66,.11), transparent 22%),
+                  radial-gradient(circle at 83% 10%, rgba(255,120,168,.11), transparent 22%),
+                  #fff;
+      overflow: hidden;
+    }
+    .prices {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: stretch;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .price-card {
+      padding: 34px 34px 28px;
+      text-align: center;
+      position: relative;
+    }
+    .price-card.featured {
+      border: 2px solid rgba(124, 92, 231, .36);
+      transform: translateY(-12px);
+      box-shadow: 0 28px 70px rgba(124, 92, 231, .18);
+    }
+    .badge {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: white;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .price-card h3 { font-size: 28px; font-weight: 500; margin-bottom: 7px; }
+    .price-card .sub { color: var(--muted); font-size: 13px; line-height: 1.6; margin-bottom: 18px; }
+    .price {
+      color: var(--purple);
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+    .price small { font-size: 12px; font-weight: 800; color: var(--purple-dark); }
+    .features { text-align: left; list-style: none; display: grid; gap: 12px; margin-bottom: 28px; }
+    .features li { color: #50485b; font-size: 14px; display: flex; gap: 10px; align-items: center; }
+    .features li:before { content: "✓"; color: #34b386; font-weight: 900; }
+
+    .gallery { background: linear-gradient(180deg, var(--bg-soft), #fff); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .9fr 1.15fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .gallery-card { height: 190px; overflow: hidden; }
+    .gallery-card.tall { height: 250px; }
+    .gallery-card img { height: 100%; transition: transform .6s ease; }
+    .gallery-card:hover img { transform: scale(1.08); }
+    .center-btn { text-align: center; margin-top: 26px; }
+
+    .testimonials { background: #fff; padding-top: 52px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .testimonial { padding: 28px; }
+    .quote { color: rgba(124, 92, 231, .20); font-size: 50px; line-height: .5; font-family: Georgia, serif; }
+    .testimonial p { color: var(--muted); line-height: 1.7; font-size: 14px; margin: 8px 0 14px; }
+    .stars { color: #ffc842; letter-spacing: 3px; font-size: 15px; margin-bottom: 14px; }
+    .person { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:16px; }
+    .person strong { display: block; font-size: 14px; }
+    .person span { color: var(--muted); font-size: 12px; }
+
+    .process { background: linear-gradient(180deg, #fff, var(--bg-soft)); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; }
+    .step { text-align: center; position: relative; padding: 4px 18px; }
+    .step:not(:last-child):after {
+      content: "";
+      position: absolute;
+      right: -34px;
+      top: 30px;
+      width: 68px;
+      border-top: 2px dashed rgba(124, 92, 231, .18);
+    }
+    .step h4 { margin: 12px 0 8px; font-size: 15px; }
+    .step p { color: var(--muted); line-height: 1.55; font-size: 13px; }
+
+    .about { background: #fff; padding-top: 40px; }
+    .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 54px; align-items: center; }
+    .about-img {
+      height: 410px;
+      border-radius: 42% 58% 46% 54% / 54% 36% 64% 46%;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-img img { height: 100%; }
+    .about h2 { font-size: clamp(34px, 3.5vw, 52px); font-weight: 500; margin-bottom: 18px; }
+    .about p { color: var(--muted); line-height: 1.85; font-size: 16px; margin-bottom: 25px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .stat { padding: 18px 12px; border-radius: 20px; background: var(--bg-soft); text-align: center; border: 1px solid rgba(124,92,231,.10); }
+    .stat strong { color: var(--purple); display: block; font-size: 22px; }
+    .stat span { color: var(--muted); font-size: 12px; }
+
+    .cta-area { padding: 70px 0 0; background: #fff; }
+    .cta {
+      position: relative;
+      overflow: hidden;
+      min-height: 190px;
+      border-radius: 46px;
+      background: linear-gradient(135deg, #8d68f4, #6d4bdd 56%, #9b7cf6);
+      color: #fff;
+      display: grid;
+      grid-template-columns: .85fr 1fr .42fr;
+      align-items: center;
+      box-shadow: 0 32px 90px rgba(124, 92, 231, .30);
+    }
+    .cta:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 16% 25%, rgba(255,255,255,.24), transparent 20%), radial-gradient(circle at 92% 20%, rgba(255,200,66,.18), transparent 18%);
+    }
+    .cta-img { height: 230px; border-radius: 38% 62% 53% 47% / 50% 46% 54% 50%; overflow: hidden; margin-left: 24px; z-index: 2; }
+    .cta-img img { height: 100%; }
+    .cta-content { z-index: 2; padding: 30px; }
+    .cta h2 { font-size: clamp(30px, 3vw, 44px); font-weight: 500; margin-bottom: 8px; color:#fff; }
+    .cta p { color: rgba(255,255,255,.82); margin-bottom: 20px; }
+    .cta .btn-light { color: var(--purple-dark); }
+    .cta-deco { z-index: 2; font-size: 64px; text-align: center; animation: float 3.6s ease-in-out infinite; }
+
+    footer {
+      background: #fff;
+      border-top: 1px solid rgba(124,92,231,.10);
+      padding: 54px 0 26px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.35fr .85fr 1fr 1fr 1.25fr; gap: 34px; }
+    footer p, footer li, footer a { color: var(--muted); font-size: 13px; line-height: 1.9; }
+    footer h4 { font-size: 14px; margin-bottom: 13px; }
+    footer ul { list-style: none; }
+    .socials { display: flex; gap: 10px; margin-top: 14px; }
+    .socials a { width: 34px; height: 34px; display: grid; place-items: center; color: #fff; border-radius: 50%; font-weight: 900; }
+    .socials a:nth-child(1) { background: #4385f4; }
+    .socials a:nth-child(2) { background: #ff5d9e; }
+    .socials a:nth-child(3) { background: #28c76f; }
+    .newsletter { display: flex; height: 46px; border-radius: 999px; border: 1px solid rgba(124,92,231,.14); overflow: hidden; background: #fff; box-shadow: 0 8px 22px rgba(44,32,70,.06); }
+    .newsletter input { border: 0; outline: 0; padding: 0 16px; flex: 1; min-width: 0; color: var(--text); }
+    .newsletter button { width: 48px; border: 0; background: var(--purple); color: #fff; font-weight: 900; }
+    .bottom { margin-top: 42px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(124,92,231,.09); padding-top: 22px; }
+    .bottom-links { display: flex; gap: 26px; }
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #27d66f;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      z-index: 80;
+      box-shadow: 0 15px 35px rgba(39,214,111,.35);
+      font-size: 30px;
+      font-weight: 900;
+      transition: transform .25s ease;
+    }
+    .whatsapp:hover { transform: translateY(-4px) scale(1.03); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(-14px) rotate(4deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: .75; }
+      50% { transform: scale(1.25); opacity: 1; }
+    }
+
+    @media (max-width: 1020px) {
+      .menu { display: none; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero-art { min-height: 360px; }
+      .hero-photo { height: 380px; }
+      .cards-4, .benefits, .steps, .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .prices, .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; }
+      .price-card.featured { transform: none; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta { grid-template-columns: 1fr; padding: 24px; }
+      .cta-img { margin: 0; height: 260px; }
+      .cta-deco { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .container { padding: 0 16px; }
+      .nav { height: 76px; }
+      .logo { font-size: 21px; }
+      .nav .btn { padding: 12px 16px; font-size: 12px; }
+      .hero { padding: 46px 0 42px; }
+      h1 { font-size: 46px; }
+      .hero p { font-size: 15px; }
+      .hero-photo { height: 320px; border-radius: 34px; }
+      .benefits, .cards-4, .steps, .stats, .footer-grid { grid-template-columns: 1fr; }
+      .benefit:after, .step:after { display: none; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-card, .gallery-card.tall { height: 220px; }
+      .bottom { flex-direction: column; }
+      .bottom-links { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="browser-frame">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="#top" aria-label="Narosa Sweet Party">
+          <div><span>Narosa</span><span>Sweet Party</span></div>
+          <i class="balloon"></i>
+        </a>
+        <nav class="menu" aria-label="Navegación principal">
+          <a class="active" href="#top">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#paquetes">Paquetes</a>
+          <a href="#galeria">Galería</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a href="https://wa.me/34640921671?text=Hola!%20Quiero%20un%20presupuesto%20para%20una%20fiesta" class="btn btn-primary" target="_blank" rel="noopener">Solicitar presupuesto</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">Diversión que se recuerda</div>
+            <h1>Hacemos de su día<br>una aventura<br><span class="accent">inolvidable</span></h1>
+            <p>Globos con helio, bouquets temáticos y decoración de ensueño para fiestas infantiles en Barcelona. Todo lo que necesitáis para un día perfecto.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#paquetes">Ver paquetes</a>
+              <a class="btn btn-light" href="#contacto">Contáctanos ♡</a>
+            </div>
+          </div>
+
+          <div class="hero-art reveal">
+            <svg class="doodle crown" viewBox="0 0 100 70" fill="none" aria-hidden="true">
+              <path d="M9 58L18 20L40 42L55 8L73 42L92 22L88 58H9Z" stroke="#FFC842" stroke-width="7" stroke-linejoin="round"/>
+            </svg>
+            <svg class="doodle squiggle" viewBox="0 0 50 100" fill="none" aria-hidden="true">
+              <path d="M28 5C8 16 41 31 23 45C6 58 44 68 22 94" stroke="#FF78A8" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <svg class="doodle star" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M20 3L24 15L37 16L27 24L30 37L20 30L10 37L13 24L3 16L16 15L20 3Z" fill="#7C5CE7"/>
+            </svg>
+            <div class="hero-photo">
+              <img src="assets/img/kids.jpg" alt="Niños celebrando una fiesta infantil con globos y confeti · Narosa Sweet Party Barcelona">
+            </div>
+          </div>
+        </div>
+        <div class="wave"></div>
+      </section>
+
+      <div class="container benefits-wrap reveal">
+        <div class="benefits">
+          <article class="benefit">
+            <div class="icon i-purple">🎈</div>
+            <h4>Fiestas temáticas</h4>
+            <p>Unicornio, sirena, dinosaurios y mucho más a tu elección.</p>
+          </article>
+          <article class="benefit">
+            <div class="icon i-yellow">🎁</div>
+            <h4>Todo incluido</h4>
+            <p>Bouquets, arcos de globos, helio y decoración completa.</p>
+          </article>
+          <article class="benefit">
+            <div class="icon i-pink">♡</div>
+            <h4>Calidad y seguridad</h4>
+            <p>Globos de primera calidad, montaje cuidado y a tiempo.</p>
+          </article>
+          <article class="benefit">
+            <div class="icon i-mint">📷</div>
+            <h4>Momentos únicos</h4>
+            <p>Creamos recuerdos que duran para siempre.</p>
+          </article>
+        </div>
+      </div>
+
+      <section id="servicios" class="services">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="label">Nuestros servicios</div>
+            <h2>Experiencias que encantan</h2>
+          </div>
+          <div class="cards-4">
+            <article class="service-card reveal">
+              <div class="top">
+                <div class="mini-icon i-purple">🎀</div>
+                <div>
+                  <h3>Bouquets de globos</h3>
+                  <p>Ramos de globos temáticos con helio, listos para sorprender.</p>
+                </div>
+              </div>
+              <div class="photo"><img src="assets/img/pack-unicornio.jpg" alt="Bouquet de globos unicornio"></div>
+            </article>
+            <article class="service-card reveal">
+              <div class="top">
+                <div class="mini-icon i-yellow">🎉</div>
+                <div>
+                  <h3>Decoración de eventos</h3>
+                  <p>Arcos orgánicos, columnas y photocall para tu celebración.</p>
+                </div>
+              </div>
+              <div class="photo"><img src="assets/img/pack-fiesta-completo.jpg" alt="Decoración completa de fiesta con globos"></div>
+            </article>
+            <article class="service-card reveal">
+              <div class="top">
+                <div class="mini-icon i-pink">🎈</div>
+                <div>
+                  <h3>Globos con helio</h3>
+                  <p>Globos de colores listos para volar, sueltos o en ramo.</p>
+                </div>
+              </div>
+              <div class="photo"><img src="assets/img/globos-helio.jpg" alt="Globos con helio de colores"></div>
+            </article>
+            <article class="service-card reveal">
+              <div class="top">
+                <div class="mini-icon i-mint">✨</div>
+                <div>
+                  <h3>Packs personalizados</h3>
+                  <p>Diseñamos el pack temático a la medida de tu fiesta.</p>
+                </div>
+              </div>
+              <div class="photo"><img src="assets/img/pack-sirena.jpg" alt="Pack temático de sirenas"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="paquetes" class="packages">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="label pink">Paquetes destacados</div>
+            <h2>Elige la experiencia perfecta</h2>
+          </div>
+          <div class="prices">
+            <article class="price-card reveal">
+              <h3>Bouquet</h3>
+              <p class="sub">Ideal para sorprender o como detalle.</p>
+              <div class="price">39 € <small>EUR</small></div>
+              <ul class="features">
+                <li>Bouquet temático a elegir</li>
+                <li>Globos con helio</li>
+                <li>Globo foil protagonista</li>
+                <li>Cinta y lastre decorativo</li>
+                <li>Recogida en tienda</li>
+              </ul>
+              <a class="btn btn-light" href="#contacto">Elegir paquete</a>
+            </article>
+            <article class="price-card featured reveal">
+              <div class="badge">Más popular</div>
+              <h3>Fiesta Completa</h3>
+              <p class="sub">Nuestra opción más elegida.</p>
+              <div class="price">119 € <small>EUR</small></div>
+              <ul class="features">
+                <li>Arco de globos orgánico</li>
+                <li>Bouquet temático + foil</li>
+                <li>Decoración de mesa dulce</li>
+                <li>Globos con helio para invitados</li>
+                <li>Temática personalizada</li>
+                <li>Montaje incluido en Barcelona</li>
+              </ul>
+              <a class="btn btn-primary" href="#contacto">Elegir paquete</a>
+            </article>
+            <article class="price-card reveal">
+              <h3>Evento Deluxe</h3>
+              <p class="sub">Una decoración sin límites.</p>
+              <div class="price">290 € <small>EUR</small></div>
+              <ul class="features">
+                <li>Arco orgánico XL + columnas</li>
+                <li>Photocall de globos</li>
+                <li>Decoración integral del espacio</li>
+                <li>Detalles personalizados con nombre</li>
+                <li>Coordinación del montaje</li>
+                <li>Desmontaje incluido</li>
+              </ul>
+              <a class="btn btn-light" href="#contacto">Elegir paquete</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria" class="gallery">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="label">Galería</div>
+            <h2>Momentos que inspiran</h2>
+          </div>
+          <div class="gallery-grid">
+            <div class="gallery-card tall reveal"><img src="assets/img/pack-unicornio.jpg" alt="Decoración temática unicornio con globos pastel"></div>
+            <div class="gallery-card reveal"><img src="assets/img/pack-dinosaurios.jpg" alt="Pack de globos dinosaurios"></div>
+            <div class="gallery-card tall reveal"><img src="assets/img/pack-sirena.jpg" alt="Decoración temática sirenas"></div>
+            <div class="gallery-card reveal"><img src="assets/img/pack-marinero.jpg" alt="Pack de globos marinero"></div>
+          </div>
+          <div class="center-btn reveal"><a class="btn btn-light" href="sistema.html">Ver todos los packs ⊞</a></div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Lo que dicen nuestras familias</h2>
+          </div>
+          <div class="testimonials-grid">
+            <article class="testimonial reveal">
+              <div class="quote">“</div>
+              <p>Fue el mejor cumpleaños de mi hija. La decoración con globos quedó preciosa y perfecta.</p>
+              <div class="stars">★★★★★</div>
+              <div class="person"><div class="avatar" style="background:linear-gradient(135deg,#7c5ce7,#5d3fd3)">M</div><div><strong>Marta G.</strong><span>Mamá de Júlia</span></div></div>
+            </article>
+            <article class="testimonial reveal">
+              <div class="quote">“</div>
+              <p>Pedí presupuesto por WhatsApp y me respondieron al momento. Los niños alucinaron con el arco de globos.</p>
+              <div class="stars">★★★★★</div>
+              <div class="person"><div class="avatar" style="background:linear-gradient(135deg,#ff78a8,#e2487f)">J</div><div><strong>Jordi R.</strong><span>Papá de Pol</span></div></div>
+            </article>
+            <article class="testimonial reveal">
+              <div class="quote">“</div>
+              <p>La decoración fue de ensueño y el montaje impecable. 100% recomendados en Barcelona.</p>
+              <div class="stars">★★★★★</div>
+              <div class="person"><div class="avatar" style="background:linear-gradient(135deg,#75d9c2,#2ab89c)">N</div><div><strong>Núria S.</strong><span>Mamá de Laia</span></div></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="process">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="label">¿Cómo trabajamos?</div>
+            <h2>Así de fácil</h2>
+          </div>
+          <div class="steps">
+            <div class="step reveal"><div class="icon i-purple">💬</div><h4>1. Cuéntanos tu idea</h4><p>Escríbenos por WhatsApp con la temática, fecha y nº de niños.</p></div>
+            <div class="step reveal"><div class="icon i-yellow">🎁</div><h4>2. Recibe tu presupuesto</h4><p>Te lo enviamos al momento, con pack y precio cerrado.</p></div>
+            <div class="step reveal"><div class="icon i-pink">🎉</div><h4>3. Disfruta tu fiesta</h4><p>Preparamos y montamos todo para que solo disfrutes.</p></div>
+            <div class="step reveal"><div class="icon i-mint">📷</div><h4>4. Recuerdos inolvidables</h4><p>Una decoración de revista para fotos que duran para siempre.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="nosotros" class="about">
+        <div class="container about-grid">
+          <div class="about-img reveal"><img src="assets/img/store.jpg" alt="Tienda de globos Narosa Sweet Party en Barcelona"></div>
+          <div class="reveal">
+            <div class="eyebrow">Sobre nosotros</div>
+            <h2>Creamos magia, diseñamos recuerdos</h2>
+            <p>En Narosa Sweet Party somos especialistas en globos y decoración para fiestas infantiles en Barcelona. Acompañamos cada celebración con pasión, creatividad y atención a cada detalle, porque sabemos que los momentos especiales merecen ser inolvidables.</p>
+            <div class="stats">
+              <div class="stat"><strong>+800</strong><span>Fiestas decoradas</span></div>
+              <div class="stat"><strong>+6</strong><span>Años de experiencia</span></div>
+              <div class="stat"><strong>100%</strong><span>Familias felices</span></div>
+              <div class="stat"><strong>24h</strong><span>Respuesta WhatsApp</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="cta-area">
+        <div class="container">
+          <div class="cta reveal">
+            <div class="cta-img"><img src="assets/img/pack-fiesta-completo.jpg" alt="Decoración de globos para cumpleaños"></div>
+            <div class="cta-content">
+              <h2>¿Listos para una fiesta inolvidable?</h2>
+              <p>Pide tu presupuesto hoy mismo y hagamos magia juntos.</p>
+              <a class="btn btn-light" href="https://wa.me/34640921671?text=Hola!%20Quiero%20un%20presupuesto%20para%20una%20fiesta" target="_blank" rel="noopener">Solicitar presupuesto →</a>
+            </div>
+            <div class="cta-deco">🎈</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="#top"><div><span>Narosa</span><span>Sweet Party</span></div><i class="balloon"></i></a>
+            <p style="margin-top:16px;max-width:220px;">Globos y decoración para fiestas infantiles en Barcelona. Experiencias únicas para momentos inolvidables.</p>
+            <div class="socials"><a href="#">f</a><a href="https://instagram.com/narosasp" target="_blank" rel="noopener">ig</a><a href="https://wa.me/34640921671" target="_blank" rel="noopener">w</a></div>
+          </div>
+          <div><h4>Enlaces</h4><ul><li><a href="#top">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#paquetes">Paquetes</a></li><li><a href="#galeria">Galería</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+          <div><h4>El sistema IA</h4><ul><li><a href="sistema.html">El sistema</a></li><li><a href="flujo.html">Instagram</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="beneficios.html">Beneficios</a></li><li><a href="propuesta.html">Propuesta</a></li></ul></div>
+          <div><h4>Contacto</h4><ul><li>☎ +34 640 921 671</li><li>✉ hola@narosasp.com</li><li>⌖ María Aguiló 129, Barcelona</li></ul></div>
+          <div><h4>Newsletter</h4><p>Recibe ideas e inspiración para la próxima celebración.</p><form class="newsletter" onsubmit="return false;"><input type="email" placeholder="Tu correo electrónico"><button type="submit">↗</button></form></div>
+        </div>
+        <div class="bottom"><p>© 2026 Narosa Sweet Party. Todos los derechos reservados.</p><div class="bottom-links"><a href="#">Aviso de privacidad</a><a href="#">Términos y condiciones</a></div></div>
+      </div>
+    </footer>
+
+    <a class="whatsapp" href="https://wa.me/34640921671" target="_blank" rel="noopener" aria-label="WhatsApp">☘</a>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el, index) => {
+      el.style.transitionDelay = `${Math.min(index * 45, 260)}ms`;
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
 </body>
 </html>
