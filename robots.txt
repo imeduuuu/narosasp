@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://globusambgracia.com/sitemap.xml
+Sitemap: https://narosasp.com/sitemap.xml

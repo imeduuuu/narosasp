@@ -7,21 +7,21 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <style>
 /* ── SWEET ÉLITE TOKENS ─────────────────────────── */
 :root {
-  --bg:        #fdf8f2;
+  --bg:        #ffffff;
   --card:      #ffffff;
-  --ink:       #1d0e2c;
+  --ink:       #1a1a2e;
   --muted:     #7a6e84;
-  --line:      #ede0d4;
-  --soft:      #fef4eb;
+  --line:      #ede9fe;
+  --soft:      #f9f8ff;
 
-  --gold:      #c8975a;
-  --gold-d:    #9f7035;
-  --gold-s:    #fdf5e6;
-  --gold-grad: linear-gradient(135deg,#c8975a,#9f7035);
+  --gold:      #7b4fe8;
+  --gold-d:    #6833d0;
+  --gold-s:    #f3effe;
+  --gold-grad: linear-gradient(135deg,#7b4fe8,#6833d0);
 
   --mint:      #72c9b0;
   --mint-d:    #46a993;
@@ -30,17 +30,17 @@
   --blush:     #e89cb4;
   --blush-s:   #fdeef4;
 
-  --plum:      #7b3fa0;
-  --plum-s:    #f5eeff;
+  --plum:      #6833d0;
+  --plum-s:    #f3effe;
 
   --green:     #22c55e;
-  --dark:      #1d0e2c;
+  --dark:      #1a1a2e;
   --nav-h:     64px;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--ink);font-family:'Raleway',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:'Nunito',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 strong{font-weight:800;color:var(--ink)}
@@ -58,14 +58,14 @@ strong{font-weight:800;color:var(--ink)}
 
 /* ── TOPBAR ─────────────────────────────────────── */
 .topbar{background:var(--dark);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.topbar-logo{font-family:'Playfair Display',serif;font-weight:600;font-size:15px;color:rgba(255,255,255,.75)}
-.topbar-badge{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#e8c880;background:rgba(255,200,90,.12);border:1px solid rgba(255,200,90,.25);padding:5px 12px;border-radius:50px}
+.topbar-logo{font-family:'Nunito',serif;font-weight:600;font-size:15px;color:rgba(255,255,255,.75)}
+.topbar-badge{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fbbf24;background:rgba(255,200,90,.12);border:1px solid rgba(255,200,90,.25);padding:5px 12px;border-radius:50px}
 .topbar-nav a{font-size:12px;font-weight:700;color:rgba(255,255,255,.45);margin-left:16px;transition:color .2s}
 .topbar-nav a:hover{color:rgba(255,255,255,.8)}
 
 /* ── HERO ────────────────────────────────────────── */
 .hero{
-  background:linear-gradient(160deg,#0f0a1e 0%,#1d0e2c 40%,#2e1448 70%,rgba(200,151,90,.3) 100%);
+  background:linear-gradient(160deg,#14142b 0%,#1a1a2e 40%,#2e1a6e 70%,rgba(200,151,90,.3) 100%);
   padding:96px 28px 80px; color:#fff; text-align:center; position:relative; overflow:hidden;
 }
 .hero::before{
@@ -74,20 +74,20 @@ strong{font-weight:800;color:var(--ink)}
   font-size:11px;letter-spacing:18px;color:rgba(200,151,90,.15);white-space:nowrap;pointer-events:none;
 }
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:7px 16px;border-radius:50px;margin-bottom:28px}
-.hero h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(36px,5.5vw,66px);line-height:1.08;margin-bottom:18px}
-.hero h1 em{font-style:italic;color:#e8c880}
+.hero h1{font-family:'Nunito',serif;font-weight:600;font-size:clamp(36px,5.5vw,66px);line-height:1.08;margin-bottom:18px}
+.hero h1 em{font-style:italic;color:#fbbf24}
 .hero-sub{font-size:17px;color:rgba(255,255,255,.6);max-width:540px;margin:0 auto 48px;line-height:1.75}
 
 /* SUMMARY STRIP */
 .summary-strip{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:8px}
 .sum-item{text-align:center;padding:0 16px}
-.sum-num{font-family:'Playfair Display',serif;font-weight:600;font-size:36px;color:#e8c880;line-height:1}
+.sum-num{font-family:'Nunito',serif;font-weight:600;font-size:36px;color:#fbbf24;line-height:1}
 .sum-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:5px}
 
 /* ── SECTION TITLES ──────────────────────────────── */
-.eyebrow{font-family:'Raleway',sans-serif;font-weight:800;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:14px;display:inline-block}
+.eyebrow{font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:14px;display:inline-block}
 .eyebrow.gold{color:var(--gold-d)}.eyebrow.mint{color:var(--mint-d)}.eyebrow.plum{color:var(--plum)}.eyebrow.white{color:rgba(255,255,255,.5)}
-.section-title{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(28px,4vw,46px);line-height:1.1;margin-bottom:16px}
+.section-title{font-family:'Nunito',serif;font-weight:600;font-size:clamp(28px,4vw,46px);line-height:1.1;margin-bottom:16px}
 .section-title em{font-style:italic;color:var(--gold)}
 .section-lead{font-size:16px;line-height:1.8;color:var(--muted);max-width:580px}
 
@@ -108,11 +108,11 @@ strong{font-weight:800;color:var(--ink)}
 
 .plan-header{padding:32px 28px 24px;border-bottom:1px solid var(--line)}
 .plan-tier{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px}
-.plan-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:6px}
+.plan-name{font-family:'Nunito',serif;font-size:24px;font-weight:600;margin-bottom:6px}
 .plan-desc{font-size:13px;color:var(--muted);line-height:1.55}
 .plan-total-wrap{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
 .plan-total-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.plan-total-price{font-family:'Playfair Display',serif;font-size:44px;font-weight:600;line-height:1}
+.plan-total-price{font-family:'Nunito',serif;font-size:44px;font-weight:600;line-height:1}
 .plan-total-suffix{font-size:14px;font-weight:700;color:var(--muted);margin-left:3px}
 
 .plan-body{padding:24px 28px}
@@ -120,7 +120,7 @@ strong{font-weight:800;color:var(--ink)}
 .plan-line:last-child{border:none}
 .pl-name{display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
 .pl-icon{font-size:14px;flex-shrink:0}
-.pl-val{font-weight:800;font-family:'Playfair Display',serif;font-size:15px}
+.pl-val{font-weight:800;font-family:'Nunito',serif;font-size:15px}
 .pl-val.zero{color:var(--mint-d);font-size:12px;font-weight:800}
 .pl-val.gold{color:var(--gold-d)}
 .pl-val.plum{color:var(--plum)}
@@ -131,7 +131,7 @@ strong{font-weight:800;color:var(--ink)}
 .pf-title{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .pf-stat{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;font-size:13px}
 .pf-stat-label{color:var(--muted);font-weight:600}
-.pf-stat-val{font-family:'Playfair Display',serif;font-weight:600;font-size:16px}
+.pf-stat-val{font-family:'Nunito',serif;font-weight:600;font-size:16px}
 .pf-stat-val.green{color:var(--green)}
 .pf-stat-val.gold{color:var(--gold-d)}
 .plan-cta{display:block;text-align:center;margin-top:16px;padding:12px;background:var(--gold-grad);color:#fff;font-size:12px;font-weight:800;border-radius:50px;letter-spacing:1px;text-transform:uppercase;transition:transform .2s,box-shadow .2s}
@@ -146,7 +146,7 @@ strong{font-weight:800;color:var(--ink)}
 .breakdown-item{margin-bottom:20px}
 .bd-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .bd-name{font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px}
-.bd-pct{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--muted)}
+.bd-pct{font-family:'Nunito',serif;font-size:14px;font-weight:600;color:var(--muted)}
 .bd-bar{height:10px;background:var(--line);border-radius:100px;overflow:hidden}
 .bd-fill{height:100%;border-radius:100px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
 
@@ -159,7 +159,7 @@ strong{font-weight:800;color:var(--ink)}
 .roi-table tbody td{padding:13px 20px;border-bottom:1px solid var(--line);vertical-align:middle}
 .roi-table tbody tr:last-child td{border:none}
 .roi-table td:first-child{font-weight:800;color:var(--ink)}
-.roi-positive{color:var(--green);font-weight:800;font-family:'Playfair Display',serif;font-size:15px}
+.roi-positive{color:var(--green);font-weight:800;font-family:'Nunito',serif;font-size:15px}
 .roi-pct{display:inline-flex;align-items:center;gap:4px;background:rgba(34,197,94,.1);color:var(--green);font-size:11px;font-weight:800;padding:3px 9px;border-radius:50px}
 
 /* ── CÓMO FUNCIONA ADS ───────────────────────────── */
@@ -173,11 +173,11 @@ strong{font-weight:800;color:var(--ink)}
 .ads-platform{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
 .ads-platform.meta{color:#1877f2}
 .ads-platform.google{color:#ea4335}
-.ads-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:10px}
+.ads-card h3{font-family:'Nunito',serif;font-size:20px;font-weight:600;margin-bottom:10px}
 .ads-card p{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:16px}
 .ads-kpi-row{display:flex;gap:16px;flex-wrap:wrap}
 .ads-kpi{text-align:center}
-.ads-kpi-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--gold-d);display:block}
+.ads-kpi-val{font-family:'Nunito',serif;font-size:22px;font-weight:600;color:var(--gold-d);display:block}
 .ads-kpi-label{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
 
 /* ── AUTOMATION VALUE ────────────────────────────── */
@@ -185,24 +185,24 @@ strong{font-weight:800;color:var(--ink)}
 @media(max-width:640px){.auto-grid{grid-template-columns:1fr}}
 .auto-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px}
 .auto-icon{font-size:24px;margin-bottom:10px}
-.auto-card h4{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;margin-bottom:6px}
+.auto-card h4{font-family:'Nunito',serif;font-size:16px;font-weight:600;margin-bottom:6px}
 .auto-card p{font-size:13px;color:var(--muted);line-height:1.6}
 .auto-highlight{margin-top:10px;font-size:12px;font-weight:800;color:var(--gold-d)}
 
 /* ── GARANTÍA ────────────────────────────────────── */
-.garantia-wrap{background:linear-gradient(135deg,var(--dark),#2e1448);border-radius:24px;padding:48px 40px;text-align:center;position:relative;overflow:hidden}
+.garantia-wrap{background:linear-gradient(135deg,var(--dark),#2e1a6e);border-radius:24px;padding:48px 40px;text-align:center;position:relative;overflow:hidden}
 .garantia-wrap::before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;background:rgba(200,151,90,.08)}
 .garantia-circle{width:100px;height:100px;border-radius:50%;background:var(--gold-grad);display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 24px;box-shadow:0 16px 40px rgba(200,151,90,.3)}
-.garantia-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:12px}
+.garantia-title{font-family:'Nunito',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:12px}
 .garantia-desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;max-width:460px;margin:0 auto 28px}
 .garantia-stats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap}
-.g-stat-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:600;color:#e8c880;display:block}
+.g-stat-num{font-family:'Nunito',serif;font-size:30px;font-weight:600;color:#fbbf24;display:block}
 .g-stat-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35)}
 
 /* ── CTA ─────────────────────────────────────────── */
-.cta-section{background:linear-gradient(160deg,#1d0e2c,#2e1448,rgba(200,151,90,.25));padding:96px 28px;text-align:center;color:#fff}
-.cta-section h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(28px,4vw,48px);line-height:1.1;margin-bottom:16px}
-.cta-section h2 em{font-style:italic;color:#e8c880}
+.cta-section{background:linear-gradient(160deg,#1a1a2e,#2e1a6e,rgba(200,151,90,.25));padding:96px 28px;text-align:center;color:#fff}
+.cta-section h2{font-family:'Nunito',serif;font-weight:600;font-size:clamp(28px,4vw,48px);line-height:1.1;margin-bottom:16px}
+.cta-section h2 em{font-style:italic;color:#fbbf24}
 .cta-section p{font-size:16px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 36px;line-height:1.75}
 .cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold-grad);color:#fff;font-size:12px;font-weight:800;padding:14px 32px;border-radius:50px;border:none;cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:transform .2s,box-shadow .2s;box-shadow:0 6px 22px rgba(200,151,90,.35)}
@@ -212,7 +212,7 @@ strong{font-weight:800;color:var(--ink)}
 
 /* ── FOOTER ──────────────────────────────────────── */
 footer{background:var(--dark);color:rgba(255,255,255,.35);text-align:center;padding:36px 28px;font-size:13px}
-footer .fl{font-family:'Playfair Display',serif;font-weight:600;font-size:18px;color:rgba(255,255,255,.7);margin-bottom:8px}
+footer .fl{font-family:'Nunito',serif;font-weight:600;font-size:18px;color:rgba(255,255,255,.7);margin-bottom:8px}
 footer a{color:var(--gold);font-weight:700}
 
 /* ── NOTE BOX ────────────────────────────────────── */
@@ -335,7 +335,7 @@ footer a{color:var(--gold);font-weight:700}
           <div class="pf-stat"><span class="pf-stat-label">Ventas (20% conv.)</span><span class="pf-stat-val">5–8</span></div>
           <div class="pf-stat"><span class="pf-stat-label">Ingresos extra (~€90 ticket)</span><span class="pf-stat-val gold">€450–720</span></div>
           <div class="pf-stat"><span class="pf-stat-label">Beneficio neto</span><span class="pf-stat-val green">€230–500</span></div>
-          <a href="https://wa.me/34600000000" class="plan-cta outline" target="_blank">Empezar con este plan</a>
+          <a href="https://wa.me/34640921671" class="plan-cta outline" target="_blank">Empezar con este plan</a>
         </div>
       </div>
 
@@ -386,7 +386,7 @@ footer a{color:var(--gold);font-weight:700}
           <div class="pf-stat"><span class="pf-stat-label">Ventas (22% conv.)</span><span class="pf-stat-val">13–22</span></div>
           <div class="pf-stat"><span class="pf-stat-label">Ingresos extra (~€95 ticket)</span><span class="pf-stat-val gold">€1.235–2.090</span></div>
           <div class="pf-stat"><span class="pf-stat-label">Beneficio neto</span><span class="pf-stat-val green">€785–1.640</span></div>
-          <a href="https://wa.me/34600000000" class="plan-cta" target="_blank">Empezar con este plan</a>
+          <a href="https://wa.me/34640921671" class="plan-cta" target="_blank">Empezar con este plan</a>
         </div>
       </div>
 
@@ -436,7 +436,7 @@ footer a{color:var(--gold);font-weight:700}
           <div class="pf-stat"><span class="pf-stat-label">Ventas (25% conv.)</span><span class="pf-stat-val">37–55</span></div>
           <div class="pf-stat"><span class="pf-stat-label">Ingresos extra (~€100 ticket)</span><span class="pf-stat-val plum">€3.700–5.500</span></div>
           <div class="pf-stat"><span class="pf-stat-label">Beneficio neto</span><span class="pf-stat-val green">€2.850–4.650</span></div>
-          <a href="https://wa.me/34600000000" class="plan-cta outline" target="_blank">Empezar con este plan</a>
+          <a href="https://wa.me/34640921671" class="plan-cta outline" target="_blank">Empezar con este plan</a>
         </div>
       </div>
 
@@ -648,7 +648,7 @@ footer a{color:var(--gold);font-weight:700}
             <div class="bd-name"><span>🤖</span> Claude API (IA conversacional)</div>
             <div class="bd-pct">€5.50 · 1%</div>
           </div>
-          <div class="bd-bar"><div class="bd-fill" style="width:0%;background:linear-gradient(90deg,var(--plum),#5a2880)" data-w="1"></div></div>
+          <div class="bd-bar"><div class="bd-fill" style="width:0%;background:linear-gradient(90deg,var(--plum),#4c1d95)" data-w="1"></div></div>
         </div>
         <div class="breakdown-item">
           <div class="bd-header">
@@ -660,31 +660,31 @@ footer a{color:var(--gold);font-weight:700}
       </div>
 
       <div>
-        <div style="background:linear-gradient(135deg,var(--dark),#2e1448);border-radius:22px;padding:32px;color:#fff;">
-          <div style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#e8c880;margin-bottom:20px;">Proyección Plan Crecimiento</div>
+        <div style="background:linear-gradient(135deg,var(--dark),#2e1a6e);border-radius:22px;padding:32px;color:#fff;">
+          <div style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#fbbf24;margin-bottom:20px;">Proyección Plan Crecimiento</div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
             <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:18px 16px;text-align:center;">
-              <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:600;color:#e8c880;">80</div>
+              <div style="font-family:'Nunito',serif;font-size:32px;font-weight:600;color:#fbbf24;">80</div>
               <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px;">Leads/mes</div>
             </div>
             <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:18px 16px;text-align:center;">
-              <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:600;color:#e8c880;">18</div>
+              <div style="font-family:'Nunito',serif;font-size:32px;font-weight:600;color:#fbbf24;">18</div>
               <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px;">Ventas/mes</div>
             </div>
             <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:18px 16px;text-align:center;">
-              <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:600;color:#22c55e;">€1.620</div>
+              <div style="font-family:'Nunito',serif;font-size:32px;font-weight:600;color:#22c55e;">€1.620</div>
               <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px;">Ingresos extra</div>
             </div>
             <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:18px 16px;text-align:center;">
-              <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:600;color:#22c55e;">×3,6</div>
+              <div style="font-family:'Nunito',serif;font-size:32px;font-weight:600;color:#22c55e;">×3,6</div>
               <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px;">ROI</div>
             </div>
           </div>
 
           <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:20px;">
             <div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;">
-              Por cada <strong style="color:#e8c880;">€1 invertido</strong> en este plan, Narosa recupera <strong style="color:#22c55e;">€3.60</strong> en ingresos. Y el bot sigue trabajando aunque no haya inversión en ads ese mes.
+              Por cada <strong style="color:#fbbf24;">€1 invertido</strong> en este plan, Narosa recupera <strong style="color:#22c55e;">€3.60</strong> en ingresos. Y el bot sigue trabajando aunque no haya inversión en ads ese mes.
             </div>
           </div>
         </div>
@@ -716,7 +716,7 @@ footer a{color:var(--gold);font-weight:700}
     <h2 class="reveal">¿Cuándo empezamos<br><em>a crecer juntas?</em></h2>
     <p class="reveal d1">Elige el plan que te encaje, empezamos esta semana y en 4 días ya tienes el bot activo y las campañas corriendo.</p>
     <div class="cta-actions reveal d2">
-      <a href="https://wa.me/34600000000?text=Hola!%20He%20visto%20el%20plan%20de%20inversión%20y%20quiero%20empezar" class="btn-gold" target="_blank">💬 Elegir mi plan por WhatsApp</a>
+      <a href="https://wa.me/34640921671?text=Hola!%20He%20visto%20el%20plan%20de%20inversión%20y%20quiero%20empezar" class="btn-gold" target="_blank">💬 Elegir mi plan por WhatsApp</a>
       <a href="propuesta.html" class="btn-outline-w">Ver la propuesta completa</a>
     </div>
     <p style="margin-top:24px;font-size:12px;color:rgba(255,255,255,.25);">Narosa Sweet Party · narosasp.com · Barcelona · Automatización IA + Meta Ads + Google Ads</p>
