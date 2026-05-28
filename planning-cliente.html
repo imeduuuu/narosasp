@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Planning de Instalación · Narosa Sweet Party</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗓️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ── PLANNING CLIENTE STYLES ── */
+  .pc-hero {
+    background: linear-gradient(160deg, #1d0e2c 0%, #2e1448 50%, rgba(200,151,90,.35) 100%);
+    padding: 96px 28px 72px; color: #fff; text-align: center;
+  }
+  .pc-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px,5vw,60px); font-weight: 600; line-height: 1.1; margin-bottom: 18px; }
+  .pc-hero h1 em { font-style: italic; color: #e8c880; }
+  .pc-hero p { font-size: 17px; color: rgba(255,255,255,.65); max-width: 520px; margin: 0 auto; line-height: 1.75; }
+
+  /* PROGRESS STRIP */
+  .progress-strip {
+    background: var(--card); border-bottom: 1px solid var(--line);
+    padding: 24px 28px; position: sticky; top: var(--nav-h); z-index: 50;
+    box-shadow: 0 4px 20px rgba(29,14,44,.06);
+  }
+  .progress-inner { max-width: 1080px; margin: 0 auto; display: flex; gap: 0; }
+  .prog-step {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    gap: 6px; position: relative; cursor: default;
+  }
+  .prog-step::after {
+    content: ''; position: absolute; top: 16px; left: 50%; right: -50%;
+    height: 2px; background: var(--line); z-index: 0;
+  }
+  .prog-step:last-child::after { display: none; }
+  .prog-dot {
+    width: 32px; height: 32px; border-radius: 50%; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; border: 2px solid var(--line);
+    background: var(--bg); color: var(--muted);
+  }
+  .prog-dot.coral  { background: var(--coral); color: #fff; border-color: var(--coral-deep); }
+  .prog-dot.aqua   { background: var(--aqua); color: #fff; border-color: var(--aqua-deep); }
+  .prog-dot.violet { background: var(--violet); color: #fff; border-color: #5a2880; }
+  .prog-dot.green  { background: var(--green); color: #fff; border-color: #3a9e5a; }
+  .prog-label { font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); text-align: center; }
+  @media (max-width: 640px) { .prog-label { display: none; } }
+
+  /* WEEK SECTIONS */
+  .week-section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  .week-section:last-of-type { border-bottom: none; }
+  .week-header { display: flex; align-items: center; gap: 20px; margin-bottom: 48px; }
+  .week-num {
+    width: 64px; height: 64px; border-radius: 20px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-weight: 600; font-size: 20px; color: #fff;
+  }
+  .week-header-text .week-tag { font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .week-header-text h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; }
+
+  /* CLIENT TASKS */
+  .client-task-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  @media (max-width: 640px) { .client-task-grid { grid-template-columns: 1fr; } }
+  .client-task {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 22px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .ct-header { display: flex; align-items: center; gap: 10px; }
+  .ct-icon { font-size: 22px; flex-shrink: 0; }
+  .ct-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; }
+  .ct-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+  .ct-who { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 50px; }
+  .ct-who.yo   { background: var(--aqua-soft); color: var(--aqua-deep); }
+  .ct-who.tu   { background: var(--coral-soft); color: var(--coral-deep); }
+  .ct-who.juntos { background: var(--violet-soft); color: var(--violet); }
+
+  /* RESULT CARD */
+  .result-card {
+    background: linear-gradient(135deg, var(--ink), #2e1448);
+    border-radius: 18px; padding: 28px 28px;
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+  .result-icon { font-size: 36px; flex-shrink: 0; }
+  .result-text { flex: 1; }
+  .result-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #e8c880; margin-bottom: 8px; }
+  .result-desc { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.7; }
+
+  /* FAQ */
+  .faq-item {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 20px 22px; margin-bottom: 12px;
+  }
+  .faq-q { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .faq-a { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* GARANTÍA */
+  .garantia-big {
+    background: linear-gradient(135deg, #0f0a1e, #1d0e2c);
+    border: 1px solid rgba(200,151,90,.3);
+    border-radius: 24px; padding: 48px 40px; text-align: center;
+  }
+  .garantia-circle {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--coral), var(--coral-deep));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; margin: 0 auto 24px;
+    box-shadow: 0 16px 40px rgba(200,151,90,.35);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo"><span class="balloon-icon">🎈</span><span>Narosa Sweet Party</span></a>
+    <nav class="main-nav">
+      <a href="index.html">Inicio</a>
+      <a href="sistema.html">El Sistema</a>
+      <a href="beneficios.html">Beneficios</a>
+      <a href="propuesta.html">Propuesta</a>
+      <a href="planning-cliente.html" class="active">Mi Planning</a>
+    </nav>
+    <a href="https://wa.me/34600000000?text=Hola!%20He%20visto%20el%20planning%20y%20quiero%20empezar" class="nav-cta" target="_blank">Empezamos →</a>
+    <button class="hamburger" aria-label="Menú">☰</button>
+  </div>
+</header>
+<nav class="mobile-menu">
+  <a href="index.html">Inicio</a>
+  <a href="sistema.html">El Sistema</a>
+  <a href="beneficios.html">Beneficios</a>
+  <a href="propuesta.html">Propuesta</a>
+  <a href="planning-cliente.html">Mi Planning</a>
+  <a href="https://wa.me/34600000000" class="mobile-cta" target="_blank">💬 Empezamos</a>
+</nav>
+
+<!-- HERO -->
+<section class="pc-hero">
+  <div class="eyebrow white reveal">Exclusivo para Narosa Sweet Party</div>
+  <h1 class="reveal d1">Tu sistema listo<br><em>en 4 semanas.</em><br>Sin estrés, sin tecnicismos.</h1>
+  <p class="reveal d2">Esto es exactamente lo que pasa cada semana, quién hace qué y qué puedes esperar tú al final de cada etapa. Transparencia total.</p>
+</section>
+
+<!-- PROGRESS BAR -->
+<div class="progress-strip">
+  <div class="progress-inner">
+    <div class="prog-step">
+      <div class="prog-dot coral">S1</div>
+      <div class="prog-label">Tienda online</div>
+    </div>
+    <div class="prog-step">
+      <div class="prog-dot aqua">S2</div>
+      <div class="prog-label">WhatsApp IA</div>
+    </div>
+    <div class="prog-step">
+      <div class="prog-dot violet">S3</div>
+      <div class="prog-label">Instagram</div>
+    </div>
+    <div class="prog-step">
+      <div class="prog-dot green">S4</div>
+      <div class="prog-label">Lanzamiento</div>
+    </div>
+  </div>
+</div>
+
+<!-- ANTES DE EMPEZAR -->
+<section class="week-section">
+  <div class="container">
+    <div class="week-header">
+      <div class="week-num" style="background:linear-gradient(135deg,#444,#222);">📋</div>
+      <div class="week-header-text">
+        <div class="week-tag" style="color:var(--muted);">Antes del día 1</div>
+        <h2>Una llamada de 45 minutos</h2>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-bottom:32px;">Antes de tocar nada necesito conocer tu negocio por dentro. Solo necesitas <strong>45 minutos</strong> y tenerme a mano esta información:</p>
+
+    <div class="client-task-grid">
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">📱</span><div class="ct-title">Número de WhatsApp</div></div>
+        <div class="ct-desc">El número de la tienda que ya usas con los clientes. Si no tienes, podemos crear uno nuevo de empresa.</div>
+        <div class="ct-who tu">📌 Lo preparas tú</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🛍️</span><div class="ct-title">Lista de productos y precios</div></div>
+        <div class="ct-desc">No hace falta que sea perfecta. Solo los packs y productos principales con sus precios actuales.</div>
+        <div class="ct-who tu">📌 Lo preparas tú</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">📸</span><div class="ct-title">Acceso a Instagram</div></div>
+        <div class="ct-desc">Necesito que la cuenta esté en modo Business (es gratis, te guío). Nada de contraseñas — solo aceptas una solicitud de gestor.</div>
+        <div class="ct-who juntos">🤝 Lo hacemos juntos</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🗺️</span><div class="ct-title">Acceso Google My Business</div></div>
+        <div class="ct-desc">La ficha de Narosa en Google Maps. Solo te pide que me añadas como gestor — 2 minutos desde el móvil.</div>
+        <div class="ct-who juntos">🤝 Lo hacemos juntos</div>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-icon">✅</div>
+      <div class="result-text">
+        <div class="result-label">Después de esta llamada</div>
+        <div class="result-desc">Tengo todo lo que necesito. Tú no tienes que hacer nada más — yo me encargo de la parte técnica. La próxima vez que hablemos, te enseño la tienda terminada.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMANA 1 -->
+<section class="week-section" style="background:var(--coral-soft);">
+  <div class="container">
+    <div class="week-header">
+      <div class="week-num" style="background:linear-gradient(135deg,var(--coral),var(--coral-deep));">S1</div>
+      <div class="week-header-text">
+        <div class="week-tag" style="color:var(--coral-deep);">Días 1 a 7</div>
+        <h2>Tu tienda online, lista y visible en Google</h2>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-bottom:32px;">Esta semana monto tu tienda Shopify desde cero y la optimizo para que Google te encuentre antes que a la competencia.</p>
+
+    <div class="client-task-grid">
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🛍️</span><div class="ct-title">Tienda Shopify con tu catálogo</div></div>
+        <div class="ct-desc">Subo todos tus productos con fotos, descripciones y precios. El cliente elige, paga y reserva. Tú recibes un aviso.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">💳</span><div class="ct-title">Pasarela de pago activada</div></div>
+        <div class="ct-desc">Configuro Stripe para que puedas cobrar con tarjeta desde el primer día. El dinero va directo a tu cuenta bancaria.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🔍</span><div class="ct-title">SEO: primeros en "Globos Barcelona"</div></div>
+        <div class="ct-desc">Instalo datos estructurados y optimizo cada página para las búsquedas de tus clientes. Lo que la competencia no tiene.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🌐</span><div class="ct-title">narosasp.com apuntando a la tienda</div></div>
+        <div class="ct-desc">Tu dominio actual redirige a la tienda nueva. Sin perder visitantes ni historial de Google.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+    </div>
+
+    <div class="result-card" style="background:linear-gradient(135deg,var(--coral-deep),#7a4010);">
+      <div class="result-icon">🛍️</div>
+      <div class="result-text">
+        <div class="result-label">Al final de la semana 1, tienes...</div>
+        <div class="result-desc"><strong style="color:#e8c880;">Tu tienda online funcionando</strong> — los clientes ya pueden ver tus productos, elegir su pack favorito y pagar. Y apareces en Google con ventaja sobre la competencia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMANA 2 -->
+<section class="week-section">
+  <div class="container">
+    <div class="week-header">
+      <div class="week-num" style="background:linear-gradient(135deg,var(--aqua),var(--aqua-deep));">S2</div>
+      <div class="week-header-text">
+        <div class="week-tag" style="color:var(--aqua-deep);">Días 8 a 14</div>
+        <h2>El WhatsApp que trabaja mientras tú descansas</h2>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-bottom:32px;">Esta semana conecto tu WhatsApp a la inteligencia artificial. A partir de aquí, cada mensaje recibe respuesta en menos de 10 segundos — a cualquier hora.</p>
+
+    <div class="client-task-grid">
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🤖</span><div class="ct-title">Bot IA entrenado con tu negocio</div></div>
+        <div class="ct-desc">El asistente sabe todos tus productos, precios, horarios y zona de entrega. Habla como tú: amable, en catalán y castellano.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">💬</span><div class="ct-title">Respuesta en &lt;10 segundos</div></div>
+        <div class="ct-desc">El domingo a las 11 de la noche, una madre pide presupuesto. En 10 segundos recibe respuesta. Tú te enteras por la mañana con el lead ya cualificado.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">✉️</span><div class="ct-title">Email con el presupuesto completo</div></div>
+        <div class="ct-desc">Cuando el cliente confirma qué quiere, la IA genera automáticamente un email con el plan de fiesta, foto del pack y el precio. Tú no escribes nada.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task" style="border-color:var(--coral);border-width:2px;">
+        <div class="ct-header"><span class="ct-icon">📲</span><div class="ct-title">Solo necesito 30 minutos tuyos</div></div>
+        <div class="ct-desc">Un escaneo de QR para vincular el WhatsApp de la tienda. Solo necesito que estés delante del teléfono una vez. Nada más.</div>
+        <div class="ct-who tu">📌 Lo preparas tú</div>
+      </div>
+    </div>
+
+    <div class="result-card" style="background:linear-gradient(135deg,var(--aqua-deep),#2a7a6e);">
+      <div class="result-icon">💬</div>
+      <div class="result-text">
+        <div class="result-label">Al final de la semana 2, tienes...</div>
+        <div class="result-desc"><strong style="color:#e8c880;">WhatsApp trabajando 24/7</strong> — responde, cualifica y manda presupuestos. Tú solo preparas las fiestas. El tiempo de gestión cae a cero.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMANA 3 -->
+<section class="week-section" style="background:var(--violet-soft);">
+  <div class="container">
+    <div class="week-header">
+      <div class="week-num" style="background:linear-gradient(135deg,var(--violet),#5a2880);">S3</div>
+      <div class="week-header-text">
+        <div class="week-tag" style="color:var(--violet);">Días 15 a 21</div>
+        <h2>Instagram y Google, siempre activos</h2>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-bottom:32px;">Esta semana activo Instagram automático y Google My Business. Contenido que se publica solo y clientes nuevos que te encuentran sin que hagas nada.</p>
+
+    <div class="client-task-grid">
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">📸</span><div class="ct-title">Un mes de contenido Instagram</div></div>
+        <div class="ct-desc">Preparo 30 publicaciones para el primer mes: fotos de tus packs, vídeos cortos, stories. Se publican solos en los mejores horarios.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">📩</span><div class="ct-title">DM automático cuando alguien comenta</div></div>
+        <div class="ct-desc">Si alguien comenta "precio" o "info" en tus fotos, recibe automáticamente un mensaje privado con el enlace para pedir presupuesto. Tú no tocas nada.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🗺️</span><div class="ct-title">Google My Business actualizado</div></div>
+        <div class="ct-desc">Cada lunes se publica automáticamente una novedad en tu ficha de Google. Más visibilidad, más confianza, mejor posición.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🎂</span><div class="ct-title">Recordatorio anual a cada cliente</div></div>
+        <div class="ct-desc">El año que viene, justo antes del cumpleaños del niño, le llega un WhatsApp recordando que Narosa está aquí. Fidelización automática.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+    </div>
+
+    <div class="result-card" style="background:linear-gradient(135deg,var(--violet),#4a1f6e);">
+      <div class="result-icon">📸</div>
+      <div class="result-text">
+        <div class="result-label">Al final de la semana 3, tienes...</div>
+        <div class="result-desc"><strong style="color:#e8c880;">Visibilidad online completa</strong> — Instagram publicando solo, DMs automáticos, Google actualizado. Clientes nuevos que te encuentran sin que hagas nada.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMANA 4 -->
+<section class="week-section">
+  <div class="container">
+    <div class="week-header">
+      <div class="week-num" style="background:linear-gradient(135deg,var(--green),#3a9e5a);">S4</div>
+      <div class="week-header-text">
+        <div class="week-tag" style="color:#3a9e5a;">Días 22 a 28</div>
+        <h2>¡Lanzamos! Y tú lo entiendes todo en 1 hora</h2>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-bottom:32px;">Última semana. Pruebo que todo funciona a la perfección y te explico cómo usar tu nuevo sistema en una sesión de una hora.</p>
+
+    <div class="client-task-grid">
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🧪</span><div class="ct-title">Pruebas reales del sistema completo</div></div>
+        <div class="ct-desc">Simulo 5 conversaciones de clientes reales para asegurarme de que el bot responde perfecto en todos los casos.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🎓</span><div class="ct-title">Formación de 1 hora</div></div>
+        <div class="ct-desc">Te enseño a ver tus leads, añadir productos nuevos y qué hacer si quieres pausar el bot cuando te vas de vacaciones.</div>
+        <div class="ct-who juntos">🤝 Lo hacemos juntos</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">🚀</span><div class="ct-title">Lanzamiento oficial</div></div>
+        <div class="ct-desc">Publicamos en Instagram "¡Ya podéis comprar online!" y abrimos las puertas. Las primeras 48h las monitorizo yo personalmente.</div>
+        <div class="ct-who juntos">🤝 Lo hacemos juntos</div>
+      </div>
+      <div class="client-task">
+        <div class="ct-header"><span class="ct-icon">📞</span><div class="ct-title">Soporte directo durante 15 días</div></div>
+        <div class="ct-desc">Tienes mi WhatsApp. Cualquier pregunta, cualquier cosa rara — te respondo en menos de 2 horas en horario laboral.</div>
+        <div class="ct-who yo">⚙️ Lo hago yo</div>
+      </div>
+    </div>
+
+    <div class="result-card" style="background:linear-gradient(135deg,#2a5a3a,#1a4a2a);">
+      <div class="result-icon">🎉</div>
+      <div class="result-text">
+        <div class="result-label">Al final de la semana 4</div>
+        <div class="result-desc"><strong style="color:#e8c880;">Todo funcionando al 100%</strong> — tienda online, WhatsApp IA 24/7, Instagram automático, Google activo. Tu negocio trabaja solo. Tú solo preparas las fiestas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--soft);">
+  <div class="container">
+    <div class="eyebrow coral center">Preguntas frecuentes</div>
+    <h2 class="section-title center reveal d1">Lo que más preguntan</h2>
+    <div style="max-width:680px;margin:40px auto 0;">
+      <div class="faq-item reveal">
+        <div class="faq-q">¿Tengo que saber de tecnología?</div>
+        <div class="faq-a">Para nada. Todo lo técnico lo hago yo. Tú solo necesitas el número de WhatsApp, saber cuáles son tus productos y tener 45 minutos para la primera llamada. El resto es cosa mía.</div>
+      </div>
+      <div class="faq-item reveal d1">
+        <div class="faq-q">¿Qué pasa si el bot dice algo mal?</div>
+        <div class="faq-a">El bot lo entrenamos juntos con tu información real. Antes de lanzar, lo probamos con 5 conversaciones simuladas. Y durante los primeros 15 días lo superviso yo. Si algo no está bien, lo corrijo en menos de 24 horas.</div>
+      </div>
+      <div class="faq-item reveal d2">
+        <div class="faq-q">¿Qué pasa con los clientes que prefieren hablar con una persona?</div>
+        <div class="faq-a">El bot lo gestiona, pero si el cliente insiste o la situación es compleja, el bot te lo pasa a ti directamente. Tú tienes el control siempre.</div>
+      </div>
+      <div class="faq-item reveal d1">
+        <div class="faq-q">¿Y si me quiero ir de vacaciones?</div>
+        <div class="faq-a">El sistema sigue trabajando solo. Te enseño a pausar el bot si prefieres que no responda mientras no hay stock. O lo dejamos activo para que tome los pedidos y los gestiones tú cuando vuelvas.</div>
+      </div>
+      <div class="faq-item reveal d2">
+        <div class="faq-q">¿Puedo cancelar si no me gusta?</div>
+        <div class="faq-a">Sí. Los primeros 15 días después del lanzamiento son de prueba. Si el sistema no funciona como te prometí, te devuelvo el 100% del dinero. Sin preguntas, sin complicaciones. Y si después de los 15 días quieres cancelar el mantenimiento, avisas con 15 días de antelación y listo.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">¿Me queda algo mío si cancelo?</div>
+        <div class="faq-a">Sí. La tienda Shopify es tuya — te la dejo transferida a tu cuenta. Los productos, las fotos, el historial de clientes. Todo tuyo. Solo perdería el acceso al bot de WhatsApp y las automatizaciones de n8n.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTÍA -->
+<section class="section">
+  <div class="container" style="max-width:680px;">
+    <div class="garantia-big reveal">
+      <div class="garantia-circle">🛡️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:12px;">Garantía 15 días</div>
+      <p style="font-size:16px;color:rgba(255,255,255,.65);line-height:1.75;max-width:460px;margin:0 auto 28px;">Si en los primeros 15 días después del lanzamiento el sistema no funciona como te prometí — no responde bien, no manda presupuestos, la tienda da errores — te devuelvo el 100% del dinero. Sin letra pequeña, sin condiciones.</p>
+      <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#e8c880;">100%</div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);">Reembolso</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#e8c880;">15</div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);">Días prueba</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#e8c880;">0</div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);">Permanencia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="balloons-deco reveal">✨</div>
+      <h2 class="section-title reveal d1">¿Empezamos la<br><em>semana que viene?</em></h2>
+      <p class="reveal d2">Una llamada de 45 minutos es todo lo que necesitas para arrancar. Sin compromiso, sin letra pequeña. Solo te cuento cómo funciona y empezamos cuando tú quieras.</p>
+      <div class="cta-actions reveal d3">
+        <a href="https://wa.me/34600000000?text=Hola!%20He%20visto%20el%20planning%20y%20quiero%20empezar%20con%20el%20sistema%20para%20Narosa" class="btn-primary" target="_blank">💬 Escribir por WhatsApp</a>
+        <a href="propuesta.html" class="btn-ghost white">Ver la propuesta completa</a>
+      </div>
+      <p style="margin-top:24px;font-size:12px;color:rgba(255,255,255,.3);">Narosa Sweet Party · narosasp.com · Barcelona · Sistema activo en 4 semanas</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">🎈 Narosa Sweet Party</div>
+    <p>Automatización IA con n8n, Shopify y WhatsApp · narosasp.com · Barcelona</p>
+    <p style="margin-top:8px;">
+      <a href="planning-tecnico.html" style="color:rgba(255,255,255,.35);font-weight:700;font-size:12px;">Ver planning técnico →</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
