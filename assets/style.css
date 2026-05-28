@@ -44,9 +44,11 @@ strong{color:var(--ink);font-weight:800}
 .nav-wrap{max-width:1080px;margin:0 auto;padding:0 28px;height:100%;display:flex;align-items:center;gap:32px}
 .nav-logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:20px;color:var(--coral);display:flex;align-items:center;gap:8px;white-space:nowrap;flex-shrink:0}
 .balloon-icon{font-size:22px}
-.main-nav{display:flex;align-items:center;gap:4px;flex:1}
-.main-nav a{font-weight:700;font-size:14.5px;color:var(--muted);padding:7px 13px;border-radius:10px;transition:color .2s,background .2s}
-.main-nav a:hover,.main-nav a.active{color:var(--coral);background:var(--coral-soft)}
+.main-nav{display:flex;align-items:center;gap:6px;flex:1;justify-content:center}
+.main-nav a{font-weight:800;font-size:13px;color:var(--muted);padding:6px 12px;border-radius:8px;letter-spacing:.3px;transition:color .2s;position:relative}
+.main-nav a::after{content:'';position:absolute;bottom:-2px;left:12px;right:12px;height:2px;background:var(--coral);border-radius:2px;transform:scaleX(0);transition:transform .25s}
+.main-nav a:hover,.main-nav a.active{color:var(--coral)}
+.main-nav a:hover::after,.main-nav a.active::after{transform:scaleX(1)}
 .nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--coral);color:#fff;font-weight:800;font-size:14px;padding:10px 20px;border-radius:100px;transition:background .2s,transform .2s;white-space:nowrap;flex-shrink:0}
 .nav-cta:hover{background:var(--coral-deep);transform:translateY(-1px)}
 .hamburger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink);margin-left:auto}
@@ -140,9 +142,9 @@ strong{color:var(--ink);font-weight:800}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-14px) rotate(5deg)}}
 
 /* FOOTER */
-.site-footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 28px;text-align:center}
-.footer-logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:20px;color:var(--coral);margin-bottom:8px}
-.site-footer p{font-size:13px;color:var(--muted)}
+.site-footer{background:#1a1a2e;padding:40px 28px;text-align:center}
+.footer-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:rgba(255,255,255,.85);margin-bottom:8px}
+.site-footer p{font-size:13px;color:rgba(255,255,255,.4)}
 
 /* BROWSER FRAME */
 .browser-frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 28px 70px rgba(34,29,46,.13);background:#fff}
