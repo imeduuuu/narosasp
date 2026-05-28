@@ -152,67 +152,171 @@
     <div class="eyebrow coral reveal">Demo en vivo</div>
     <h2 class="section-title reveal d1">Esto es lo que ocurre,<br>paso a paso.</h2>
     <div class="two-col" style="margin-top:48px;">
-      <!-- WhatsApp -->
+
+      <!-- ══ WHATSAPP PREMIUM ══ -->
       <div class="reveal">
-        <div style="font-family:'Playfair Display',sans-serif;font-weight:600;font-size:18px;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
-          <span style="background:#25d366;color:#fff;width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px;">💬</span>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px;margin-bottom:18px;display:flex;align-items:center;gap:10px;">
+          <span style="background:#25d366;color:#fff;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 4px 12px rgba(37,211,102,.4);">💬</span>
           Paso 1 · La conversación
         </div>
-        <div class="wa-phone" style="max-width:100%;">
-          <div class="wa-head">
-            <div class="wa-av">🎈</div>
-            <div>
-              <div class="wa-name">Globus amb Gràcia</div>
-              <div class="wa-status">● en línea</div>
+        <div class="wa-phone">
+          <div class="wa-screen">
+            <!-- Status bar -->
+            <div class="wa-status-bar">
+              <span class="time">18:42</span>
+              <span class="icons">▲ WiFi 🔋</span>
+            </div>
+            <!-- WA Header -->
+            <div class="wa-head">
+              <div style="color:rgba(255,255,255,.6);font-size:18px;margin-right:2px;">←</div>
+              <div class="wa-av">🎈</div>
+              <div style="flex:1">
+                <div class="wa-name">Globus amb Gràcia</div>
+                <div class="wa-status">● en línea</div>
+              </div>
+              <div class="wa-actions">📞 ⋮</div>
+            </div>
+            <!-- Chat body -->
+            <div class="wa-body" id="chat-pres">
+              <div class="msg them">
+                <div class="msg-bubble">Hola! Quiero montar el cumple de mi hija. Hacéis temática sirenas? 🧜‍♀️</div>
+                <div class="msg-meta"><span class="msg-time">18:42</span></div>
+              </div>
+              <div class="msg me">
+                <div class="msg-bubble">¡Hola! 🎉 Claro que sí, las sirenas son de las más pedidas. Para prepararte el plan perfecto, ¿para qué fecha sería?</div>
+                <div class="msg-meta"><span class="msg-time">18:42</span><span class="msg-check">✓✓</span></div>
+              </div>
+              <div class="msg them">
+                <div class="msg-bubble">El 14 de junio 📅</div>
+                <div class="msg-meta"><span class="msg-time">18:43</span></div>
+              </div>
+              <div class="msg me">
+                <div class="msg-bubble">¡Anotado! ¿Cuántos peques vendrían aproximadamente y qué edad cumple? 🎂</div>
+                <div class="msg-meta"><span class="msg-time">18:43</span><span class="msg-check">✓✓</span></div>
+              </div>
+              <div class="msg them">
+                <div class="msg-bubble">Unos 12 niños, cumple 6 años 👧</div>
+                <div class="msg-meta"><span class="msg-time">18:44</span></div>
+              </div>
+              <div class="msg me">
+                <div class="msg-bubble">Perfecto 🐚 ¿Tienes un presupuesto orientativo? Así te propongo el pack que mejor encaje.</div>
+                <div class="msg-meta"><span class="msg-time">18:44</span><span class="msg-check">✓✓</span></div>
+              </div>
+              <div class="msg them">
+                <div class="msg-bubble">Sobre 80€</div>
+                <div class="msg-meta"><span class="msg-time">18:45</span></div>
+              </div>
+              <div class="msg me">
+                <div class="msg-bubble">¿Hay algún detalle especial que deba saber antes de prepararte el presupuesto? (alergias, colores preferidos, sorpresa…) 🌟</div>
+                <div class="msg-meta"><span class="msg-time">18:45</span><span class="msg-check">✓✓</span></div>
+              </div>
+              <div class="msg them">
+                <div class="msg-bubble">Le encanta el color turquesa y le sorprende! 💚</div>
+                <div class="msg-meta"><span class="msg-time">18:45</span></div>
+              </div>
+              <div class="msg me">
+                <div class="msg-bubble">¡Perfecto! 🧜‍♀️ He preparado el plan completo en turquesa para 12 peques. Te lo envío ahora por correo ✉️</div>
+                <div class="msg-meta"><span class="msg-time">18:46</span><span class="msg-check">✓✓</span></div>
+              </div>
+              <div class="wa-typing"><span></span><span></span><span></span></div>
+            </div>
+            <!-- Input bar -->
+            <div class="wa-foot">
+              <div style="font-size:18px;color:rgba(255,255,255,.4);">😊</div>
+              <div class="wa-input">Escribe un mensaje…</div>
+              <div style="font-size:16px;color:rgba(255,255,255,.4);">📎</div>
+              <div class="wa-send">➤</div>
             </div>
           </div>
-          <div class="wa-body" id="chat-pres">
-            <div class="msg them">Hola! Quiero montar el cumple de mi hija. Hacéis temática sirenas? 🧜‍♀️<span class="t">Dom 18:42</span></div>
-            <div class="msg me">¡Hola! 🎉 Claro que sí, las sirenas son de las más pedidas. Para prepararte el plan perfecto, ¿para qué fecha sería?<span class="t">18:42</span></div>
-            <div class="msg them">El 14 de junio<span class="t">18:43</span></div>
-            <div class="msg me">¡Anotado! ¿Cuántos peques vendrían aproximadamente y qué edad cumple?<span class="t">18:43</span></div>
-            <div class="msg them">Unos 12 niños, cumple 6 años<span class="t">18:44</span></div>
-            <div class="msg me">Perfecto 🐚 ¿Tienes un presupuesto orientativo en mente? Así te propongo el pack que mejor encaje.<span class="t">18:44</span></div>
-            <div class="msg them">Sobre 80€<span class="t">18:45</span></div>
-            <div class="msg me">¡Genial! Te he preparado un plan completo de sirenas para 12 peques. Te lo envío ahora mismo por correo con todo el detalle ✉️<span class="t">18:45</span></div>
-            <div class="msg them">Muchas gracias! 😊<span class="t">18:45</span></div>
-          </div>
-          <div class="wa-foot">Gestionado en automático · 0 minutos de tu tiempo</div>
+          <div class="wa-home-bar"></div>
         </div>
-        <div style="text-align:center;margin-top:14px;">
-          <div class="pill green">🟢 Atendiendo a las 18:42 del domingo</div>
+        <div style="text-align:center;margin-top:16px;">
+          <div class="pill green" style="font-size:12px;">🟢 Atendiendo a las 18:42 del domingo · 0 min de tu tiempo</div>
         </div>
       </div>
 
-      <!-- Email -->
+      <!-- ══ EMAIL PREMIUM FESTIVO ══ -->
       <div class="reveal d1">
-        <div style="font-family:'Playfair Display',sans-serif;font-weight:600;font-size:18px;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
-          <span style="background:var(--violet);color:#fff;width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px;">✉️</span>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px;margin-bottom:18px;display:flex;align-items:center;gap:10px;">
+          <span style="background:var(--violet);color:#fff;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 4px 12px rgba(138,108,240,.4);">✉️</span>
           Paso 2 · El correo resultante
         </div>
-        <div class="email-frame">
-          <div class="email-header">
-            <div class="email-from">De <b>hola@globusambgracia.com</b><br>Para <b>familia.martina@gmail.com</b></div>
-            <div class="email-subject">🧜‍♀️ El plan para el cumple de Martina (6 años)</div>
+        <div class="email-device">
+          <div class="email-device-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="email-device-url">🔒 hola@globusambgracia.com</span>
           </div>
-          <div class="email-body">
-            <p>¡Hola! Qué ilusión preparar la fiesta de Martina. Aquí tienes tu plan de cumpleaños temático de <strong>sirenas</strong> para el <strong>14 de junio</strong>, pensado para <strong>12 peques</strong>:</p>
-            <div class="plan-table">
-              <div class="plan-row"><span class="pk">🎈 Arco de globos sirena</span><span class="pv">26,00 €</span></div>
-              <div class="plan-row"><span class="pk">🍽️ Mesa (platos, vasos, servilletas) ×12</span><span class="pv">21,00 €</span></div>
-              <div class="plan-row"><span class="pk">🎀 Globos con helio temáticos ×10</span><span class="pv">18,00 €</span></div>
-              <div class="plan-row"><span class="pk">🎁 Sorpresas para invitados ×12</span><span class="pv">15,00 €</span></div>
-              <div class="plan-total"><span class="tk">Total fiesta 🐚</span><span class="tv">80,00 €</span></div>
+          <div class="email-card">
+            <!-- Banner festivo -->
+            <div class="email-banner">
+              <div class="email-banner-bg"></div>
+              <!-- Confetti SVG -->
+              <svg class="email-banner-confetti" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <rect x="20" y="10" width="8" height="8" fill="rgba(255,255,255,.4)" transform="rotate(25 20 10)"/>
+                <rect x="60" y="20" width="6" height="6" fill="rgba(255,255,255,.3)" transform="rotate(-15 60 20)"/>
+                <circle cx="100" cy="15" r="5" fill="rgba(255,255,255,.3)"/>
+                <rect x="140" y="8" width="7" height="7" fill="rgba(255,255,255,.35)" transform="rotate(40 140 8)"/>
+                <circle cx="180" cy="20" r="4" fill="rgba(255,255,255,.25)"/>
+                <rect x="220" y="12" width="8" height="5" fill="rgba(255,255,255,.4)" transform="rotate(-30 220 12)"/>
+                <circle cx="260" cy="8" r="5" fill="rgba(255,255,255,.3)"/>
+                <rect x="300" y="18" width="6" height="6" fill="rgba(255,255,255,.35)" transform="rotate(20 300 18)"/>
+                <rect x="340" y="10" width="9" height="5" fill="rgba(255,255,255,.3)" transform="rotate(-10 340 10)"/>
+                <rect x="380" y="15" width="6" height="8" fill="rgba(255,255,255,.4)" transform="rotate(35 380 15)"/>
+                <rect x="40" y="70" width="7" height="7" fill="rgba(255,255,255,.25)" transform="rotate(15 40 70)"/>
+                <circle cx="120" cy="80" r="4" fill="rgba(255,255,255,.2)"/>
+                <rect x="200" y="72" width="8" height="5" fill="rgba(255,255,255,.3)" transform="rotate(-25 200 72)"/>
+                <circle cx="280" cy="75" r="5" fill="rgba(255,255,255,.25)"/>
+                <rect x="360" y="78" width="6" height="7" fill="rgba(255,255,255,.3)" transform="rotate(30 360 78)"/>
+              </svg>
+              <span class="banner-emoji">🧜‍♀️🎈🐚</span>
+              <h2>Plan de fiesta de Martina</h2>
+              <p>Temática sirenas · 14 de junio · 12 peques</p>
             </div>
-            <p>Si te encaja, resérvalo con un clic y lo dejamos todo listo para el gran día. ¡Va a ser una fiesta preciosa!</p>
-            <p class="mt-8" style="font-size:13px;color:var(--muted);">¿Quieres personalizar algo? Escríbenos sin compromiso.</p>
-            <a href="#" class="email-cta">🐚 Reservar mi fiesta de sirenas →</a>
+            <!-- Meta -->
+            <div class="email-meta">
+              <div class="from">De: <b>Globus amb Gràcia</b> &lt;hola@globusambgracia.com&gt;</div>
+              <div style="color:#aaa;font-size:11px;margin-top:2px;">Para: familia.martina@gmail.com</div>
+              <div class="subj">🧜‍♀️ El plan para el cumple de Martina (6 años) — Presupuesto: 80€</div>
+            </div>
+            <!-- Content -->
+            <div class="email-content">
+              <p>¡Hola! Qué ilusión preparar la fiesta de Martina 🎉 Aquí tienes tu plan personalizado en <strong>turquesa</strong>, pensado para sorprenderla con todos sus amiguitos:</p>
+              <div class="email-items">
+                <div class="email-item">
+                  <div class="item-l"><span class="ico">🎈</span> Arco de globos sirena (turquesa)</div>
+                  <div class="item-price">26,00 €</div>
+                </div>
+                <div class="email-item">
+                  <div class="item-l"><span class="ico">🍽️</span> Mesa coordinada platos+vasos ×12</div>
+                  <div class="item-price">21,00 €</div>
+                </div>
+                <div class="email-item">
+                  <div class="item-l"><span class="ico">✨</span> Globos helio temáticos ×10</div>
+                  <div class="item-price">18,00 €</div>
+                </div>
+                <div class="email-item">
+                  <div class="item-l"><span class="ico">🎁</span> Sorpresas invitados ×12</div>
+                  <div class="item-price">15,00 €</div>
+                </div>
+                <div class="email-total">
+                  <span class="tl">🐚 Total fiesta perfecta</span>
+                  <span class="tv">80,00 €</span>
+                </div>
+              </div>
+              <p style="font-size:13px;color:#666;">¿Te encaja? Reserva con un clic y lo dejamos todo listo. ¡Va a ser una fiesta preciosa! 🌟</p>
+            </div>
+            <a href="#" class="email-cta-btn">🐚 Reservar mi fiesta de sirenas →</a>
+            <!-- Footer email -->
+            <div class="email-footer-bar">
+              <span class="logo">🎈 Globus amb Gràcia</span>
+              <div class="socials">📍 📸 💬</div>
+            </div>
+            <div class="email-footer-sub">Gràcia, Barcelona · hola@globusambgracia.com · Darse de baja</div>
           </div>
         </div>
-        <div style="text-align:center;margin-top:14px;">
-          <div class="pill coral">✉️ Enviado a las 18:45 · 3 min después</div>
-        </div>
+        <div class="email-sent-badge">✉️ Enviado a las 18:46 · <span>3 minutos después del último mensaje</span></div>
       </div>
+
     </div>
   </div>
 </section>

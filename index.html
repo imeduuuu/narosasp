@@ -177,25 +177,31 @@ a{text-decoration:none;color:inherit}
   display:flex;align-items:center;justify-content:center;
   min-height:480px;
 }
-/* Círculo con borde degradado */
+/* Forma ondulada (blob orgánico) con borde degradado */
 .img-circle{
-  width:430px;height:430px;
-  border-radius:50%;
+  width:440px;height:440px;
+  border-radius:42% 58% 57% 43% / 48% 44% 56% 52%;
   position:relative;z-index:2;
-  padding:5px;
+  padding:6px;
   background:linear-gradient(135deg,#a78bfa,#f472b6,#fbbf24,#6f4ce8);
-  box-shadow:0 20px 60px rgba(111,76,232,.2);
+  box-shadow:0 24px 70px rgba(111,76,232,.22);
   flex-shrink:0;
+  animation:blobMorph 12s ease-in-out infinite;
 }
 .img-circle-inner{
   width:100%;height:100%;
-  border-radius:50%;
+  border-radius:inherit;
   overflow:hidden;
   background:#f5eeff;
 }
 .img-circle-inner img{
   width:100%;height:100%;
   object-fit:cover;object-position:center top;
+}
+@keyframes blobMorph{
+  0%,100%{ border-radius:42% 58% 57% 43% / 48% 44% 56% 52%; }
+  33%    { border-radius:56% 44% 43% 57% / 52% 57% 43% 48%; }
+  66%    { border-radius:44% 56% 52% 48% / 57% 43% 57% 43%; }
 }
 
 /* Decoraciones flotantes */
@@ -450,10 +456,10 @@ footer{background:#1a1a2e;color:rgba(255,255,255,.4);text-align:center;padding:3
       <svg class="deco deco-squiggle" width="28" height="28" viewBox="0 0 28 28" fill="none">
         <polygon points="14,2 26,24 2,24" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linejoin="round"/>
       </svg>
-      <!-- Círculo con foto -->
+      <!-- Forma ondulada con foto de niños -->
       <div class="img-circle">
         <div class="img-circle-inner">
-          <img src="assets/img/balloons.jpg" alt="Fiestas infantiles · Narosa Sweet Party · Barcelona" loading="eager">
+          <img src="assets/img/kids.jpg" alt="Niños felices en una fiesta infantil · Narosa Sweet Party · Barcelona" loading="eager">
         </div>
       </div>
     </div>
