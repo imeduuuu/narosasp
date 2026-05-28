@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Automático para Tiendas de Fiestas · Globus amb Gràcia</title>
+<meta name="description" content="Publicación diaria automática, respuesta de DMs y filtro de leads cualificados para tu tienda de globos en Gràcia, Barcelona. Sin tocar el móvil.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://globusambgracia.com/flujo">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎈</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Instagram Automático para Tiendas de Fiestas · Globus amb Gràcia">
+<meta property="og:description" content="Publicación diaria automática, respuesta de DMs y filtro de leads cualificados para tu tienda de globos en Gràcia, Barcelona. Sin tocar el móvil.">
+<meta property="og:url" content="https://globusambgracia.com/flujo">
+<meta property="og:image" content="https://globusambgracia.com/assets/img/balloons.jpg">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Globus amb Gràcia">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Instagram Automático para Tiendas de Fiestas · Globus amb Gràcia">
+<meta name="twitter:description" content="Publicación diaria automática, respuesta de DMs y filtro de leads cualificados para tu tienda de globos en Gràcia, Barcelona. Sin tocar el móvil.">
+<meta name="twitter:image" content="https://globusambgracia.com/assets/img/balloons.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 24px;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .cal-day.has-post { background: var(--coral-soft); border-color: var(--coral); color: var(--coral-deep); }
+  .cal-day.has-story { background: var(--violet-soft); border-color: var(--violet); color: #5d44c5; }
+  .cal-day.has-reel  { background: var(--aqua-soft); border-color: var(--aqua); color: var(--aqua-deep); }
+  .cal-day.empty { background: transparent; border-color: transparent; }
+  .cal-header { grid-column: span 7; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .cal-dow { text-align: center; font-size: 10px; font-weight: 900; color: var(--muted); padding-bottom: 4px; letter-spacing: .5px; }
+
+  .dm-thread {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(34,29,46,.07);
+  }
+  .dm-top {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dm-av { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.3); display:flex;align-items:center;justify-content:center; font-size:16px; }
+  .dm-name { color: #fff; font-weight: 800; font-size: 14px; }
+  .dm-status { color: rgba(255,255,255,.7); font-size: 11px; }
+  .dm-body { padding: 14px; display:flex; flex-direction:column; gap:8px; background: #fafafa; }
+  .dm-msg { max-width: 85%; padding: 9px 13px; border-radius: 14px; font-size: 13px; line-height: 1.45; }
+  .dm-msg.them { background: #fff; border: 1px solid var(--line); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .dm-msg.me { background: linear-gradient(135deg, #833ab4, #fd1d1d); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .dm-msg .dt { display:block; font-size:9px; margin-top:4px; opacity:.5; text-align:right; }
+
+  .step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .step-row:last-child { border-bottom: none; }
+  .step-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text h4 { font-family:'Fredoka',sans-serif; font-weight:600; font-size:17px; margin-bottom:5px; }
+  .step-text p { font-size:14px; color:var(--muted); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo"><span class="balloon-icon">🎈</span><span>Globus amb Gràcia</span></a>
+    <nav class="main-nav">
+      <a href="index.html">Inicio</a>
+      <a href="sistema.html">El Sistema</a>
+      <a href="flujo.html" class="active">Instagram</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="beneficios.html">Beneficios</a><a href="propuesta.html">Propuesta</a>
+    </nav>
+    <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20automatizar%20Globus%20amb%20Gr%C3%A0cia" class="nav-cta" target="_blank">Empezar →</a>
+    <button class="hamburger" aria-label="Menú">☰</button>
+  </div>
+</header>
+<nav class="mobile-menu">
+  <a href="index.html">Inicio</a>
+  <a href="sistema.html">El Sistema</a>
+  <a href="flujo.html">Instagram</a>
+  <a href="presupuesto.html">Presupuesto</a>
+  <a href="beneficios.html">Beneficios</a><a href="propuesta.html">Propuesta</a>
+  <a href="https://wa.me/34600000000" class="mobile-cta" target="_blank">💬 Empezar ahora</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow white reveal">Instagram Automático</div>
+    <h1 class="reveal d1">Tu perfil publica, <em>responde</em><br>y filtra clientes solo.</h1>
+    <p class="reveal d2">Sin que toques el móvil. Sin contratar a nadie. El contenido sale, los mensajes se responden y los leads llegan cualificados.</p>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow coral reveal">El flujo completo</div>
+    <h2 class="section-title reveal d1">Así funciona cada día.</h2>
+    <p class="section-lead reveal d2">Desde que el sistema publica la primera foto hasta que el lead llega a tu bandeja de entrada, esto es lo que ocurre automáticamente.</p>
+
+    <div style="max-width:600px;margin:40px auto 0;" class="reveal d2">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>El sistema crea el contenido</h4>
+          <p>La IA genera la descripción, los hashtags optimizados y elige la imagen de producto más adecuada para el día y la temporada.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Publica en la hora óptima</h4>
+          <p>Analiza cuándo están activos tus seguidores y publica automáticamente en ese momento para maximizar el alcance.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Responde comentarios al instante</h4>
+          <p>Cada comentario recibe una respuesta personalizada y natural en segundos. El algoritmo de Instagram lo premia con más alcance.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <h4>Gestiona los mensajes directos</h4>
+          <p>Los DMs son la puerta de entrada de tus clientes. El asistente los recibe, responde y cualifica sin que tú estés.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="background:var(--green);">✓</div>
+        <div class="step-text">
+          <h4>El lead llega cualificado a ti</h4>
+          <p>Solo llegas a saber de clientes que ya han dicho qué quieren, cuándo y con qué presupuesto. Sin perder tiempo en curiosos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDARIO -->
+<section class="section aqua-section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+      <div class="reveal">
+        <div class="eyebrow aqua">Planificación automática</div>
+        <h2 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:36px;line-height:1.1;margin-bottom:18px;">Un mes entero de contenido. Planeado en segundos.</h2>
+        <p style="font-size:16px;line-height:1.7;color:var(--muted);margin-bottom:24px;">El sistema planifica el mes completo antes de que empiece. Posts, stories, reels — todo coordinado con las temporadas, fiestas y packs de moda.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:14px;height:14px;border-radius:4px;background:var(--coral);flex-shrink:0;"></div>
+            <span style="font-size:14px;font-weight:700;">Post de producto</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:14px;height:14px;border-radius:4px;background:var(--violet);flex-shrink:0;"></div>
+            <span style="font-size:14px;font-weight:700;">Story / Contenido rápido</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:14px;height:14px;border-radius:4px;background:var(--aqua);flex-shrink:0;"></div>
+            <span style="font-size:14px;font-weight:700;">Reel / Vídeo corto</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 16px 40px rgba(34,29,46,.10);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;">Junio 2025</div>
+            <div class="live-badge" style="font-size:11px;padding:6px 12px;"><span class="pulse-dot"></span> En vivo</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;">
+            <div style="font-size:9px;font-weight:900;color:var(--muted);padding:0 0 6px;">L</div>
+            <div style="font-size:9px;font-weight:900;color:var(--muted);padding:0 0 6px;">M</div>
+            <div style="font-size:9px;font-weight:900;color:var(--muted);padding:0 0 6px;">X</div>
+            <div style="font-size:9px;font-weight:900;color:var(--muted);padding:0 0 6px;">J</div>
+            <div style="font-size:9px;font-weight:900;color:var(--muted);padding:0 0 6px;">V</div>
+            <div style="font-size:9px;font-weight:900;color:var(--muted);padding:0 0 6px;">S</div>
+            <div style="font-size:9px;font-weight:900;color:var(--muted);padding:0 0 6px;">D</div>
+            <!-- Week 1 -->
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--coral-soft);border:1px solid var(--coral);color:var(--coral-deep);">2</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border-radius:8px;border:1px solid var(--line);color:var(--muted);">3</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--violet-soft);border:1px solid var(--violet);color:#5d44c5;">4</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border-radius:8px;border:1px solid var(--line);color:var(--muted);">5</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--aqua-soft);border:1px solid var(--aqua);color:var(--aqua-deep);">6</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--coral-soft);border:1px solid var(--coral);color:var(--coral-deep);">7</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--violet-soft);border:1px solid var(--violet);color:#5d44c5;">8</div>
+            <!-- Week 2 -->
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--coral-soft);border:1px solid var(--coral);color:var(--coral-deep);">9</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border-radius:8px;border:1px solid var(--line);color:var(--muted);">10</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--aqua-soft);border:1px solid var(--aqua);color:var(--aqua-deep);">11</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border-radius:8px;border:1px solid var(--line);color:var(--muted);">12</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--coral-soft);border:1px solid var(--coral);color:var(--coral-deep);">13</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--violet-soft);border:1px solid var(--violet);color:#5d44c5;">14</div>
+            <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:8px;background:var(--aqua-soft);border:1px solid var(--aqua);color:var(--aqua-deep);">15</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTRO LEADS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow violet reveal center">El filtro de leads</div>
+    <h2 class="section-title reveal d1 center">Solo recibes lo que vale la pena.</h2>
+    <p class="section-lead reveal d2 center" style="margin:0 auto;">Cuando alguien escribe, el sistema no solo responde: pregunta lo que importa y clasifica al cliente antes de pasártelo a ti.</p>
+
+    <div class="filter-flow reveal d2">
+      <div class="filter-chip">
+        <div class="fi">💬</div>
+        <div class="ft">Llega un mensaje</div>
+        <div class="fs">"Hola, info cumple"</div>
+      </div>
+      <div class="filter-arrow">→</div>
+      <div class="filter-chip">
+        <div class="fi">🔎</div>
+        <div class="ft">Pregunta y filtra</div>
+        <div class="fs">fecha · niños · tema · presupuesto</div>
+      </div>
+      <div class="filter-arrow">→</div>
+      <div class="filter-chip">
+        <div class="fi">⭐</div>
+        <div class="ft">Lead cualificado</div>
+        <div class="fs">listo para cerrar</div>
+      </div>
+      <div class="filter-arrow">→</div>
+      <div class="filter-chip" style="background:var(--sun-soft);border-color:var(--sun);">
+        <div class="fi">🎉</div>
+        <div class="ft">Te llega a ti</div>
+        <div class="fs">solo lo que merece tu tiempo</div>
+      </div>
+    </div>
+
+    <!-- Demo DM -->
+    <div style="max-width:400px;margin:48px auto 0;" class="reveal d2">
+      <div class="dm-thread">
+        <div class="dm-top">
+          <div class="dm-av">👩</div>
+          <div>
+            <div class="dm-name">María García</div>
+            <div class="dm-status">Mensaje directo</div>
+          </div>
+        </div>
+        <div class="dm-body" id="chat-flujo">
+          <div class="dm-msg them">Hola! ¿hacéis cumpleaños temáticos? 🎂<span class="dt">14:32</span></div>
+          <div class="dm-msg me">¡Hola María! 🎈 Claro, somos especialistas. ¿Para qué fecha lo necesitas?<span class="dt">14:32</span></div>
+          <div class="dm-msg them">Para el 20 de julio, cumple mi hijo 5 años<span class="dt">14:33</span></div>
+          <div class="dm-msg me">¡Perfecto! ¿Cuántos niños vendrían aproximadamente?<span class="dt">14:33</span></div>
+          <div class="dm-msg them">Unos 15 niños<span class="dt">14:34</span></div>
+          <div class="dm-msg me">Genial 🎉 ¿Tienen temática en mente? (dinosaurios, superhéroes, princesas...) ¿Y qué presupuesto manejan?<span class="dt">14:34</span></div>
+          <div class="dm-msg them">Dinosaurios! Y sobre 90-100€<span class="dt">14:35</span></div>
+          <div class="dm-msg me">¡Perfecto! Te paso a WhatsApp para prepararte el plan completo con presupuesto cerrado 🦕✨<span class="dt">14:35</span></div>
+        </div>
+        <div style="background:#f0f0f0;padding:10px 14px;font-size:11px;color:var(--muted);text-align:center;font-weight:700;">Lead cualificado · pasado a WhatsApp automáticamente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner center">
+      <div class="balloons-deco reveal">📱</div>
+      <h2 class="section-title reveal d1">Tu Instagram,<br>trabajando solo cada día.</h2>
+      <p class="reveal d2">Sin gestores de redes. Sin agencias. Sin perder tiempo.</p>
+      <div class="cta-actions reveal d3">
+        <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20el%20Instagram%20autom%C3%A1tico" class="btn-primary" target="_blank">💬 Hablemos</a>
+        <a href="presupuesto.html" class="btn-ghost white">Ver presupuesto automático →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">🎈 Globus amb Gràcia</div>
+    <p>Automatización con n8n, Shopify e inteligencia artificial · Gràcia, Barcelona</p>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+<script src="assets/livechat.js"></script>
+<script>liveChat('chat-flujo', 'dm-msg', 'me', 'dm-typing');</script>
+</body>
+</html>

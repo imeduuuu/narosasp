@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://globusambgracia.com/sitemap.xml
