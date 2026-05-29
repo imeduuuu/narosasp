@@ -93,33 +93,12 @@
     document.querySelectorAll('main section[id], main #top').forEach(s => { if (s.id) sectionObs.observe(s); });
 
 /* ═══════════════════════════════════════
-   COOKIES BANNER + POP-UP DESCUENTO (email)
+   POP-UP COOKIES (modal) + POP-UP DESCUENTO (email)
 ═══════════════════════════════════════ */
 (function () {
-  // ── Banner de cookies ──
-  if (!localStorage.getItem('narosa_cookies')) {
-    const bar = document.createElement('div');
-    bar.className = 'cookie-bar';
-    bar.innerHTML =
-      '<p>🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. ' +
-      'Consulta nuestra <a href="cookies.html">Política de cookies</a>.</p>' +
-      '<div class="cookie-actions">' +
-        '<button class="btn btn-light" data-ck="no">Rechazar</button>' +
-        '<button class="btn btn-primary" data-ck="yes">Aceptar</button>' +
-      '</div>';
-    document.body.appendChild(bar);
-    requestAnimationFrame(() => setTimeout(() => bar.classList.add('show'), 400));
-    bar.addEventListener('click', (e) => {
-      const v = e.target.getAttribute('data-ck');
-      if (!v) return;
-      localStorage.setItem('narosa_cookies', v);
-      bar.classList.remove('show');
-      setTimeout(() => bar.remove(), 500);
-    });
-  }
-
-  // ── Pop-up de descuento (solo 1ª visita, al cargar) ──
-  if (!localStorage.getItem('narosa_promo')) {
+  // ── POP-UP de descuento (se muestra tras decidir cookies) ──
+  function showPromo() {
+    if (localStorage.getItem('nrs_promo_v2')) return;
     const ov = document.createElement('div');
     ov.className = 'promo-overlay';
     ov.innerHTML =
@@ -140,24 +119,50 @@
         '</div>' +
       '</div>';
     document.body.appendChild(ov);
-
-    const close = () => {
-      ov.classList.remove('show');
-      localStorage.setItem('narosa_promo', '1');
-      setTimeout(() => ov.remove(), 450);
-    };
-    setTimeout(() => ov.classList.add('show'), 1200);
+    const close = () => { ov.classList.remove('show'); localStorage.setItem('nrs_promo_v2', '1'); setTimeout(() => ov.remove(), 450); };
+    requestAnimationFrame(() => setTimeout(() => ov.classList.add('show'), 50));
     ov.querySelector('.promo-close').addEventListener('click', close);
     ov.addEventListener('click', (e) => { if (e.target === ov) close(); });
     ov.querySelector('.promo-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const input = ov.querySelector('input');
       if (!input.value || !input.value.includes('@')) { input.focus(); input.style.borderColor = '#e23'; return; }
-      // Sin backend: confirmación visual (demo). Integrable con n8n/Mailchimp.
       ov.querySelector('.promo-body').innerHTML =
         '<div class="promo-success">✅ ¡Gracias! Usa el código <strong>NAROSA10</strong> en tu primera compra.<br>Te lo hemos enviado también a tu correo.</div>';
-      localStorage.setItem('narosa_promo', 'subscribed');
+      localStorage.setItem('nrs_promo_v2', 'subscribed');
       setTimeout(close, 3500);
     });
+  }
+
+  // ── POP-UP de cookies (modal centrado, salta al cargar en 1ª visita) ──
+  if (!localStorage.getItem('nrs_ck_v2')) {
+    const ov = document.createElement('div');
+    ov.className = 'cookie-overlay';
+    ov.innerHTML =
+      '<div class="cookie-card">' +
+        '<div class="cookie-top">' +
+          '<div class="cookie-emoji">🍪</div>' +
+          '<h3>Tu privacidad nos importa</h3>' +
+        '</div>' +
+        '<div class="cookie-body">' +
+          '<p>Usamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y mostrarte ofertas relevantes. ' +
+          'Consulta nuestra <a href="cookies.html">Política de cookies</a>.</p>' +
+          '<div class="cookie-actions">' +
+            '<button class="btn btn-light" data-ck="no">Rechazar</button>' +
+            '<button class="btn btn-primary" data-ck="yes">Aceptar todas</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(ov);
+    requestAnimationFrame(() => setTimeout(() => ov.classList.add('show'), 350));
+    ov.addEventListener('click', (e) => {
+      const v = e.target.getAttribute('data-ck');
+      if (!v) return;
+      localStorage.setItem('nrs_ck_v2', v);
+      ov.classList.remove('show');
+      setTimeout(() => { ov.remove(); showPromo(); }, 450);  // tras decidir cookies → salta el descuento
+    });
+  } else {
+    setTimeout(showPromo, 1000);  // cookies ya decididas → muestra descuento
   }
 })();
