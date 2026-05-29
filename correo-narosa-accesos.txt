@@ -1,0 +1,20 @@
+Para: Serranomunoz@gmail.com
+Asunto: Accesos al panel · Narosa Sweet Party 🔐
+
+Hola,
+
+Estos son los accesos al panel de gestión (demo):
+
+Enlace:  https://imeduuuu.github.io/narosasp/dashboard
+
+  • Administrador (lo ves todo, incluidos costes)
+      usuario:      admin
+      contraseña:   narosa2026
+
+  • Equipo (vista del día a día)
+      usuario:      narosa
+      contraseña:   party2026
+
+Son credenciales de demostración. Cuando pasemos a producción las cambiamos por unas tuyas.
+
+Un saludo 🎈

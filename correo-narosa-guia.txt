@@ -1,0 +1,69 @@
+Para: Serranomunoz@gmail.com
+Asunto: Cómo montar la automatización paso a paso · Narosa Sweet Party 🛠️
+
+Hola,
+
+Aquí tienes el plan para montar tú misma la automatización, paso a paso. Son 4 semanas a ritmo tranquilo (1-2 h al día). Aprovechas tu Shopify y tu dominio actuales, así que el coste de herramientas ronda los 22 €/mes.
+
+──────────────────────────────
+ANTES DE EMPEZAR (Día 0) — crear cuentas
+──────────────────────────────
+• DigitalOcean (el servidor) — 6 €/mes
+• Anthropic / Claude (la IA) — pago por uso (~13 €/mes)
+• Meta for Developers (WhatsApp + Instagram) — gratis
+• Cuenta de empresa en Facebook (para verificar el negocio) — gratis
+• Resend (enviar emails) — gratis
+• Bitwarden (guardar todas las claves) — gratis
+
+👉 Lo PRIMERO: abre la verificación de empresa en Meta el día 1, porque es lo que más tarda (a veces días). Mientras tramita, avanzas con el resto.
+
+──────────────────────────────
+SEMANA 1 — Cimientos (servidor + n8n)
+──────────────────────────────
+• Crear el servidor en DigitalOcean (Ubuntu, plan básico) y conectarte.
+• Instalar Docker y dejar n8n funcionando con https.
+• Apuntar un subdominio (n8n.narosasp.com) al servidor.
+Resultado: el "cerebro" encendido 24/7 con su panel seguro.
+
+──────────────────────────────
+SEMANA 2 — WhatsApp (el canal nº1)
+──────────────────────────────
+• Crear la App de WhatsApp Business API en Meta y conectar el número.
+• Enlazar WhatsApp con n8n (webhook).
+• Primera respuesta automática funcionando.
+Resultado: cuando alguien escribe al WhatsApp, el sistema lo recibe y responde.
+
+──────────────────────────────
+SEMANA 3 — La inteligencia (Claude)
+──────────────────────────────
+• Crear la API key de Claude y PONER UN LÍMITE DE GASTO (ej. 20 €/mes).
+• Escribir el "carácter" del asistente (cálido, experto en fiestas, que pregunte fecha, nº de niños y presupuesto).
+• Conectar Claude en n8n y guardar cada solicitud (con resumen y puntuación de interés).
+Resultado: la IA conversa, cualifica y registra cada lead.
+
+──────────────────────────────
+SEMANA 4 — Remate (Instagram + panel + pruebas)
+──────────────────────────────
+• Automatizar Instagram (DMs y comentarios).
+• Conectar la tienda Shopify para precios reales.
+• Activar el panel (dashboard) con las solicitudes.
+• Hacer 5 conversaciones de prueba ANTES de anunciar el WhatsApp al público.
+Resultado: sistema completo en producción.
+
+──────────────────────────────
+PRIORIDADES (si vas justa de tiempo)
+──────────────────────────────
+🔴 Imprescindible: servidor + n8n + WhatsApp + Claude (ya respondes y cualificas 24/7).
+🟡 Importante: guardar leads + panel.
+🟢 Mejora: Instagram automático y conexión de precios de Shopify.
+
+──────────────────────────────
+CONSEJOS PARA NO TROPEZAR
+──────────────────────────────
+• Límite de gasto en Claude SIEMPRE (es lo único que puede dispararse).
+• No publiques el WhatsApp hasta tener las 5 pruebas OK.
+• WhatsApp no permite mensajes masivos en frío: responde solo a quien te escribe.
+
+Tienes el detalle día a día en la guía completa. Cualquier duda, aquí estoy.
+
+Un saludo 🎈

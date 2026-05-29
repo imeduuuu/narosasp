@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Guía de montaje PRO · Narosa (interno)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#f3eee4;--bg2:#ece3d4;--surface:#fffdf9;--ink:#1b1610;--ink2:#3a3327;
+--tx:#5b5447;--tx2:#8c8273;--tx3:#a89e8c;
+--gold:#b0894c;--gold2:#caa86a;--gold3:#8c6f3d;--gold-g:rgba(176,137,76,.1);
+--green:#4f9e6e;--red:#c45b52;--blue:#5b85bd;
+--line:rgba(27,22,16,.1);--line2:rgba(27,22,16,.16);
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+--ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--tx);line-height:1.7;font-weight:300;font-size:15px}
+::selection{background:var(--gold);color:#fff}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:rgba(176,137,76,.3);border-radius:10px}
+.layout{display:grid;grid-template-columns:260px 1fr;max-width:1280px;margin:0 auto}
+/* SIDEBAR */
+.side{position:sticky;top:0;height:100vh;overflow-y:auto;padding:40px 26px;border-right:1px solid var(--line)}
+.side .logo{font-family:var(--serif);font-size:24px;font-weight:500;letter-spacing:.14em;color:var(--ink);display:flex;align-items:center;gap:10px}
+.side .l-line{width:26px;height:1px;background:var(--gold)}
+.side .sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--tx2);margin:6px 0 30px}
+.side a{display:block;color:var(--tx);text-decoration:none;font-size:13.5px;padding:10px 14px;border-radius:8px;margin-bottom:3px;border-left:2px solid transparent;transition:.25s}
+.side a:hover{background:var(--surface);border-left-color:var(--gold);color:var(--ink)}
+.side a .w{display:block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold3);font-weight:600}
+.side .warn{margin-top:28px;font-size:11px;color:var(--red);background:rgba(196,91,82,.08);border:1px solid rgba(196,91,82,.2);border-radius:10px;padding:11px 13px;line-height:1.5}
+/* MAIN */
+main{padding:64px 70px 100px;max-width:900px}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold3);font-weight:600;margin-bottom:18px}
+h1{font-family:var(--serif);font-size:52px;font-weight:300;letter-spacing:-.01em;line-height:1.05;color:var(--ink);margin-bottom:16px}
+h1 em{font-style:italic;color:var(--gold3)}
+.lead{font-size:17px;color:var(--tx);max-width:640px}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:6px 13px;font-size:12px;font-family:var(--mono);color:var(--tx2)}
+/* PHASE */
+.phase{margin-top:66px;scroll-margin-top:24px}
+.phase-h{display:flex;align-items:flex-end;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.phase-n{font-family:var(--serif);font-size:64px;font-weight:300;color:var(--gold2);line-height:.8}
+.phase-h h2{font-family:var(--serif);font-size:33px;font-weight:400;color:var(--ink)}
+.phase-h .goal{font-size:12.5px;color:var(--green);letter-spacing:.3px;font-weight:500}
+/* STEP */
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-top:18px;box-shadow:0 10px 40px rgba(27,22,16,.04)}
+.step h3{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.step .why{font-size:13.5px;color:var(--tx2);border-left:2px solid var(--gold);padding-left:14px;margin:12px 0 14px;font-style:italic}
+.step .why b{color:var(--ink);font-style:normal;font-weight:500}
+.step ul{list-style:none;margin:12px 0}
+.step li{font-size:14px;color:var(--tx);padding:6px 0 6px 24px;position:relative}
+.step li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.step li b{color:var(--ink);font-weight:500}
+pre{background:#211c14;color:#e8d9b5;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-family:var(--mono);font-size:12.5px;line-height:1.75}
+pre .c{color:#8a7d63}
+code{font-family:var(--mono);background:var(--gold-g);color:var(--gold3);padding:2px 7px;border-radius:5px;font-size:12.5px}
+.co{border-radius:11px;padding:14px 17px;margin:14px 0;font-size:13.5px;line-height:1.6}
+.co.warn{background:rgba(201,138,62,.1);border:1px solid rgba(201,138,62,.28);color:#8a5e22}
+.co.danger{background:rgba(196,91,82,.1);border:1px solid rgba(196,91,82,.28);color:#9c3f37}
+.co.tip{background:rgba(79,158,110,.1);border:1px solid rgba(79,158,110,.28);color:#2f6b48}
+.co b{font-weight:600}
+.check{margin-top:18px;background:rgba(79,158,110,.07);border:1px dashed rgba(79,158,110,.4);border-radius:11px;padding:13px 17px;font-size:14px;color:#2f6b48}
+.check b{color:#1d4d31;font-weight:600}
+/* PROMPT */
+.prompt{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:16px 0}
+.prompt-h{display:flex;justify-content:space-between;align-items:center;background:var(--gold-g);padding:13px 18px;border-bottom:1px solid var(--line)}
+.prompt-h span{font-weight:500;color:var(--gold3);font-size:13.5px;letter-spacing:.3px}
+.prompt-h button{background:var(--gold);color:#fff;border:none;border-radius:100px;padding:7px 17px;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.5px;cursor:pointer;transition:.25s}
+.prompt-h button:hover{background:var(--gold3)}
+.prompt-body{padding:18px;font-size:13px;line-height:1.7;color:var(--ink2);white-space:pre-wrap;font-family:var(--mono)}
+.tag-here{display:inline-block;margin-top:10px;background:var(--gold);color:#fff;font-size:11px;font-weight:600;letter-spacing:.5px;padding:5px 13px;border-radius:100px}
+.risks{margin-top:64px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px}
+.risks h2{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--ink);margin-bottom:14px}
+.risks li{list-style:none;font-size:14px;color:var(--tx);padding:9px 0 9px 26px;position:relative;border-bottom:1px solid var(--line)}
+.risks li:last-child{border:none}.risks li::before{content:"!";position:absolute;left:6px;color:var(--gold3);font-weight:600}
+.risks li b{color:var(--ink);font-weight:500}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line)}main{padding:40px 24px 70px}h1{font-size:38px}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="side">
+    <div class="logo"><span class="l-line"></span>NAROSA</div>
+    <div class="sub">Guía de montaje · interno</div>
+    <a href="#f0"><span class="w">Día 0</span>Prerrequisitos</a>
+    <a href="#f1"><span class="w">Semana 1</span>Cimientos (VPS + n8n)</a>
+    <a href="#f2"><span class="w">Semana 2</span>WhatsApp Cloud API</a>
+    <a href="#f3"><span class="w">Semana 3</span>IA Claude + prompts</a>
+    <a href="#f4"><span class="w">Semana 4</span>Remate + QA</a>
+    <a href="#risks"><span class="w">Anexo</span>Riesgos</a>
+    <div class="warn">⛔ Documento interno (para mí). No enviar al cliente. La versión cliente: <code>plan-tecnico.html</code>.</div>
+  </aside>
+
+  <main>
+    <div class="eyebrow">Guía técnica · versión para mí</div>
+    <h1>Montar la automatización de Narosa, <em>de verdad</em></h1>
+    <p class="lead">Cada paso con el comando exacto, el porqué, lo que se rompe si lo haces mal, y los prompts listos para pegar en Claude.</p>
+    <div class="stack">
+      <span class="chip">Ubuntu 24.04</span><span class="chip">Docker</span><span class="chip">n8n + Traefik</span><span class="chip">Redis</span>
+      <span class="chip">Claude API</span><span class="chip">WhatsApp Cloud API</span><span class="chip">Instagram Graph</span><span class="chip">Shopify Admin</span><span class="chip">Resend</span>
+    </div>
+
+    <!-- DÍA 0 -->
+    <section class="phase" id="f0">
+      <div class="phase-h"><div class="phase-n">0</div><div><h2>Día 0 · Prerrequisitos</h2><div class="goal">Cuentas creadas y cuello de botella lanzado</div></div></div>
+      <div class="step">
+        <h3>Verificación de empresa en Meta — lanzar PRIMERO</h3>
+        <div class="why"><b>Por qué primero:</b> es lo único que no depende de ti. Meta tarda de horas a días; sin verificar, WhatsApp Cloud API se queda en modo prueba (límite de destinatarios). Si lo dejas al final, bloquea el lanzamiento.</div>
+        <ul>
+          <li>Business Manager → <b>Centro de seguridad → Iniciar verificación</b>. Necesitas alta de autónoma/factura.</li>
+          <li>Crea ya un <b>System User</b> → de ahí saldrá el token permanente de WhatsApp.</li>
+        </ul>
+        <div class="co danger"><b>Error típico:</b> cuenta personal de Facebook sin Business Manager → no podrás pedir el token permanente.</div>
+      </div>
+      <div class="step">
+        <h3>Resto de cuentas + gestor de claves</h3>
+        <ul>
+          <li><b>DigitalOcean</b> (6 €/mes) · <b>Anthropic</b> (pago por uso) · <b>Resend</b> (gratis) · <b>Bitwarden</b> (claves).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEMANA 1 -->
+    <section class="phase" id="f1">
+      <div class="phase-h"><div class="phase-n">1</div><div><h2>Semana 1 · Cimientos</h2><div class="goal">n8n productivo con HTTPS que sobrevive a un reinicio</div></div></div>
+      <div class="step">
+        <h3>Crear y blindar el VPS</h3>
+        <div class="why"><b>Por qué:</b> el cerebro corre 24/7 aquí. Sin firewall ni usuario no-root es un riesgo.</div>
+        <pre><span class="c"># Droplet: Ubuntu 24.04 · 1 GB / 6$ · región Ámsterdam</span>
+apt update && apt upgrade -y
+adduser deploy && usermod -aG sudo deploy
+ufw allow OpenSSH && ufw allow 80 && ufw allow 443 && ufw enable</pre>
+      </div>
+      <div class="step">
+        <h3>Swap de 2 GB</h3>
+        <div class="why"><b>Por qué:</b> con 1 GB de RAM, n8n + Redis sin swap = el OOM-killer te mata n8n de madrugada. No es opcional.</div>
+        <pre>fallocate -l 2G /swapfile && chmod 600 /swapfile
+mkswap /swapfile && swapon /swapfile
+echo '/swapfile none swap sw 0 0' >> /etc/fstab</pre>
+      </div>
+      <div class="step">
+        <h3>Docker + n8n con SSL (Traefik)</h3>
+        <div class="why"><b>Por qué Traefik:</b> gestiona el certificado Let's Encrypt solo, sin tocar Nginx a mano.</div>
+        <pre>curl -fsSL https://get.docker.com | sh
+apt install -y docker-compose-plugin
+<span class="c"># DNS: A  n8n.narosasp.com → IP. docker-compose vars clave:</span>
+<span class="c">#  N8N_HOST=n8n.narosasp.com  N8N_PROTOCOL=https</span>
+<span class="c">#  WEBHOOK_URL=https://n8n.narosasp.com/</span>
+<span class="c">#  N8N_ENCRYPTION_KEY=<guardar en Bitwarden>  · TZ=Europe/Madrid</span>
+<span class="c">#  restart: unless-stopped en todos los servicios</span></pre>
+        <div class="co danger"><b>Crítico:</b> guarda <code>N8N_ENCRYPTION_KEY</code>. Si la pierdes, todas las credenciales de n8n quedan ilegibles.</div>
+        <div class="check"><b>✅ Check:</b> <code>n8n.narosasp.com</code> con candado válido y, tras <code>reboot</code>, vuelve solo.</div>
+      </div>
+    </section>
+
+    <!-- SEMANA 2 -->
+    <section class="phase" id="f2">
+      <div class="phase-h"><div class="phase-n">2</div><div><h2>Semana 2 · WhatsApp Cloud API</h2><div class="goal">Webhook bidireccional verificado (no Baileys)</div></div></div>
+      <div class="step">
+        <h3>App de WhatsApp en Meta</h3>
+        <div class="why"><b>Por qué Cloud API y no Baileys:</b> Baileys (no oficial) se banea. Cloud API es oficial, con 1.000 conversaciones/mes gratis.</div>
+        <ul>
+          <li>App <b>Business</b> → producto <b>WhatsApp</b>. Consigue <b>Phone Number ID</b> + <b>token de System User permanente</b>.</li>
+        </ul>
+      </div>
+      <div class="step">
+        <h3>Webhook entrante + envío</h3>
+        <div class="why"><b>Por qué:</b> Meta hace <code>GET</code> para verificar (devuelves <code>hub.challenge</code>) y <code>POST</code> con cada mensaje. Suscribe el campo <b>messages</b>.</div>
+        <pre><span class="c"># Enviar respuesta:</span>
+POST graph.facebook.com/v20.0/{PHONE_ID}/messages
+Authorization: Bearer {TOKEN}
+{ "messaging_product":"whatsapp","to":"{wa_id}",
+  "type":"text","text":{"body":"¡Hola! 🎈"} }</pre>
+        <div class="co warn"><b>Ventana 24 h:</b> fuera de ella solo plantillas aprobadas. Nada de mensajería en frío (banea).</div>
+        <div class="check"><b>✅ Check:</b> entrante llega a n8n y sale respuesta.</div>
+      </div>
+    </section>
+
+    <!-- SEMANA 3 -->
+    <section class="phase" id="f3">
+      <div class="phase-h"><div class="phase-n">3</div><div><h2>Semana 3 · IA Claude + prompts</h2><div class="goal">Conversa, cualifica, avisa</div></div></div>
+      <div class="step">
+        <h3>Claude API + límite de gasto</h3>
+        <div class="why"><b>Por qué el tope primero:</b> es el único coste que escala con tráfico. El cap mensual es tu red de seguridad.</div>
+        <ul>
+          <li>Console → API key → <b>Billing → límite mensual</b> (ej. 20 €). Modelo <b>Haiku</b> por defecto; Sonnet si hace falta calidad.</li>
+          <li>Memoria por <code>wa_id</code> en Redis: <code>conv:{wa_id}</code> → array de turnos, reenviado en cada llamada.</li>
+        </ul>
+      </div>
+      <div class="step">
+        <h3>Pegar los prompts en Claude / n8n</h3>
+        <div class="why"><b>Por qué tres:</b> uno define el carácter (system, se cachea), uno extrae datos+score, y uno dispara el aviso de lead caliente.</div>
+        <span class="tag-here">👉 Prompt 1 → casilla "system" de Claude</span>
+        <div class="prompt">
+          <div class="prompt-h"><span>1 · Sistema (carácter)</span><button onclick="cp('p1',this)">Copiar</button></div>
+          <div class="prompt-body" id="p1">Eres el asistente virtual de Narosa Sweet Party, empresa de globos y decoración de fiestas infantiles en Gràcia, Barcelona.
+
+TONO: cálido, cercano, alegre y profesional. Algún emoji con naturalidad (🎈🎉). Adáptate al tú/usted del cliente.
+
+OBJETIVO: ayudar a organizar la fiesta y recoger datos para un presupuesto. Pregunta de forma natural (1-2 cosas por mensaje, no como formulario):
+- Tipo de celebración (cumpleaños, baby shower, comunión, evento…)
+- Fecha y zona/barrio
+- Nº de niños/invitados y edad
+- Temática (unicornio, sirenas, dinosaurios, pastel…)
+- Presupuesto aproximado
+
+REGLAS:
+- Responde en el idioma del cliente (español o catalán).
+- Breve y claro; no abrumes.
+- Si no sabes algo (fecha exacta, precio cerrado), di que lo confirmas y preparas propuesta.
+- No inventes precios: da rangos.
+- Si es spam o ajeno a fiestas, despídete amable.
+- Con datos suficientes, ofrece el presupuesto y pide email o confirma WhatsApp.</div>
+        </div>
+        <span class="tag-here">👉 Prompt 2 → instrucciones del flujo en n8n</span>
+        <div class="prompt">
+          <div class="prompt-h"><span>2 · Cualificación (datos + score)</span><button onclick="cp('p2',this)">Copiar</button></div>
+          <div class="prompt-body" id="p2">Además del mensaje para el cliente, devuelve SIEMPRE al final este JSON (oculto al cliente):
+
+{
+  "datos": {"tipo":"","fecha":"","zona":"","ninos":"","edad":"","tema":"","presupuesto":""},
+  "score": 0,
+  "listo_presupuesto": false
+}
+
+Rellena solo lo que sepas; deja en blanco lo que falte.
+- score (0-100): interés y lo avanzado que está (datos completos + fecha cercana + presupuesto claro = más alto).
+- listo_presupuesto = true cuando tengas tipo, fecha, nº de niños y presupuesto.</div>
+        </div>
+        <span class="tag-here">👉 Prompt 3 → nodo de aviso (WhatsApp/Telegram a la dueña)</span>
+        <div class="prompt">
+          <div class="prompt-h"><span>3 · Aviso de lead caliente 🔔</span><button onclick="cp('p3',this)">Copiar</button></div>
+          <div class="prompt-body" id="p3">Cuando sea LEAD CALIENTE (listo_presupuesto = true, o score ≥ 75, o pide reservar/cerrar fecha), genera además este aviso para la dueña (no se lo muestres al cliente):
+
+🔔 LEAD CALIENTE — [nombre o teléfono]
+Fiesta: [tipo] · [fecha] · [nº niños]
+Presupuesto: [importe] · Temática: [tema]
+Acción sugerida: [llamar hoy / enviar presupuesto]</div>
+        </div>
+        <div class="check"><b>✅ Check:</b> conversación de 6-8 turnos coherente, JSON con score, aviso disparado en caliente.</div>
+      </div>
+    </section>
+
+    <!-- SEMANA 4 -->
+    <section class="phase" id="f4">
+      <div class="phase-h"><div class="phase-n">4</div><div><h2>Semana 4 · Remate + QA</h2><div class="goal">Todo conectado y PROBADO antes de abrir</div></div></div>
+      <div class="step">
+        <h3>Instagram + Shopify + Email + Dashboard</h3>
+        <ul>
+          <li><b>Instagram Graph API</b> (misma App Meta): DMs/comentarios reutilizan el flujo de Claude.</li>
+          <li><b>Shopify Admin API</b> (app privada con token): precios/packs reales en presupuestos.</li>
+          <li><b>Resend</b>: enviar el presupuesto en HTML.</li>
+          <li><b>Dashboard</b>: sustituir datos demo por la query real a Sheets/Postgres.</li>
+        </ul>
+      </div>
+      <div class="step">
+        <h3>QA + monitorización + backups</h3>
+        <div class="why"><b>Por qué:</b> un fallo el día 1 con un cliente real cuesta una venta. Rómpelo tú antes.</div>
+        <ul>
+          <li>5 pruebas: caliente, tibio, spam, fuera de zona, fecha ocupada. Revisar coste/conversación en Console.</li>
+          <li>Cron healthcheck cada 5 min → alerta a tu Telegram si cae algo. Snapshot semanal + export de workflows.</li>
+        </ul>
+        <div class="check"><b>✅ Check final:</b> 5 pruebas OK + costes bajo umbral + alertas → abrir al público.</div>
+      </div>
+    </section>
+
+    <!-- RIESGOS -->
+    <section class="risks" id="risks">
+      <h2>Riesgos y notas para mí</h2>
+      <ul style="padding:0">
+        <li><b>Coste Claude:</b> el único que escala → cap + prompt caching + Haiku por defecto.</li>
+        <li><b>Ventana 24 h WhatsApp:</b> fuera de ella, solo plantillas aprobadas.</li>
+        <li><b>Verificación Meta:</b> cuello de botella → lanzar el Día 0.</li>
+        <li><b>RAM 1 GB:</b> vigilar; si aprieta, subir a 2 GB (12$) o externalizar Postgres.</li>
+        <li><b>N8N_ENCRYPTION_KEY:</b> si se pierde, se pierden todas las credenciales guardadas.</li>
+        <li><b>Anti-baneo:</b> nada de mensajería en frío masiva.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+<script>
+function cp(id,btn){navigator.clipboard.writeText(document.getElementById(id).innerText).then(()=>{const o=btn.textContent;btn.textContent='¡Copiado! ✓';setTimeout(()=>btn.textContent=o,1800)})}
+</script>
+</body>
+</html>

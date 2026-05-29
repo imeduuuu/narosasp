@@ -11,17 +11,17 @@ Te he preparado una demo en vivo de cómo quedaría la nueva web de Narosa Sweet
 Y por dentro, las piezas del sistema:
 
 1) El Sistema — cómo responde solo a los clientes, 24/7
-   https://imeduuuu.github.io/narosasp/sistema.html
+   https://imeduuuu.github.io/narosasp/sistema
 
 2) El Panel (Dashboard) — dónde ves cada solicitud, su estado y el embudo de fiestas
-   https://imeduuuu.github.io/narosasp/dashboard.html
-   (acceso demo: usuario "narosa" · contraseña "party2026")
+   https://imeduuuu.github.io/narosasp/dashboard
+   (te envío los accesos en un correo aparte)
 
 3) La Inversión real — lo que cuesta montarlo y mantenerlo (aprovechando tu Shopify y dominio actuales)
-   https://imeduuuu.github.io/narosasp/inversion.html
+   https://imeduuuu.github.io/narosasp/inversion
 
 4) Presupuesto + Generador con IA — escribe 4 datos y la IA redacta el presupuesto listo para enviar por WhatsApp o email. Pruébalo tú misma:
-   https://imeduuuu.github.io/narosasp/presupuesto.html#personalizador
+   https://imeduuuu.github.io/narosasp/presupuesto#personalizador
 
 Échale un vistazo con calma y me dices qué te parece. Cualquier duda, aquí estoy.
 
