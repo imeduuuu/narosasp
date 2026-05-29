@@ -91,3 +91,73 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('main section[id], main #top').forEach(s => { if (s.id) sectionObs.observe(s); });
+
+/* ═══════════════════════════════════════
+   COOKIES BANNER + POP-UP DESCUENTO (email)
+═══════════════════════════════════════ */
+(function () {
+  // ── Banner de cookies ──
+  if (!localStorage.getItem('narosa_cookies')) {
+    const bar = document.createElement('div');
+    bar.className = 'cookie-bar';
+    bar.innerHTML =
+      '<p>🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. ' +
+      'Consulta nuestra <a href="cookies.html">Política de cookies</a>.</p>' +
+      '<div class="cookie-actions">' +
+        '<button class="btn btn-light" data-ck="no">Rechazar</button>' +
+        '<button class="btn btn-primary" data-ck="yes">Aceptar</button>' +
+      '</div>';
+    document.body.appendChild(bar);
+    requestAnimationFrame(() => setTimeout(() => bar.classList.add('show'), 400));
+    bar.addEventListener('click', (e) => {
+      const v = e.target.getAttribute('data-ck');
+      if (!v) return;
+      localStorage.setItem('narosa_cookies', v);
+      bar.classList.remove('show');
+      setTimeout(() => bar.remove(), 500);
+    });
+  }
+
+  // ── Pop-up de descuento (solo 1ª visita, al cargar) ──
+  if (!localStorage.getItem('narosa_promo')) {
+    const ov = document.createElement('div');
+    ov.className = 'promo-overlay';
+    ov.innerHTML =
+      '<div class="promo-card">' +
+        '<button class="promo-close" aria-label="Cerrar">×</button>' +
+        '<div class="promo-top">' +
+          '<div class="promo-emoji">🎈</div>' +
+          '<h3>-10% en tu primera fiesta</h3>' +
+          '<p>Apúntate y te enviamos tu código de descuento</p>' +
+        '</div>' +
+        '<div class="promo-body">' +
+          '<p>Déjanos tu email y recibe un <strong>10% de descuento</strong> en tu primer pedido de globos o decoración.</p>' +
+          '<form class="promo-form" novalidate>' +
+            '<input type="email" required placeholder="tu@email.com" aria-label="Tu email">' +
+            '<button type="submit" class="btn btn-primary">Quiero mi 10%</button>' +
+          '</form>' +
+          '<p class="promo-legal">Al suscribirte aceptas recibir comunicaciones de Narosa Sweet Party. Puedes darte de baja cuando quieras.</p>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(ov);
+
+    const close = () => {
+      ov.classList.remove('show');
+      localStorage.setItem('narosa_promo', '1');
+      setTimeout(() => ov.remove(), 450);
+    };
+    setTimeout(() => ov.classList.add('show'), 1200);
+    ov.querySelector('.promo-close').addEventListener('click', close);
+    ov.addEventListener('click', (e) => { if (e.target === ov) close(); });
+    ov.querySelector('.promo-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = ov.querySelector('input');
+      if (!input.value || !input.value.includes('@')) { input.focus(); input.style.borderColor = '#e23'; return; }
+      // Sin backend: confirmación visual (demo). Integrable con n8n/Mailchimp.
+      ov.querySelector('.promo-body').innerHTML =
+        '<div class="promo-success">✅ ¡Gracias! Usa el código <strong>NAROSA10</strong> en tu primera compra.<br>Te lo hemos enviado también a tu correo.</div>';
+      localStorage.setItem('narosa_promo', 'subscribed');
+      setTimeout(close, 3500);
+    });
+  }
+})();
