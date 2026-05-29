@@ -363,6 +363,135 @@
   </div>
 </section>
 
+<!-- ===== PERSONALIZADOR DE PRESUPUESTO CON IA (demo interactiva) ===== -->
+<section class="section" id="personalizador" style="background:linear-gradient(180deg,var(--coral-soft) 0%,#fff 100%);">
+  <div class="container">
+    <div class="center" style="max-width:680px;margin:0 auto 38px;">
+      <span style="display:inline-block;background:var(--coral);color:#fff;font-size:12px;font-weight:800;letter-spacing:1px;padding:6px 16px;border-radius:100px;text-transform:uppercase;">✨ Pruébalo ahora</span>
+      <h2 class="section-title reveal" style="margin-top:16px;">Crea un presupuesto con IA<br>y envíalo en 1 clic</h2>
+      <p class="reveal d1" style="color:var(--muted);">Escribe 4 datos sueltos. La IA redacta un presupuesto cálido y profesional, listo para enviar por email o WhatsApp.</p>
+    </div>
+
+    <div class="np-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+      <!-- ENTRADA -->
+      <div class="np-card reveal" style="background:#fff;border:1px solid rgba(123,79,232,.14);border-radius:24px;padding:28px;box-shadow:0 18px 60px rgba(104,51,208,.10);">
+        <h3 style="font-size:18px;font-weight:900;color:var(--ink);margin-bottom:18px;">📝 Datos de la fiesta</h3>
+        <label class="np-lab">Nombre del cliente</label>
+        <input id="np-name" class="np-in" type="text" placeholder="Ej. Laura Giménez">
+        <label class="np-lab">Tipo de fiesta</label>
+        <select id="np-type" class="np-in">
+          <option>Cumpleaños unicornio</option>
+          <option>Primer cumpleaños (1 añito)</option>
+          <option>Baby shower</option>
+          <option>Comunión</option>
+          <option>Cumpleaños dinosaurios</option>
+          <option>Evento de empresa</option>
+          <option>Otra celebración</option>
+        </select>
+        <div style="display:flex;gap:12px;">
+          <div style="flex:1;"><label class="np-lab">Nº invitados</label><input id="np-guests" class="np-in" type="text" placeholder="18"></div>
+          <div style="flex:1;"><label class="np-lab">Presupuesto aprox.</label><input id="np-budget" class="np-in" type="text" placeholder="450 €"></div>
+        </div>
+        <label class="np-lab">Detalles / lo que pide el cliente</label>
+        <textarea id="np-notes" class="np-in" rows="3" placeholder="Ej. arco de globos pastel, mesa dulce, photocall. Sábado por la tarde."></textarea>
+        <button id="np-gen" class="btn-primary" style="width:100%;margin-top:8px;border:none;cursor:pointer;font-size:15px;">✨ Personalizar con IA</button>
+      </div>
+
+      <!-- SALIDA -->
+      <div class="np-card reveal d1" style="background:linear-gradient(160deg,#fff,var(--coral-soft));border:1px solid rgba(123,79,232,.14);border-radius:24px;padding:28px;box-shadow:0 18px 60px rgba(104,51,208,.10);min-height:340px;display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--violet));display:flex;align-items:center;justify-content:center;font-size:16px;">🤖</span>
+          <div><div style="font-weight:800;color:var(--ink);font-size:14px;">Presupuesto generado</div><div id="np-status" style="font-size:11px;color:var(--muted);">Esperando datos…</div></div>
+        </div>
+        <div id="np-output" class="np-out" style="flex:1;background:#fff;border:1px dashed rgba(123,79,232,.25);border-radius:16px;padding:18px;font-size:13.5px;line-height:1.6;color:var(--text);white-space:pre-wrap;overflow:auto;">Rellena los datos y pulsa <b>Personalizar con IA</b> para ver la magia ✨</div>
+
+        <!-- ENVÍO -->
+        <div id="np-send" style="margin-top:18px;opacity:.45;pointer-events:none;transition:opacity .4s;">
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <button class="np-chan on" data-chan="wa">💬 WhatsApp</button>
+            <button class="np-chan" data-chan="email">✉️ Email</button>
+          </div>
+          <input id="np-dest" class="np-in" type="text" placeholder="Teléfono con prefijo (ej. 34640921671)">
+          <button id="np-go" class="btn-primary" style="width:100%;border:none;cursor:pointer;font-size:15px;">💬 Abrir borrador en WhatsApp</button>
+          <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:8px;">Abre tu app con el texto listo. Tú revisas y envías.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.np-lab{display:block;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;}
+.np-in{width:100%;background:#fff;border:1px solid rgba(123,79,232,.2);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14px;color:var(--ink);transition:border-color .25s,box-shadow .25s;}
+.np-in:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 3px rgba(123,79,232,.12);}
+.np-chan{flex:1;padding:10px;border:1px solid rgba(123,79,232,.25);background:#fff;border-radius:100px;font-family:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
+.np-chan.on{background:var(--coral);color:#fff;border-color:var(--coral);}
+.np-out b{color:var(--coral-deep);}
+.np-cursor::after{content:"▋";color:var(--coral);animation:npblink 1s steps(1) infinite;}
+@keyframes npblink{50%{opacity:0;}}
+@media(max-width:760px){.np-grid{grid-template-columns:1fr!important;}}
+</style>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  let chan='wa';
+  function build(){
+    const name=($('np-name').value||'').trim()||'la familia';
+    const type=$('np-type').value;
+    const guests=($('np-guests').value||'').trim();
+    const budget=($('np-budget').value||'').trim();
+    const notes=($('np-notes').value||'').trim();
+    const firstName=name.split(' ')[0];
+    const inc=[];
+    if(/unicornio/i.test(type))inc.push('Arco de globos pastel con unicornio','Mesa dulce temática','Photocall con cuerno y orejas');
+    else if(/1 añito|primer/i.test(type))inc.push('Globos orgánicos rosa y dorado','Letrero "1" gigante','Rincón smash cake');
+    else if(/baby/i.test(type))inc.push('Arco orgánico azul y blanco','Photocall "Oh Baby"','Detalles para invitados');
+    else if(/comuni/i.test(type))inc.push('Decoración elegante en tonos suaves','Columnas de globos','Photocall personalizado');
+    else if(/dinosaurio/i.test(type))inc.push('Arco de globos verde selva','Figuras de dinosaurios','Mesa temática prehistórica');
+    else if(/empresa/i.test(type))inc.push('Decoración con tu identidad de marca','Photocall corporativo','Montaje y desmontaje incluidos');
+    else inc.push('Decoración personalizada a tu temática','Globos a juego','Photocall para fotos');
+    const g=guests?` para ${guests} invitados`:'';
+    const extra=notes?`\n\nHe tomado nota de lo que comentaste: ${notes}. Lo tenemos todo cubierto. ✨`:'';
+    const price=budget?`\n\n💰 Presupuesto estimado: ${budget} (todo incluido: materiales, montaje y desmontaje).`:'\n\n💰 Te paso el presupuesto cerrado en cuanto confirmemos fecha.';
+    return `¡Hola ${firstName}! 🎈\n\nQué ilusión ayudarte con tu ${type.toLowerCase()}${g}. Te paso una propuesta hecha a medida:\n\n• ${inc.join('\n• ')}${extra}${price}\n\nSi te encaja, reservamos fecha y nos encargamos de TODO para que tú solo disfrutes del día. 💜\n\nUn abrazo,\nNarosa Sweet Party · Gràcia, Barcelona`;
+  }
+  function typeOut(text){
+    const out=$('np-output');out.textContent='';out.classList.add('np-cursor');
+    $('np-status').textContent='✍️ Redactando con IA…';
+    let i=0;const speed=12;
+    (function tick(){
+      if(i<=text.length){out.textContent=text.slice(0,i);i+=2;out.scrollTop=out.scrollHeight;setTimeout(tick,speed);}
+      else{out.classList.remove('np-cursor');$('np-status').textContent='✅ Listo para enviar';
+        const send=$('np-send');send.style.opacity='1';send.style.pointerEvents='auto';}
+    })();
+  }
+  $('np-gen').addEventListener('click',()=>{
+    $('np-status').textContent='🤖 Pensando…';
+    $('np-output').textContent='';
+    setTimeout(()=>typeOut(build()),650);
+  });
+  document.querySelectorAll('.np-chan').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.np-chan').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    chan=b.dataset.chan;
+    if(chan==='wa'){$('np-dest').placeholder='Teléfono con prefijo (ej. 34640921671)';$('np-go').textContent='💬 Abrir borrador en WhatsApp';}
+    else{$('np-dest').placeholder='Email del cliente (ej. laura@email.com)';$('np-go').textContent='✉️ Abrir borrador en correo';}
+  }));
+  $('np-go').addEventListener('click',()=>{
+    const txt=$('np-output').textContent.trim();
+    if(!txt||txt.length<40){alert('Primero genera el presupuesto con IA ✨');return;}
+    const dest=($('np-dest').value||'').trim();
+    if(chan==='wa'){
+      const phone=dest.replace(/[^0-9]/g,'');
+      window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(txt),'_blank');
+    }else{
+      const subj=encodeURIComponent('Tu presupuesto · Narosa Sweet Party 🎈');
+      window.location.href='mailto:'+encodeURIComponent(dest)+'?subject='+subj+'&body='+encodeURIComponent(txt);
+    }
+  });
+})();
+</script>
+
 <!-- CTA -->
 <section class="section cta-section">
   <div class="container">
