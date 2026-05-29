@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narosa Sweet Party — Panel de Gestión</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎈</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#fffdfc;--bg2:#fbf5ff;--surface:#ffffff;
+--ink:#2b2430;--ink2:#473d52;
+--tx:#6f6877;--tx2:#9a93a3;--tx3:#bcb6c4;
+--purple:#7c5ce7;--purple2:#9b80ee;--purple3:#6344c9;--purple-g:rgba(124,92,231,.1);
+--pink:#ff78a8;--yellow:#ffc842;--mint:#75d9c2;
+--green:#34b58a;--green-bg:rgba(52,181,138,.13);
+--red:#ff6b8a;--red-bg:rgba(255,107,138,.13);
+--orange:#f5a623;--orange-bg:rgba(245,166,35,.14);
+--blue:#5b85bd;--blue-bg:rgba(91,133,189,.12);
+--line:rgba(43,36,48,.08);--line2:rgba(43,36,48,.14);--line3:rgba(43,36,48,.2);
+--sans:'Poppins',system-ui,sans-serif;
+--ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--bg);color:var(--tx);font-size:14px;line-height:1.55;font-weight:400;overflow-x:hidden}
+::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(124,92,231,.3);border-radius:10px}
+::selection{background:var(--purple);color:#fff}
+
+/* ===== FONDO ANIMADO ===== */
+.bgfx{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.45;will-change:transform}
+.orb.a{width:560px;height:560px;background:radial-gradient(circle,rgba(124,92,231,.45),transparent 65%);top:-160px;left:-120px;animation:dr1 24s ease-in-out infinite}
+.orb.b{width:480px;height:480px;background:radial-gradient(circle,rgba(255,120,168,.4),transparent 65%);bottom:-180px;right:-100px;animation:dr2 28s ease-in-out infinite}
+.orb.c{width:400px;height:400px;background:radial-gradient(circle,rgba(255,200,66,.4),transparent 65%);top:45%;left:55%;animation:dr3 32s ease-in-out infinite}
+@keyframes dr1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(130px,90px) scale(1.12)}66%{transform:translate(70px,170px) scale(.95)}}
+@keyframes dr2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-140px,-80px) scale(1.08)}66%{transform:translate(-80px,-160px) scale(.92)}}
+@keyframes dr3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-170px,100px) scale(1.16)}}
+.cursor-glow{position:fixed;top:0;left:0;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,231,.14),transparent 65%);transform:translate(-50%,-50%);pointer-events:none;z-index:1;transition:opacity .4s;opacity:0;will-change:left,top}
+
+/* ===== LOGIN ===== */
+.app{display:none}.app.ready{display:grid}
+.login{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--bg)}
+.login.hide{display:none}
+.login-box{position:relative;z-index:3;width:100%;max-width:400px;background:rgba(255,255,255,.72);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.8);border-radius:24px;padding:46px 40px;box-shadow:0 30px 80px rgba(98,71,168,.16),inset 0 1px 0 rgba(255,255,255,.9);animation:boxIn 1s var(--ease) both}
+@keyframes boxIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.login-box::before{content:"";position:absolute;top:0;left:28px;right:28px;height:2px;background:linear-gradient(90deg,transparent,var(--purple),var(--pink),transparent);background-size:200% 100%;animation:shine 4.5s linear infinite}
+@keyframes shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.login-logo{display:flex;align-items:center;gap:10px;justify-content:center;font-size:24px;font-weight:900;letter-spacing:-.01em;color:var(--ink);margin-bottom:8px}
+.login-sub{text-align:center;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--tx2);margin-bottom:34px;font-weight:600}
+.lf{margin-bottom:18px}
+.lf-label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);font-weight:600;margin-bottom:8px}
+.lf-input{width:100%;background:rgba(255,255,255,.7);border:1px solid var(--line2);border-radius:12px;padding:13px 15px;color:var(--ink);font-family:var(--sans);font-size:14px;font-weight:400;transition:border-color .3s,box-shadow .3s}
+.lf-input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,92,231,.12)}
+.login-btn{width:100%;margin-top:8px;padding:14px;background:linear-gradient(135deg,var(--purple),var(--purple3));border:none;border-radius:12px;color:#fff;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:transform .1s,box-shadow .3s;box-shadow:0 8px 24px rgba(124,92,231,.28)}
+.login-btn:hover{box-shadow:0 12px 32px rgba(124,92,231,.4)}.login-btn:active{transform:scale(.98)}
+.login-err{margin-top:14px;text-align:center;font-size:12px;color:var(--red);min-height:16px;opacity:0;transition:opacity .2s}.login-err.show{opacity:1}
+.login-hint{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-size:10px;color:var(--tx2);text-align:center;letter-spacing:.5px}
+.login-hint code{color:var(--purple);background:var(--purple-g);padding:2px 7px;border-radius:5px;font-family:monospace}
+
+/* ===== LAYOUT ===== */
+.app{grid-template-columns:262px 1fr;min-height:100vh;position:relative;z-index:2}
+.sb{position:sticky;top:0;height:100vh;background:rgba(255,255,255,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto}
+.sb-top{padding:28px 26px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.sb-logo{font-size:19px;font-weight:900;letter-spacing:-.01em;color:var(--ink)}
+.sb-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(52,181,138,.6);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 8px rgba(52,181,138,.5)}50%{box-shadow:0 0 16px rgba(52,181,138,.75)}}
+.sb-nav{flex:1;padding:18px 0}
+.sb-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--tx3);padding:18px 26px 10px;font-weight:700}
+.sb-item{display:flex;align-items:center;gap:12px;padding:11px 22px;margin:2px 12px;border-radius:12px;font-size:13.5px;color:var(--tx);cursor:pointer;transition:all .3s var(--ease);border:1px solid transparent;font-weight:500}
+.sb-item:hover{background:rgba(124,92,231,.07);color:var(--ink);transform:translateX(3px)}
+.sb-item.on{background:linear-gradient(135deg,var(--purple),var(--purple3));color:#fff;border-color:var(--purple);box-shadow:0 8px 20px rgba(124,92,231,.3)}
+.sb-item .ic{width:18px;display:flex;align-items:center;flex-shrink:0;opacity:.7}.sb-item.on .ic{opacity:1}
+.sb-item .badge{margin-left:auto;font-size:10px;font-weight:700;padding:2px 9px;border-radius:100px}
+.b-hot{background:var(--red-bg);color:var(--red)}.b-num{background:rgba(43,36,48,.06);color:var(--tx2)}
+.sb-item.on .badge{background:rgba(255,255,255,.25);color:#fff}
+.sb-foot{padding:18px 22px;border-top:1px solid var(--line)}
+.sb-user{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.sb-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:.5px}
+.sb-uname{font-size:13px;font-weight:600;color:var(--ink)}.sb-urole{font-size:11px;color:var(--tx2)}
+.logout{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line2);border-radius:10px;cursor:pointer;font-family:var(--sans);color:var(--tx);transition:all .3s;font-weight:600}
+.logout:hover{border-color:var(--purple);color:var(--purple)}
+
+.mob-bar{display:none;position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 20px;background:rgba(255,253,252,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);justify-content:space-between;align-items:center}
+.mob-bar .sb-logo{font-size:18px}
+.mob-burger{display:flex;flex-direction:column;gap:5px;cursor:pointer}.mob-burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+@media(max-width:920px){.app{grid-template-columns:1fr}.sb{display:none}.mob-bar{display:flex}.sb.mob-open{display:flex;position:fixed;inset:0;z-index:99;width:280px}.main{padding-top:74px!important}}
+
+/* ===== MAIN ===== */
+.main{padding:38px 44px;overflow-x:hidden}
+.pg-top{margin-bottom:32px}
+.pg-title{font-size:34px;font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
+.pg-sub{font-size:13px;color:var(--tx2);margin-top:4px;letter-spacing:.2px}
+
+.tilt{transition:transform .3s var(--ease),box-shadow .4s}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.07s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.21s}.reveal.d4{transition-delay:.28s}
+
+.glass{background:rgba(255,255,255,.66);backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%);border:1px solid rgba(255,255,255,.7);box-shadow:0 10px 40px rgba(98,71,168,.07),inset 0 1px 0 rgba(255,255,255,.8)}
+
+/* METRICS */
+.mets{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+.met{border-radius:20px;padding:24px;position:relative;overflow:hidden}
+.met .glow{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,231,.18),transparent 60%);left:var(--mx,50%);top:var(--my,50%);transform:translate(-50%,-50%);opacity:0;transition:opacity .35s;pointer-events:none}
+.met:hover .glow{opacity:1}
+.met-label{font-size:10px;color:var(--tx2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;font-weight:600}
+.met-val{font-size:42px;font-weight:900;line-height:1;color:var(--ink);letter-spacing:-.03em}
+.met-change{font-size:11px;margin-top:10px;font-weight:600;letter-spacing:.3px}
+.met-change.up{color:var(--green)}.met-change.down{color:var(--red)}
+.met.feat{background:linear-gradient(160deg,#fff,rgba(124,92,231,.12))}
+.met.feat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--purple),var(--pink),transparent)}
+.met.feat .met-val{color:var(--purple3)}
+@media(max-width:760px){.mets{grid-template-columns:1fr 1fr}}
+
+/* CARD */
+.card{border-radius:20px;margin-bottom:22px;overflow:hidden;position:relative}
+.card-h{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}
+.card-t{font-size:18px;font-weight:800;color:var(--ink)}
+.card-a{font-size:10px;color:var(--purple);cursor:pointer;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}.card-a:hover{color:var(--purple3)}
+
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);font-weight:700;padding:13px 18px;border-bottom:1px solid var(--line)}
+td{padding:15px 18px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr{transition:background .25s}tr.clickable{cursor:pointer}tr.clickable:hover td{background:rgba(124,92,231,.05)}
+.td-n{font-weight:600;color:var(--ink)}.td-s{font-size:11px;color:var(--tx2);margin-top:2px}
+@keyframes rowIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+tbody tr{animation:rowIn .4s var(--ease) both}
+tbody tr:nth-child(1){animation-delay:.05s}tbody tr:nth-child(2){animation-delay:.1s}tbody tr:nth-child(3){animation-delay:.15s}tbody tr:nth-child(4){animation-delay:.2s}tbody tr:nth-child(5){animation-delay:.25s}tbody tr:nth-child(6){animation-delay:.3s}
+
+.st{display:inline-block;padding:4px 11px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.3px}
+.s-hot{background:var(--red-bg);color:var(--red)}.s-warm{background:var(--orange-bg);color:var(--orange)}
+.s-cold{background:rgba(43,36,48,.05);color:var(--tx2)}.s-new{background:var(--blue-bg);color:var(--blue)}.s-ok{background:var(--green-bg);color:var(--green)}
+.sc-pill{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:13px;color:var(--ink)}
+.sc-bar{width:54px;height:6px;background:rgba(43,36,48,.08);border-radius:3px;overflow:hidden}
+.sc-f{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--purple),var(--pink))}
+.ch{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:.4px}
+.c-wa{background:rgba(37,211,102,.1);color:#1f9d54}.c-ig{background:rgba(225,48,108,.1);color:#c23167}
+.c-ads{background:rgba(74,138,255,.1);color:#3f74d6}.c-web{background:var(--purple-g);color:var(--purple3)}
+.c-em{background:rgba(91,133,189,.12);color:var(--blue)}
+
+.tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.tab{padding:9px 20px;font-size:12px;font-weight:500;color:var(--tx);cursor:pointer;border:1px solid var(--line2);border-radius:100px;transition:all .25s;letter-spacing:.3px}
+.tab:hover{border-color:var(--purple)}.tab.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+
+.pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.pipe-col{border-radius:16px;padding:16px 12px;min-height:240px}
+.pipe-hd{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);font-weight:700;margin-bottom:4px}
+.pipe-ct{font-size:28px;font-weight:900;margin-bottom:16px;color:var(--ink)}
+.pipe-card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px;margin-bottom:8px;cursor:pointer;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s}
+.pipe-card:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 10px 24px rgba(98,71,168,.12)}
+.pk-n{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px}.pk-p{font-size:11px;color:var(--purple3);font-weight:600}.pk-s{font-size:10px;color:var(--tx2);margin-top:4px}
+@media(max-width:1100px){.pipe{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.pipe{grid-template-columns:repeat(2,1fr)}}
+
+.chart{height:230px;display:flex;align-items:flex-end;gap:10px;padding:24px 16px 8px}
+.chart-bar{flex:1;border-radius:8px 8px 0 0;transition:height .9s var(--ease);position:relative;cursor:pointer;min-height:4px}
+.chart-bar:hover{filter:brightness(1.08)}
+.chart-bar .cv{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--ink);font-weight:700;opacity:0;transition:opacity .2s}
+.chart-bar:hover .cv{opacity:1}
+.chart-labels{display:flex;gap:10px;padding:8px 16px 18px}.chart-labels span{flex:1;text-align:center;font-size:10px;color:var(--tx2);letter-spacing:.5px}
+
+.sent-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+.s-svc{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-bottom:1px solid var(--line)}.s-svc:last-child{border-bottom:none}
+.s-svc-n{font-size:13px;color:var(--ink)}.s-svc-st{font-size:10px;font-weight:700;padding:4px 11px;border-radius:100px}
+.log-i{display:flex;gap:11px;padding:12px 18px;border-bottom:1px solid var(--line);font-size:12.5px;align-items:flex-start}.log-i:last-child{border-bottom:none}
+.log-t{color:var(--tx3);flex-shrink:0;min-width:46px;font-family:monospace;font-size:11px}.log-m{color:var(--tx)}.log-m strong{color:var(--green);font-weight:700}
+@media(max-width:800px){.sent-grid{grid-template-columns:1fr}}
+
+.cost-top{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px}
+.cost-c{border-radius:16px;padding:24px;text-align:center}
+.cost-v{font-size:34px;font-weight:900;color:var(--purple3);margin-bottom:4px}
+.cost-l{font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+
+.view{display:none}.view.active{display:block}
+
+/* PANEL */
+.lp-overlay{position:fixed;inset:0;z-index:199;background:rgba(43,36,48,.3);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s}.lp-overlay.show{opacity:1;pointer-events:all}
+.lead-panel{position:fixed;top:0;right:0;height:100%;width:380px;max-width:90vw;background:rgba(255,255,255,.94);backdrop-filter:blur(24px);z-index:200;transform:translateX(100%);transition:transform .45s var(--ease);display:flex;flex-direction:column;box-shadow:-30px 0 70px rgba(98,71,168,.18);border-left:1px solid var(--line2)}
+.lead-panel.open{transform:none}
+.lp-head{padding:24px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.lp-title{font-size:22px;font-weight:800;color:var(--ink)}
+.lp-close{width:34px;height:34px;border:1px solid var(--line2);border-radius:50%;background:#fff;cursor:pointer;color:var(--tx2);font-size:15px;transition:all .2s}.lp-close:hover{border-color:var(--purple);color:var(--purple)}
+.lp-body{flex:1;overflow-y:auto;padding:26px}
+.lp-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+.lp-key{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--tx2);font-weight:600}.lp-val{font-size:13.5px;font-weight:600;color:var(--ink);text-align:right}
+.lp-actions{padding:22px 26px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
+.lp-btn{padding:12px;border-radius:11px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .25s;text-align:center;border:none}
+.lp-btn-p{background:linear-gradient(135deg,var(--purple),var(--purple3));color:#fff}.lp-btn-p:hover{filter:brightness(1.05)}
+.lp-btn-s{background:transparent;border:1px solid var(--line2);color:var(--tx)}.lp-btn-s:hover{border-color:var(--purple);color:var(--purple)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.orb,.cursor-glow{display:none}*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- FONDO ANIMADO + CURSOR GLOW -->
+<div class="bgfx"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
+<div class="cursor-glow" id="cglow"></div>
+
+<!-- LOGIN -->
+<div class="login" id="login">
+  <div class="login-box">
+    <div class="login-logo">🎈 Narosa Sweet Party</div>
+    <div class="login-sub">Panel de Gestión · Acceso Restringido</div>
+    <form id="loginForm" autocomplete="off">
+      <div class="lf"><label class="lf-label" for="luser">Usuario</label><input class="lf-input" type="text" id="luser" placeholder="usuario"></div>
+      <div class="lf"><label class="lf-label" for="lpass">Contraseña</label><input class="lf-input" type="password" id="lpass" placeholder="••••••••"></div>
+      <button class="login-btn" type="submit">Entrar</button>
+      <div class="login-err" id="loginErr">Usuario o contraseña incorrectos</div>
+    </form>
+    <div class="login-hint">Admin <code>admin</code> · Equipo <code>narosa</code></div>
+  </div>
+</div>
+
+<!-- MOBILE BAR -->
+<div class="mob-bar">
+  <div class="sb-logo" style="display:flex;align-items:center;gap:10px"><span class="sb-dot"></span>Narosa Sweet Party</div>
+  <div class="mob-burger" id="mobBurger"><span></span><span></span><span></span></div>
+</div>
+
+<div class="app">
+<!-- SIDEBAR -->
+<aside class="sb" id="sidebar">
+  <div class="sb-top"><span class="sb-dot"></span><span class="sb-logo">Narosa Sweet Party</span></div>
+  <nav class="sb-nav">
+    <div class="sb-label">Principal</div>
+    <div class="sb-item on" data-v="overview"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Resumen<span class="badge b-hot">3</span></div>
+    <div class="sb-item" data-v="leads"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>Solicitudes<span class="badge b-num">42</span></div>
+    <div class="sb-item" data-v="pipeline"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="4" height="18" rx="1"/><rect x="10" y="3" width="4" height="13" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg></span>Agenda fiestas</div>
+    <div class="sb-item" data-v="instagram"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span>Instagram</div>
+    <div id="eduSec">
+      <div class="sb-label">Técnico</div>
+      <div class="sb-item" data-v="sentinel"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Sentinel</div>
+      <div class="sb-item" data-v="costs"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Costes</div>
+      <div class="sb-item" data-v="errors"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r=".7" fill="currentColor" stroke="none"/></svg></span>Errores<span class="badge b-num">1</span></div>
+    </div>
+  </nav>
+  <div class="sb-foot">
+    <div class="sb-user"><div class="sb-av" id="uAv">NR</div><div><div class="sb-uname" id="uName">Narosa</div><div class="sb-urole" id="uRole">Equipo</div></div></div>
+    <button class="logout" id="logoutBtn">Cerrar sesión</button>
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- OVERVIEW -->
+<div class="view active" id="v-overview">
+  <div class="pg-top reveal"><div class="pg-title">Resumen del sistema</div><div class="pg-sub">Última actualización hace 2 min · Todos los servicios operativos</div></div>
+  <div class="mets">
+    <div class="met glass tilt reveal"><div class="glow"></div><div class="met-label">Solicitudes esta semana</div><div class="met-val" data-count="19">0</div><div class="met-change up">↑ 21% vs anterior</div></div>
+    <div class="met glass feat tilt reveal d1"><div class="glow"></div><div class="met-label">Fiestas confirmadas</div><div class="met-val" data-count="6">0</div><div class="met-change up">↑ 2 nuevas hoy</div></div>
+    <div class="met glass tilt reveal d2"><div class="glow"></div><div class="met-label">Resp. IA · Claude</div><div class="met-val" data-count="34" data-suffix="s">0</div><div class="met-change up">↑ 9s más rápido</div></div>
+    <div class="met glass tilt reveal d3"><div class="glow"></div><div class="met-label">Tasa de cierre</div><div class="met-val" data-count="32" data-suffix="%">0</div><div class="met-change up">↑ 4% vs semana</div></div>
+  </div>
+  <div class="card glass reveal"><div class="card-h"><div class="card-t">Solicitudes recientes</div><div class="card-a" id="seeAll">Ver todas →</div></div>
+    <table><thead><tr><th>Cliente</th><th>Canal</th><th>Tipo de fiesta</th><th>Interés</th><th>Estado</th><th>Hace</th></tr></thead><tbody>
+      <tr class="clickable" data-lead='{"name":"Laura Giménez","phone":"+34 6XX XXX","email":"laura@email.com","canal":"IG Ads","prop":"Cumple unicornio · 6 años","budget":"450 €","score":91,"nivel":"Caliente","turno":6,"resumen":"Quiere fiesta temática unicornio para 18 niños, sábado en 3 semanas. Pide arco de globos + mesa dulce.","accion":"Enviar presupuesto hoy","wf":"WF-3"}'><td><div class="td-n">Laura Giménez</div><div class="td-s">Gràcia · +34</div></td><td><span class="ch c-ads">IG Ads</span></td><td>Cumple unicornio</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:91%"></span></span>91</span></td><td><span class="st s-hot">Caliente</span></td><td>9 min</td></tr>
+      <tr class="clickable" data-lead='{"name":"Marc Soler","phone":"+34 6XX XXX","email":"marc@email.com","canal":"WhatsApp","prop":"Baby shower","budget":"~600 €","score":80,"nivel":"Caliente","turno":7,"resumen":"Baby shower sorpresa, paleta pastel azul/blanco. Globos orgánicos + photocall.","accion":"Enviar moodboard","wf":"WF-2"}'><td><div class="td-n">Marc Soler</div><div class="td-s">Eixample · +34</div></td><td><span class="ch c-wa">WhatsApp</span></td><td>Baby shower</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:80%"></span></span>80</span></td><td><span class="st s-hot">Caliente</span></td><td>40 min</td></tr>
+      <tr class="clickable" data-lead='{"name":"Núria Pons","phone":"+34 6XX","email":"nuria@email.com","canal":"Web","prop":"Comunión","budget":"800 €","score":66,"nivel":"Templado","turno":5,"resumen":"Comunión 40 invitados en mayo. Compara con otra empresa. Le importa la puntualidad.","accion":"Follow-up D+1","wf":"WF-5"}'><td><div class="td-n">Núria Pons</div><div class="td-s">Sants · +34</div></td><td><span class="ch c-web">Web</span></td><td>Comunión</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:66%"></span></span>66</span></td><td><span class="st s-warm">Templado</span></td><td>2h</td></tr>
+      <tr class="clickable" data-lead='{"name":"Jordi Vidal","phone":"+34 6XX","email":"—","canal":"Email","prop":"Evento empresa","budget":"1.200 €","score":57,"nivel":"Nuevo","turno":2,"resumen":"Inauguración local, quiere decoración corporativa con su marca. Sin fecha cerrada.","accion":"Esperar respuesta","wf":"WF-1"}'><td><div class="td-n">Jordi Vidal</div><div class="td-s">Poblenou · +34</div></td><td><span class="ch c-em">Email</span></td><td>Evento empresa</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:57%"></span></span>57</span></td><td><span class="st s-new">Nuevo</span></td><td>3h</td></tr>
+    </tbody></table>
+  </div>
+  <div class="card glass reveal"><div class="card-h"><div class="card-t">Solicitudes por canal · 30 días</div></div>
+    <div class="chart" id="chart"></div>
+    <div class="chart-labels"><span>WhatsApp</span><span>IG DMs</span><span>IG Ads</span><span>Web</span><span>Email</span><span>Recomend.</span></div>
+  </div>
+</div>
+
+<!-- LEADS -->
+<div class="view" id="v-leads">
+  <div class="pg-top reveal"><div class="pg-title">Todas las solicitudes</div><div class="pg-sub">42 solicitudes · 6 calientes · 11 templadas · 25 frías</div></div>
+  <div class="tabs reveal" id="leadTabs"><div class="tab on" data-filter="all">Todas (42)</div><div class="tab" data-filter="hot">Calientes (6)</div><div class="tab" data-filter="warm">Templadas (11)</div><div class="tab" data-filter="cold">Frías (25)</div></div>
+  <div class="card glass reveal"><table><thead><tr><th>Cliente</th><th>Canal</th><th>Tipo de fiesta</th><th>Presupuesto</th><th>Interés</th><th>Estado</th><th>Próximo paso</th></tr></thead><tbody id="leadsBody">
+    <tr class="clickable" data-status="hot" data-lead='{"name":"Laura Giménez","phone":"+34 6XX","email":"laura@email.com","canal":"IG Ads","prop":"Cumple unicornio · 6 años","budget":"450 €","score":91,"nivel":"Caliente","turno":6,"resumen":"Fiesta unicornio 18 niños. Arco de globos + mesa dulce.","accion":"Enviar presupuesto hoy","wf":"WF-3"}'><td><div class="td-n">Laura Giménez</div><div class="td-s">+34 · laura@email.com</div></td><td><span class="ch c-ads">IG Ads</span></td><td>Cumple unicornio</td><td>450 €</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:91%"></span></span>91</span></td><td><span class="st s-hot">Caliente</span></td><td style="color:var(--purple3)">Presupuesto hoy</td></tr>
+    <tr class="clickable" data-status="hot" data-lead='{"name":"Elena Ruiz","phone":"+34 6XX","email":"elena@email.com","canal":"WhatsApp","prop":"Cumple 1 añito","budget":"550 €","score":87,"nivel":"Caliente","turno":8,"resumen":"Primer cumpleaños, smash cake + globos orgánicos rosa/dorado. Visita el sábado.","accion":"Preparar montaje","wf":"WF-4"}'><td><div class="td-n">Elena Ruiz</div><div class="td-s">+34 · elena@email.com</div></td><td><span class="ch c-wa">WhatsApp</span></td><td>Cumple 1 añito</td><td>550 €</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:87%"></span></span>87</span></td><td><span class="st s-hot">Caliente</span></td><td style="color:var(--green)">Sábado 11h</td></tr>
+    <tr class="clickable" data-status="hot" data-lead='{"name":"Marc Soler","phone":"+34 6XX","email":"marc@email.com","canal":"WhatsApp","prop":"Baby shower","budget":"~600 €","score":80,"nivel":"Caliente","turno":7,"resumen":"Baby shower sorpresa, pastel azul/blanco + photocall.","accion":"Enviar moodboard","wf":"WF-2"}'><td><div class="td-n">Marc Soler</div><div class="td-s">+34 · marc@email.com</div></td><td><span class="ch c-wa">WhatsApp</span></td><td>Baby shower</td><td>~600 €</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:80%"></span></span>80</span></td><td><span class="st s-hot">Caliente</span></td><td>Moodboard</td></tr>
+    <tr class="clickable" data-status="warm" data-lead='{"name":"Núria Pons","phone":"+34 6XX","email":"nuria@email.com","canal":"Web","prop":"Comunión","budget":"800 €","score":66,"nivel":"Templado","turno":5,"resumen":"Comunión 40 invitados en mayo. Compara presupuestos.","accion":"Follow-up D+1","wf":"WF-5"}'><td><div class="td-n">Núria Pons</div><div class="td-s">+34 · nuria@email.com</div></td><td><span class="ch c-web">Web</span></td><td>Comunión</td><td>800 €</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:66%"></span></span>66</span></td><td><span class="st s-warm">Templado</span></td><td>D+1 mañana</td></tr>
+    <tr class="clickable" data-status="warm" data-lead='{"name":"Sara Martí","phone":"+34 6XX","email":"—","canal":"IG DMs","prop":"Cumple dinosaurios","budget":"400 €","score":61,"nivel":"Templado","turno":4,"resumen":"Cumple temático dinos, 5 años. Pregunta por disponibilidad de junio.","accion":"Confirmar fecha","wf":"WF-5"}'><td><div class="td-n">Sara Martí</div><div class="td-s">+34 · Instagram</div></td><td><span class="ch c-ig">IG DMs</span></td><td>Cumple dinosaurios</td><td>400 €</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:61%"></span></span>61</span></td><td><span class="st s-warm">Templado</span></td><td>Confirmar fecha</td></tr>
+    <tr class="clickable" data-status="new" data-lead='{"name":"Jordi Vidal","phone":"+34 6XX","email":"—","canal":"Email","prop":"Evento empresa","budget":"1.200 €","score":57,"nivel":"Nuevo","turno":2,"resumen":"Inauguración local, decoración corporativa. Sin fecha.","accion":"Esperar respuesta","wf":"WF-1"}'><td><div class="td-n">Jordi Vidal</div><div class="td-s">+34 · Email</div></td><td><span class="ch c-em">Email</span></td><td>Evento empresa</td><td>1.200 €</td><td><span class="sc-pill"><span class="sc-bar"><span class="sc-f" style="width:57%"></span></span>57</span></td><td><span class="st s-new">Nuevo</span></td><td>Pendiente</td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- PIPELINE / AGENDA -->
+<div class="view" id="v-pipeline">
+  <div class="pg-top reveal"><div class="pg-title">Agenda de fiestas</div><div class="pg-sub">Vista Kanban · el sistema mueve cada solicitud sola según la conversación</div></div>
+  <div class="pipe reveal">
+    <div class="pipe-col glass"><div class="pipe-hd">Nueva</div><div class="pipe-ct">7</div><div class="pipe-card"><div class="pk-n">Jordi Vidal</div><div class="pk-p">1.200 €</div><div class="pk-s">Interés 57 · Email</div></div></div>
+    <div class="pipe-col glass"><div class="pipe-hd">Cualificada</div><div class="pipe-ct">11</div><div class="pipe-card"><div class="pk-n">Núria Pons</div><div class="pk-p">800 €</div><div class="pk-s">Interés 66</div></div><div class="pipe-card"><div class="pk-n">Sara Martí</div><div class="pk-p">400 €</div><div class="pk-s">Interés 61</div></div></div>
+    <div class="pipe-col glass"><div class="pipe-hd">Presupuesto</div><div class="pipe-ct">6</div><div class="pipe-card"><div class="pk-n">Marc Soler</div><div class="pk-p">~600 €</div><div class="pk-s">Interés 80</div></div><div class="pipe-card" style="border-color:var(--purple)"><div class="pk-n">Laura Giménez</div><div class="pk-p">450 €</div><div class="pk-s">Enviado · 91</div></div></div>
+    <div class="pipe-col glass"><div class="pipe-hd">Confirmada</div><div class="pipe-ct">3</div><div class="pipe-card" style="border-color:var(--green)"><div class="pk-n">Elena Ruiz</div><div class="pk-p">550 €</div><div class="pk-s">Sáb 11h · 87</div></div></div>
+    <div class="pipe-col glass"><div class="pipe-hd">Celebrada</div><div class="pipe-ct" style="color:var(--green)">1</div><div class="pipe-card" style="border-color:var(--green);background:var(--green-bg)"><div class="pk-n">Família Roca</div><div class="pk-p" style="color:var(--green)">720 €</div><div class="pk-s">Cumple sirena ✓</div></div></div>
+    <div class="pipe-col glass"><div class="pipe-hd">Perdida</div><div class="pipe-ct" style="color:var(--tx3)">9</div><div class="pipe-card" style="opacity:.5"><div class="pk-n">P. Llull</div><div class="pk-p">—</div><div class="pk-s">Fuera de fecha</div></div></div>
+  </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="view" id="v-instagram">
+  <div class="pg-top reveal"><div class="pg-title">Instagram · Content Autopilot</div><div class="pg-sub">Calendario editorial y métricas</div></div>
+  <div class="mets">
+    <div class="met glass tilt reveal"><div class="glow"></div><div class="met-label">Posts semana</div><div class="met-val" data-count="5">0</div><div class="met-change up">Todos aprobados</div></div>
+    <div class="met glass tilt reveal d1"><div class="glow"></div><div class="met-label">Alcance medio</div><div class="met-val" data-count="3100" data-suffix="">0</div><div class="met-change up">↑ 26%</div></div>
+    <div class="met glass feat tilt reveal d2"><div class="glow"></div><div class="met-label">Solicitudes desde IG</div><div class="met-val" data-count="11">0</div><div class="met-change up">3 calientes</div></div>
+    <div class="met glass tilt reveal d3"><div class="glow"></div><div class="met-label">Engagement</div><div class="met-val" data-count="5" data-suffix=".1%">0</div><div class="met-change up">Excelente</div></div>
+  </div>
+  <div class="card glass reveal"><div class="card-h"><div class="card-t">Publicaciones programadas</div></div>
+    <table><thead><tr><th>Fecha</th><th>Tipo</th><th>Contenido</th><th>Estado</th><th>Hora</th></tr></thead><tbody>
+      <tr><td><strong>Hoy 29 May</strong></td><td><span class="ch c-ig">Reel</span></td><td>Montaje arco de globos unicornio 30s</td><td><span class="st s-ok">Publicado</span></td><td>18:30</td></tr>
+      <tr><td>30 May</td><td><span class="ch c-ads">Carrusel</span></td><td>5 ideas para un baby shower pastel</td><td><span class="st s-new">Aprobado</span></td><td>12:00</td></tr>
+      <tr><td>31 May</td><td><span class="ch c-em">Foto</span></td><td>Mesa dulce comunión · antes/después</td><td><span class="st s-warm">Pendiente OK</span></td><td>18:30</td></tr>
+      <tr><td>1 Jun</td><td><span class="ch c-ig">Reel</span></td><td>"3 errores al organizar un cumple infantil"</td><td><span class="st s-warm">Borrador</span></td><td>—</td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- SENTINEL -->
+<div class="view" id="v-sentinel">
+  <div class="pg-top reveal"><div class="pg-title">Sentinel · Estado del sistema</div><div class="pg-sub">Monitorización 24/7 · Último chequeo hace 41s</div></div>
+  <div class="mets">
+    <div class="met glass tilt reveal"><div class="glow"></div><div class="met-label">Uptime</div><div class="met-val" style="color:var(--green)">99.98%</div><div class="met-change up">30 días</div></div>
+    <div class="met glass tilt reveal d1"><div class="glow"></div><div class="met-label">Auto-fixes hoy</div><div class="met-val" data-count="2">0</div><div class="met-change up">Resueltos</div></div>
+    <div class="met glass tilt reveal d2"><div class="glow"></div><div class="met-label">Errores abiertos</div><div class="met-val" style="color:var(--green)">0</div><div class="met-change up">Limpio</div></div>
+    <div class="met glass tilt reveal d3"><div class="glow"></div><div class="met-label">Total auto-fixes</div><div class="met-val" data-count="38">0</div><div class="met-change">Desde lanzamiento</div></div>
+  </div>
+  <div class="sent-grid">
+    <div class="card glass reveal"><div class="card-h"><div class="card-t">Servicios</div></div>
+      <div class="s-svc"><span class="s-svc-n">WhatsApp Business API</span><span class="s-svc-st s-ok">Operativo</span></div>
+      <div class="s-svc"><span class="s-svc-n">Claude AI (Anthropic)</span><span class="s-svc-st s-ok">Operativo</span></div>
+      <div class="s-svc"><span class="s-svc-n">Instagram Graph API</span><span class="s-svc-st s-ok">Operativo</span></div>
+      <div class="s-svc"><span class="s-svc-n">n8n (9 workflows)</span><span class="s-svc-st s-ok">Operativo</span></div>
+      <div class="s-svc"><span class="s-svc-n">Servidor + Redis</span><span class="s-svc-st s-ok">Operativo</span></div>
+      <div class="s-svc"><span class="s-svc-n">SSL · Certificado</span><span class="s-svc-st s-ok">91 días</span></div>
+    </div>
+    <div class="card glass reveal d1"><div class="card-h"><div class="card-t">Actividad reciente</div></div>
+      <div class="log-i"><span class="log-t">08:40</span><span>✅</span><span class="log-m">Chequeo: 6/6 OK</span></div>
+      <div class="log-i"><span class="log-t">07:02</span><span>🔧</span><span class="log-m">Redis timeout. <strong>Auto-reparado</strong> 2s</span></div>
+      <div class="log-i"><span class="log-t">06:00</span><span>🧹</span><span class="log-m">Limpieza logs · 180 MB</span></div>
+      <div class="log-i"><span class="log-t">03:30</span><span>✅</span><span class="log-m">Chequeo nocturno: OK</span></div>
+      <div class="log-i"><span class="log-t">Ayer</span><span>🛡️</span><span class="log-m">4 spam bloqueados</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- COSTS -->
+<div class="view" id="v-costs">
+  <div class="pg-top reveal"><div class="pg-title">Control de costes</div><div class="pg-sub">Consumo APIs y servicios · Mayo 2026</div></div>
+  <div class="cost-top">
+    <div class="cost-c glass tilt reveal"><div class="cost-v">€12.80</div><div class="cost-l">Claude API</div></div>
+    <div class="cost-c glass tilt reveal d1"><div class="cost-v">€2.40</div><div class="cost-l">WhatsApp API</div></div>
+    <div class="cost-c glass tilt reveal d2"><div class="cost-v">€6.00</div><div class="cost-l">Servidor</div></div>
+  </div>
+  <div class="card glass reveal"><div class="card-h"><div class="card-t">Coste por conversación</div></div>
+    <table><thead><tr><th>Cliente</th><th>Tokens in</th><th>Tokens out</th><th>Turnos</th><th>Coste</th></tr></thead><tbody>
+      <tr><td>Laura Giménez</td><td>2,410</td><td>1,380</td><td>6</td><td style="color:var(--purple3)">€0.28</td></tr>
+      <tr><td>Marc Soler</td><td>2,780</td><td>1,610</td><td>7</td><td style="color:var(--purple3)">€0.33</td></tr>
+      <tr><td>Elena Ruiz</td><td>3,050</td><td>1,840</td><td>8</td><td style="color:var(--purple3)">€0.37</td></tr>
+      <tr><td>Random (spam)</td><td>380</td><td>160</td><td>2</td><td>€0.03</td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- ERRORS -->
+<div class="view" id="v-errors">
+  <div class="pg-top reveal"><div class="pg-title">Registro de errores</div><div class="pg-sub">1 error esta semana · 0 sin resolver</div></div>
+  <div class="card glass reveal"><table><thead><tr><th>Fecha</th><th>Workflow</th><th>Error</th><th>Cliente</th><th>Acción</th><th>Estado</th></tr></thead><tbody>
+    <tr><td>29 May 07:02</td><td>WF-2</td><td>Redis timeout</td><td>Marc Soler</td><td>Auto-reconnect 2s</td><td><span class="st s-ok">Resuelto</span></td></tr>
+    <tr><td>27 May 13:48</td><td>WF-7</td><td>Claude API 503</td><td>Núria Pons</td><td>Fallback + retry</td><td><span class="st s-ok">Resuelto</span></td></tr>
+    <tr><td>25 May 10:05</td><td>WF-8</td><td>IG token expired</td><td>—</td><td>Auto-refresh</td><td><span class="st s-ok">Resuelto</span></td></tr>
+  </tbody></table></div>
+</div>
+
+</main>
+</div>
+
+<!-- PANEL DETALLE -->
+<div class="lp-overlay" id="lpOverlay"></div>
+<div class="lead-panel" id="leadPanel">
+  <div class="lp-head"><div class="lp-title" id="lpName">—</div><button class="lp-close" id="lpClose">✕</button></div>
+  <div class="lp-body">
+    <div class="lp-row"><span class="lp-key">Canal</span><span class="lp-val" id="lpCanal">—</span></div>
+    <div class="lp-row"><span class="lp-key">Teléfono</span><span class="lp-val" id="lpPhone">—</span></div>
+    <div class="lp-row"><span class="lp-key">Email</span><span class="lp-val" id="lpEmail">—</span></div>
+    <div class="lp-row"><span class="lp-key">Tipo de fiesta</span><span class="lp-val" id="lpProp">—</span></div>
+    <div class="lp-row"><span class="lp-key">Presupuesto</span><span class="lp-val" id="lpBudget">—</span></div>
+    <div class="lp-row"><span class="lp-key">Interés Claude</span><span class="lp-val" id="lpScore">—</span></div>
+    <div class="lp-row"><span class="lp-key">Nivel</span><span class="lp-val" id="lpNivel">—</span></div>
+    <div class="lp-row"><span class="lp-key">Turnos IA</span><span class="lp-val" id="lpTurnos">—</span></div>
+    <div class="lp-row"><span class="lp-key">Workflow</span><span class="lp-val" id="lpWf" style="color:var(--purple3)">—</span></div>
+    <div style="margin-top:22px"><div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--tx2);font-weight:600;margin-bottom:8px">Resumen IA · Claude</div><div id="lpResumen" style="font-size:13.5px;color:var(--tx);line-height:1.65">—</div></div>
+    <div style="margin-top:18px;padding:15px;background:var(--purple-g);border:1px solid rgba(124,92,231,.18);border-radius:12px"><div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--purple3);font-weight:700;margin-bottom:6px">Acción sugerida</div><div id="lpAccion" style="font-size:13.5px;font-weight:600;color:var(--ink)">—</div></div>
+  </div>
+  <div class="lp-actions"><button class="lp-btn lp-btn-p">Marcar como contactado</button><button class="lp-btn lp-btn-s">Archivar solicitud</button></div>
+</div>
+
+<script>
+/* CURSOR GLOW */
+const cg=document.getElementById('cglow');
+addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';cg.style.opacity='1'},{passive:true});
+addEventListener('mouseout',()=>cg.style.opacity='0');
+
+/* PARALLAX fondo */
+const orbs=document.querySelectorAll('.orb');
+const mainEl=document.querySelector('.main');
+function parallax(){const y=mainEl.scrollTop||window.scrollY;orbs.forEach((o,i)=>{o.style.marginTop=(y*(0.04+i*0.02))+'px'})}
+window.addEventListener('scroll',parallax,{passive:true});
+
+/* TILT 3D + glow interno */
+function bindTilt(el){
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+    el.style.transform='perspective(800px) rotateX('+((py-.5)*-6)+'deg) rotateY('+((px-.5)*8)+'deg) translateY(-4px)';
+    const g=el.querySelector('.glow');if(g){g.style.setProperty('--mx',px*100+'%');g.style.setProperty('--my',py*100+'%')}
+  });
+  el.addEventListener('mouseleave',()=>{el.style.transform=''});
+}
+document.querySelectorAll('.tilt').forEach(bindTilt);
+
+/* REVEAL */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+function observeReveals(root){(root||document).querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el))}
+observeReveals();
+
+/* COUNTERS */
+function runCounts(view){view.querySelectorAll('[data-count]').forEach(el=>{
+  const t=parseFloat(el.dataset.count),sf=el.dataset.suffix||'';let s=null,d=1100;
+  function st(ts){if(!s)s=ts;const p=Math.min((ts-s)/d,1),e=1-Math.pow(1-p,3);
+    let v=Math.round(t*e);el.textContent=(t>=1000?v.toLocaleString('es-ES'):v)+sf;if(p<1)requestAnimationFrame(st)}
+  requestAnimationFrame(st);
+})}
+
+/* NAV */
+document.querySelectorAll('.sb-item[data-v]').forEach(i=>i.addEventListener('click',()=>{
+  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('on'));i.classList.add('on');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const view=document.getElementById('v-'+i.dataset.v);view.classList.add('active');
+  observeReveals(view);runCounts(view);
+  if(innerWidth<921){sidebar.classList.remove('mob-open');mobBurger.classList.remove('open');document.body.style.overflow=''}
+}));
+document.getElementById('seeAll').addEventListener('click',()=>document.querySelector('.sb-item[data-v="leads"]').click());
+
+/* TABS filtro */
+document.querySelectorAll('#leadTabs .tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('#leadTabs .tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+  const f=t.dataset.filter;
+  document.querySelectorAll('#leadsBody tr').forEach(r=>{r.style.display=(f==='all'||r.dataset.status===f)?'':'none'});
+}));
+
+/* PANEL detalle */
+const lpPanel=document.getElementById('leadPanel'),lpOverlay=document.getElementById('lpOverlay');
+function openPanel(d){
+  lpName.textContent=d.name;lpCanal.textContent=d.canal;lpPhone.textContent=d.phone;lpEmail.textContent=d.email;
+  lpProp.textContent=d.prop;lpBudget.textContent=d.budget;lpScore.textContent=d.score+' / 100';lpNivel.textContent=d.nivel;
+  lpTurnos.textContent=d.turno+' turnos';lpWf.textContent=d.wf;lpResumen.textContent=d.resumen;lpAccion.textContent=d.accion;
+  lpPanel.classList.add('open');lpOverlay.classList.add('show');
+}
+function closePanel(){lpPanel.classList.remove('open');lpOverlay.classList.remove('show')}
+lpClose.addEventListener('click',closePanel);lpOverlay.addEventListener('click',closePanel);
+function bindRows(){document.querySelectorAll('tr.clickable').forEach(r=>r.addEventListener('click',()=>{try{openPanel(JSON.parse(r.dataset.lead))}catch(e){}}))}
+bindRows();
+
+/* CHART */
+const vals=[34,26,18,22,12,9],chart=document.getElementById('chart'),mx=Math.max(...vals);
+const cols=['#1f9d54','#c23167','#3f74d6','#7c5ce7','#5b85bd','#ffc842'];
+function drawChart(){chart.innerHTML='';vals.forEach((v,i)=>{const b=document.createElement('div');b.className='chart-bar';b.style.background=cols[i];b.style.height='0%';b.innerHTML='<span class="cv">'+v+'</span>';chart.appendChild(b);setTimeout(()=>b.style.height=(v/mx)*100+'%',150+i*70)})}
+
+/* BURGER */
+const sidebar=document.getElementById('sidebar'),mobBurger=document.getElementById('mobBurger');
+mobBurger.addEventListener('click',()=>{sidebar.classList.toggle('mob-open');document.body.style.overflow=sidebar.classList.contains('mob-open')?'hidden':''});
+
+/* AUTH */
+const USERS={admin:{pass:'narosa2026',role:'admin',av:'ES',name:'Eduardo Silva',title:'Administrador'},narosa:{pass:'party2026',role:'subadmin',av:'NR',name:'Narosa',title:'Equipo'}};
+const eduSec=document.getElementById('eduSec'),loginEl=document.getElementById('login'),appEl=document.querySelector('.app'),loginErr=document.getElementById('loginErr');
+function applyRole(u){uAv.textContent=u.av;uName.textContent=u.name;uRole.textContent=u.title;
+  if(u.role==='admin'){eduSec.style.display='block'}else{eduSec.style.display='none';const a=document.querySelector('.sb-item.on');if(a&&['sentinel','costs','errors'].includes(a.dataset.v))document.querySelector('.sb-item[data-v="overview"]').click()}}
+function showApp(){loginEl.classList.add('hide');appEl.classList.add('ready');setTimeout(()=>{const v=document.querySelector('.view.active');observeReveals(v);runCounts(v);drawChart()},60)}
+function showLogin(){loginEl.classList.remove('hide');appEl.classList.remove('ready')}
+const SAVED='narosa_session';
+function restore(){const id=sessionStorage.getItem(SAVED);if(id&&USERS[id]){applyRole(USERS[id]);showApp();return true}return false}
+document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();
+  const id=luser.value.trim().toLowerCase(),pw=lpass.value,u=USERS[id];
+  if(u&&u.pass===pw){sessionStorage.setItem(SAVED,id);applyRole(u);showApp();loginErr.classList.remove('show');e.target.reset()}
+  else{loginErr.classList.add('show');lpass.value=''}});
+document.getElementById('logoutBtn').addEventListener('click',()=>{sessionStorage.removeItem(SAVED);showLogin();luser.focus()});
+if(!restore()){showLogin();luser.focus()}
+</script>
+</body>
+</html>
