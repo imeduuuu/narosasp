@@ -166,3 +166,39 @@
     setTimeout(showPromo, 1000);  // cookies ya decididas → muestra descuento
   }
 })();
+
+/* ═══════════════════════════════════════
+   i18n · Selector de idioma ES / EN / CA
+   Cada página define window.PAGE_I18N = { en:{clave:texto}, ca:{...} }
+   y marca sus textos con data-i18n="clave". El ES es el texto original.
+═══════════════════════════════════════ */
+(function () {
+  const LANGS = ['es', 'en', 'ca'];
+  const dict = window.PAGE_I18N || { en: {}, ca: {} };
+
+  // Guarda el texto original (ES) la primera vez
+  const nodes = document.querySelectorAll('[data-i18n]');
+  nodes.forEach(n => { n.dataset.i18nEs = n.innerHTML; });
+
+  function apply(lang) {
+    if (!LANGS.includes(lang)) lang = 'es';
+    document.documentElement.lang = lang;
+    nodes.forEach(n => {
+      const key = n.getAttribute('data-i18n');
+      if (lang === 'es') { n.innerHTML = n.dataset.i18nEs; return; }
+      const t = dict[lang] && dict[lang][key];
+      n.innerHTML = (t !== undefined && t !== null) ? t : n.dataset.i18nEs;
+    });
+    document.querySelectorAll('.lang-switch button').forEach(b =>
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+    try { localStorage.setItem('narosa_lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => apply(btn.getAttribute('data-lang')));
+  });
+
+  let saved = 'es';
+  try { saved = localStorage.getItem('narosa_lang') || 'es'; } catch (e) {}
+  apply(saved);
+})();
