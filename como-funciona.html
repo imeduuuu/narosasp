@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Cómo funciona? · Narosa Sweet Party</title>
+  <meta name="description" content="Te explicamos paso a paso, de forma sencilla, cómo el sistema atiende a tus clientes y prepara los presupuestos solo, las 24 horas." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎈</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/narosa.css">
+  <style>
+    /* Estilos propios de la página "Cómo funciona" (lenguaje sencillo, todo grande) */
+    .cf-intro { max-width: 760px; margin: 0 auto; text-align: center; }
+    .cf-intro p { font-size: 19px; line-height: 1.9; color: var(--text); }
+    .cf-intro .big { font-size: 22px; font-weight: 700; color: var(--purple-dark); }
+
+    /* Flujo vertical con pasos enormes */
+    .flow-big { max-width: 760px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 0; }
+    .flow-step { display: flex; gap: 22px; align-items: flex-start; }
+    .flow-step .num-circle {
+      width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: #fff; font-size: 26px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 28px rgba(124,92,231,.32);
+    }
+    .flow-step .num-circle.green { background: linear-gradient(135deg,#22c55e,#16a34a); box-shadow: 0 12px 28px rgba(34,197,94,.3); }
+    .flow-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .flow-line-v { width: 3px; flex: 1; min-height: 34px; background: repeating-linear-gradient(180deg, var(--purple) 0 6px, transparent 6px 12px); opacity: .4; margin: 6px 0; }
+    .flow-content { padding-bottom: 30px; padding-top: 8px; }
+    .flow-content .emoji { font-size: 30px; }
+    .flow-content h3 { font-family: Poppins, sans-serif; font-size: 22px; font-weight: 800; margin: 4px 0 8px; color: var(--text); }
+    .flow-content p { font-size: 16.5px; line-height: 1.8; color: var(--muted); }
+    .flow-content .ej { display: inline-block; margin-top: 10px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; font-size: 15px; color: var(--text); line-height: 1.7; }
+    .flow-content .ej b { color: var(--purple-dark); }
+
+    .cf-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 820px; margin: 0 auto; }
+    @media(max-width:680px){ .cf-compare { grid-template-columns: 1fr; } }
+    .cf-box { border-radius: 22px; padding: 28px 26px; }
+    .cf-box.bad { background: #fff4f4; border: 1px solid #ffd7d7; }
+    .cf-box.good { background: #f1fdf6; border: 1px solid #c7f0d6; }
+    .cf-box h4 { font-family: Poppins, sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 14px; }
+    .cf-box.bad h4 { color: #d23; } .cf-box.good h4 { color: #15803d; }
+    .cf-box ul { list-style: none; display: grid; gap: 12px; }
+    .cf-box li { font-size: 15.5px; line-height: 1.6; color: #50485b; display: flex; gap: 10px; }
+    .cf-box.bad li:before { content: "✗"; color: #d23; font-weight: 900; }
+    .cf-box.good li:before { content: "✓"; color: #15803d; font-weight: 900; }
+  </style>
+</head>
+<body>
+  <div class="browser-frame">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="index.html" aria-label="Narosa Sweet Party">
+          <div><span>Narosa</span><span>Sweet Party</span></div>
+          <i class="balloon"></i>
+        </a>
+        <nav class="menu" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="servicio-bouquets.html">Bouquets</a>
+          <a href="servicio-decoracion-eventos.html">Decoración</a>
+          <a href="servicio-packs.html">Packs y temáticas</a>
+          <a href="servicio-globos-helio.html">Globos con helio</a>
+          <a href="index.html#contacto">Contacto</a>
+        </nav>
+        <a href="https://wa.me/34640921671" class="btn btn-primary" target="_blank" rel="noopener">Solicitar presupuesto</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="subhero">
+        <div class="container">
+          <div class="breadcrumb reveal"><a href="index.html">Inicio</a> / Cómo funciona</div>
+          <h1 class="reveal">¿Cómo funciona? <span class="accent">Te lo explicamos fácil</span></h1>
+          <p class="lead reveal" style="max-width:620px;">Sin palabras raras y sin tecnicismos. Aquí verás, paso a paso, cómo el sistema atiende a tus clientes y prepara los presupuestos por ti, de día y de noche.</p>
+        </div>
+      </section>
+
+      <!-- INTRO sencilla -->
+      <section class="section" style="padding-top:40px;">
+        <div class="container">
+          <div class="cf-intro reveal">
+            <p class="big">Imagina que tienes un ayudante que nunca se cansa.</p>
+            <p>Está despierto las 24 horas, todos los días del año. Cuando un cliente escribe — aunque sea un domingo por la noche — él responde al momento, con amabilidad, igual que lo harías tú. Recoge los datos de la fiesta, prepara el presupuesto y te avisa. Tú solo te ocupas de los globos. Así de simple.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EL FLUJO PASO A PASO -->
+      <section class="section" style="background:var(--bg-soft);padding-top:64px;">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="label">Paso a paso</div>
+            <h2>Qué pasa cuando llega un cliente</h2>
+          </div>
+
+          <div class="flow-big">
+            <!-- 1 -->
+            <div class="flow-step reveal">
+              <div class="flow-col"><div class="num-circle">1</div><div class="flow-line-v"></div></div>
+              <div class="flow-content">
+                <span class="emoji">👀</span>
+                <h3>Una familia te encuentra</h3>
+                <p>Una mamá o un papá ve tus globos en Instagram o te busca en Google cuando se acerca el cumpleaños de su hijo.</p>
+                <div class="ej">Ejemplo: <b>Marta</b> busca «globos cumpleaños Barcelona» y llega a tu página.</div>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="flow-step reveal">
+              <div class="flow-col"><div class="num-circle">2</div><div class="flow-line-v"></div></div>
+              <div class="flow-content">
+                <span class="emoji">💬</span>
+                <h3>Te escribe por WhatsApp</h3>
+                <p>Hace clic y te manda un mensaje. Da igual la hora: pueden ser las 11 de la noche de un domingo.</p>
+                <div class="ej">Marta escribe: <b>«Hola, quiero globos para una fiesta de unicornios el día 20»</b>.</div>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="flow-step reveal">
+              <div class="flow-col"><div class="num-circle">3</div><div class="flow-line-v"></div></div>
+              <div class="flow-content">
+                <span class="emoji">🤖</span>
+                <h3>El ayudante responde al instante</h3>
+                <p>En menos de 10 segundos, el asistente le contesta con buenas maneras, como lo harías tú. La clienta nunca se queda esperando.</p>
+                <div class="ej">El ayudante: <b>«¡Hola Marta! Qué ilusión 🦄 Te ayudo enseguida. ¿Para cuántos niños sería?»</b></div>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="flow-step reveal">
+              <div class="flow-col"><div class="num-circle">4</div><div class="flow-line-v"></div></div>
+              <div class="flow-content">
+                <span class="emoji">📝</span>
+                <h3>Le pregunta solo lo necesario</h3>
+                <p>Con educación, le pregunta lo justo para entender qué necesita: la fecha, cuántos niños y la temática. Nada complicado.</p>
+                <div class="ej">Fecha del 20 · 12 niños · tema unicornio. <b>Ya tiene todo lo que hace falta.</b></div>
+              </div>
+            </div>
+            <!-- 5 -->
+            <div class="flow-step reveal">
+              <div class="flow-col"><div class="num-circle">5</div><div class="flow-line-v"></div></div>
+              <div class="flow-content">
+                <span class="emoji">🧾</span>
+                <h3>Prepara el presupuesto y se lo envía</h3>
+                <p>En unos minutos le manda el presupuesto con el pack, las fotos y el precio. La clienta lo recibe enseguida, sin esperar al día siguiente.</p>
+                <div class="ej">«Tu <b>Pack Unicornio</b> para 12 niños sería <b>89 €</b>. Te dejo el enlace para reservar 💜»</div>
+              </div>
+            </div>
+            <!-- 6 -->
+            <div class="flow-step reveal">
+              <div class="flow-col"><div class="num-circle">6</div><div class="flow-line-v"></div></div>
+              <div class="flow-content">
+                <span class="emoji">🔔</span>
+                <h3>A ti te llega el aviso</h3>
+                <p>El sistema te avisa con todos los datos ya recogidos y ordenados. No tienes que escribir nada ni estar pendiente del móvil.</p>
+                <div class="ej">Recibes: <b>«Nuevo pedido: Marta · 20 de mayo · Pack Unicornio · 89 €»</b>.</div>
+              </div>
+            </div>
+            <!-- 7 -->
+            <div class="flow-step reveal">
+              <div class="flow-col"><div class="num-circle green">✓</div></div>
+              <div class="flow-content">
+                <span class="emoji">🎈</span>
+                <h3>Tú solo preparas la fiesta</h3>
+                <p>Te dedicas a lo que mejor sabes hacer: preparar unos globos preciosos. Lo demás ya está hecho. Y días después, el sistema le escribe a Marta para que el año que viene vuelva a contar contigo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANTES Y DESPUÉS -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="label">La diferencia</div>
+            <h2>Cómo es ahora · cómo sería con el sistema</h2>
+          </div>
+          <div class="cf-compare reveal">
+            <div class="cf-box bad">
+              <h4>😟 Como es ahora</h4>
+              <ul>
+                <li>El cliente escribe el domingo y nadie responde hasta el lunes.</li>
+                <li>Para entonces, ya ha comprado en otra tienda.</li>
+                <li>Escribes cada presupuesto a mano, una y otra vez.</li>
+                <li>Pierdes horas con el móvil en vez de con los globos.</li>
+              </ul>
+            </div>
+            <div class="cf-box good">
+              <h4>😄 Con el sistema</h4>
+              <ul>
+                <li>Cada cliente recibe respuesta en segundos, a cualquier hora.</li>
+                <li>Nadie se va a la competencia por esperar.</li>
+                <li>Los presupuestos se preparan solos en minutos.</li>
+                <li>Tú solo recibes el aviso y preparas la fiesta.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREGUNTAS SENCILLAS -->
+      <section class="section" style="background:var(--bg-soft);">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="label">Dudas frecuentes</div>
+            <h2>Lo que más se pregunta</h2>
+          </div>
+          <div class="faq-list">
+            <div class="faq-card reveal"><h4>¿Tengo que saber de ordenadores?</h4><p>No, para nada. El sistema funciona solo. Tú solo recibes los avisos en el móvil, como un mensaje normal.</p></div>
+            <div class="faq-card reveal"><h4>¿Y si quiero responder yo a un cliente?</h4><p>Puedes hacerlo cuando quieras. El ayudante atiende por ti, pero tú mandas siempre. Si prefieres contestar tú a alguien, lo haces y ya está.</p></div>
+            <div class="faq-card reveal"><h4>¿Y si el cliente pregunta algo raro?</h4><p>El ayudante está preparado con la información de tu tienda. Y si algo se le escapa, te avisa para que lo atiendas tú. Nunca deja a nadie sin respuesta.</p></div>
+            <div class="faq-card reveal"><h4>¿Esto sustituye mi trato personal?</h4><p>Al revés: te ayuda a no perder clientes cuando no puedes atender, y te deja tiempo para el trato de verdad — el de preparar una fiesta bonita.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-area">
+        <div class="container">
+          <div class="cta reveal">
+            <div class="cta-img"><img src="assets/img/kids.jpg" alt="Niños felices en una fiesta de globos"></div>
+            <div class="cta-content">
+              <h2>¿Lo vemos juntos con calma?</h2>
+              <p>Te lo enseño en persona, sin prisas y sin compromiso. Tú decides.</p>
+              <a class="btn btn-light" href="https://wa.me/34640921671?text=Hola!%20Quiero%20que%20me%20expliquen%20cómo%20funciona" target="_blank" rel="noopener">Escríbeme por WhatsApp →</a>
+            </div>
+            <div class="cta-deco">🎈</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html"><div><span>Narosa</span><span>Sweet Party</span></div><i class="balloon"></i></a>
+            <p style="margin-top:16px;max-width:220px;">Globos y decoración para fiestas infantiles en Barcelona. Experiencias únicas para momentos inolvidables.</p>
+            <div class="socials"><a href="#">f</a><a href="https://instagram.com/narosasp" target="_blank" rel="noopener">ig</a><a href="https://wa.me/34640921671" target="_blank" rel="noopener">w</a></div>
+          </div>
+          <div><h4>Enlaces</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="servicio-bouquets.html">Bouquets</a></li><li><a href="servicio-decoracion-eventos.html">Decoración</a></li><li><a href="servicio-packs.html">Packs y temáticas</a></li><li><a href="servicio-globos-helio.html">Globos con helio</a></li></ul></div>
+          <div><h4>Más info</h4><ul><li><a href="como-funciona.html">¿Cómo funciona?</a></li><li><a href="sistema.html">El sistema</a></li><li><a href="beneficios.html">Beneficios</a></li><li><a href="propuesta.html">Propuesta</a></li></ul></div>
+          <div><h4>Contacto</h4><ul><li>☎ 930 42 70 49</li><li>💬 WhatsApp +34 640 92 16 71</li><li>✉ tiendapoblenou@narosasp.com</li><li>⌖ Carrer Marià Aguiló 129, Poblenou · 08005 Barcelona</li></ul></div>
+          <div><h4>Legal</h4><ul><li><a href="cookies.html">Política de cookies</a></li></ul></div>
+        </div>
+        <div class="bottom"><p>© 2026 Narosa Sweet Party. Todos los derechos reservados.</p><div class="bottom-links"><a href="cookies.html">Política de cookies</a></div></div>
+      </div>
+    </footer>
+
+    <a class="whatsapp" href="https://wa.me/34640921671" target="_blank" rel="noopener" aria-label="WhatsApp">☘</a>
+  </div>
+  <script src="assets/narosa.js"></script>
+</body>
+</html>
