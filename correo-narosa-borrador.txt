@@ -1,0 +1,28 @@
+Para: Serranomunoz@gmail.com
+Asunto: Narosa Sweet Party · tu nueva web + sistema de automatización (demo en vivo) 🎈
+
+Hola,
+
+Te he preparado una demo en vivo de cómo quedaría la nueva web de Narosa Sweet Party junto con la automatización. Todo funciona desde el móvil o el ordenador, sin instalar nada:
+
+★ TU NUEVA WEB (lo principal)
+   https://imeduuuu.github.io/narosasp/
+
+Y por dentro, las piezas del sistema:
+
+1) El Sistema — cómo responde solo a los clientes, 24/7
+   https://imeduuuu.github.io/narosasp/sistema.html
+
+2) El Panel (Dashboard) — dónde ves cada solicitud, su estado y el embudo de fiestas
+   https://imeduuuu.github.io/narosasp/dashboard.html
+   (acceso demo: usuario "narosa" · contraseña "party2026")
+
+3) La Inversión real — lo que cuesta montarlo y mantenerlo (aprovechando tu Shopify y dominio actuales)
+   https://imeduuuu.github.io/narosasp/inversion.html
+
+4) Presupuesto + Generador con IA — escribe 4 datos y la IA redacta el presupuesto listo para enviar por WhatsApp o email. Pruébalo tú misma:
+   https://imeduuuu.github.io/narosasp/presupuesto.html#personalizador
+
+Échale un vistazo con calma y me dices qué te parece. Cualquier duda, aquí estoy.
+
+Un saludo 🎈
