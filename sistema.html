@@ -195,6 +195,18 @@
 </section>
 
 <!-- PIEZA 3: WHATSAPP -->
+<style>
+/* PIEZA 3 aclarada (solo aquí, no afecta a propuesta) */
+#whatsapp.dark-section{background:linear-gradient(180deg,#f3effe 0%,#fff 100%)!important;}
+#whatsapp .section-title{color:var(--ink)!important;}
+#whatsapp .eyebrow{color:var(--coral-deep)!important;}
+#whatsapp p{color:var(--muted)!important;}
+/* burbujas del chat legibles (los mensajes no tenían .msg-bubble) */
+#chat-sist .msg{max-width:82%;padding:9px 13px;border-radius:14px;margin-bottom:2px;}
+#chat-sist .msg.them{background:#fff;color:#1e1b4b;border:1px solid rgba(0,0,0,.06);border-bottom-left-radius:4px;}
+#chat-sist .msg.me{background:var(--coral);color:#fff;border-bottom-right-radius:4px;}
+#chat-sist .msg .t{display:block;font-size:10px;opacity:.6;margin-top:4px;}
+</style>
 <section class="section dark-section" id="whatsapp">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
@@ -285,7 +297,7 @@
 
     <!-- Mode selector -->
     <div style="margin-top:40px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 28px;box-shadow:0 8px 24px rgba(34,29,46,.07);" class="reveal d3">
-      <div style="font-family:'Nunito',sans-serif;font-weight:600;font-size:16px;margin-bottom:18px;color:var(--ink);">Elige cómo quiere que funcione, David:</div>
+      <div style="font-family:'Nunito',sans-serif;font-weight:600;font-size:16px;margin-bottom:18px;color:var(--ink);">Elige cómo quieres que funcione:</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <div style="background:var(--coral-soft);border:2px solid var(--coral);border-radius:16px;padding:20px 18px;cursor:pointer;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
