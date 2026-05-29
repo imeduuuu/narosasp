@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría SEO · Narosa Sweet Party</title>
+<style>
+:root{--bg:#0f0a1e;--card:#1a1330;--card2:#221842;--tx:#e7e1f5;--tx2:#a99fc4;--line:rgba(255,255,255,.08);
+--purple:#9b80ee;--pink:#ff78a8;--yellow:#ffc842;--green:#34d399;--red:#fb7185;--orange:#fbbf24;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.55;padding:0 0 60px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{background:linear-gradient(135deg,#7c5ce7,#ff78a8);padding:48px 22px;text-align:center;margin-bottom:36px}
+header h1{font-size:30px;font-weight:900;color:#fff;letter-spacing:-.02em}
+header .url{color:rgba(255,255,255,.9);font-size:14px;margin-top:6px}
+header .date{color:rgba(255,255,255,.7);font-size:12px;margin-top:2px}
+.score-big{width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.15);border:4px solid #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:24px auto 0}
+.score-big .n{font-size:46px;font-weight:900;color:#fff;line-height:1}
+.score-big .l{font-size:11px;color:rgba(255,255,255,.85);letter-spacing:1px;text-transform:uppercase}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+.c .n{font-size:30px;font-weight:900}.c .l{font-size:11px;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.c.ok .n{color:var(--green)}.c.warn .n{color:var(--orange)}.c.err .n{color:var(--red)}.c.glob .n{color:var(--purple)}
+h2.sec{font-size:20px;font-weight:800;margin:36px 0 16px;display:flex;align-items:center;gap:10px}
+.fix{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--purple);border-radius:12px;padding:18px 20px;margin-bottom:12px}
+.fix.done{border-left-color:var(--green)}
+.fix h3{font-size:15px;font-weight:800;margin-bottom:6px}
+.fix .tag{font-size:10px;font-weight:800;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-left:8px}
+.tag.done{background:rgba(52,211,153,.15);color:var(--green)}
+.tag.todo{background:rgba(251,191,36,.15);color:var(--orange)}
+.fix p{font-size:13.5px;color:var(--tx2);margin-top:4px}
+.fix code{background:var(--card2);padding:2px 7px;border-radius:5px;font-size:12px;color:var(--yellow)}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px}
+.cat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cat-top .name{font-weight:700;font-size:15px}.cat-top .sc{font-weight:900;font-size:16px}
+.bar{height:8px;background:var(--card2);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--purple),var(--pink))}
+.cat ul{margin:12px 0 0;padding-left:0;list-style:none}
+.cat li{font-size:13px;color:var(--tx2);padding:4px 0 4px 22px;position:relative}
+.cat li::before{position:absolute;left:0}
+.cat li.ok::before{content:"✅"}.cat li.warn::before{content:"⚠️"}.cat li.err::before{content:"❌"}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;font-size:13px}
+th{background:var(--card2);text-align:left;padding:11px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--tx2)}
+td{padding:10px 14px;border-top:1px solid var(--line)}
+.pill{font-size:11px;font-weight:700;padding:2px 9px;border-radius:100px}
+.pill.g{background:rgba(52,211,153,.15);color:var(--green)}.pill.o{background:rgba(251,191,36,.15);color:var(--orange)}
+@media(max-width:760px){.cards{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🔍 Auditoría SEO · Narosa Sweet Party</h1>
+  <div class="url">https://imeduuuu.github.io/narosasp/ · narosasp.com</div>
+  <div class="date">5 páginas auditadas · 2026-05-29 · kit-auditoria-seo (8 categorías)</div>
+  <div class="score-big"><span class="n">93</span><span class="l">/ 100</span></div>
+</header>
+
+<div class="wrap">
+  <div class="cards">
+    <div class="c glob"><div class="n">93</div><div class="l">Puntuación global</div></div>
+    <div class="c err"><div class="n">0</div><div class="l">Críticos</div></div>
+    <div class="c warn"><div class="n">3</div><div class="l">Advertencias</div></div>
+    <div class="c ok"><div class="n">38</div><div class="l">Tests OK</div></div>
+  </div>
+
+  <h2 class="sec">🛠️ Correcciones aplicadas en esta auditoría</h2>
+  <div class="fix done"><h3>Sitemap.xml obsoleto <span class="tag done">Corregido</span></h3><p>Listaba <code>/beneficios</code> (página borrada) y le faltaba <code>/inversion</code>. Regenerado con las 6 URLs públicas reales; <code>/dashboard</code> excluido (es noindex).</p></div>
+  <div class="fix done"><h3>Dashboard indexable <span class="tag done">Corregido</span></h3><p>Panel con login → añadido <code>robots: noindex,nofollow</code> + description + canonical + OG. No debe aparecer en Google.</p></div>
+  <div class="fix done"><h3>Faltaban OG/Twitter y JSON-LD <span class="tag done">Corregido</span></h3><p><code>inversion</code> sin OG:image/Twitter; <code>sistema</code>/<code>presupuesto</code> sin schema. Añadido OG completo, Twitter Cards y JSON-LD <code>LocalBusiness</code>.</p></div>
+  <div class="fix done"><h3>Títulos demasiado largos <span class="tag done">Corregido</span></h3><p><code>index</code> (78→59) y <code>presupuesto</code> (71→56), bajo los 60 chars recomendados. OG/Twitter title actualizados.</p></div>
+  <div class="fix done"><h3>Imágenes sin lazy-load en index <span class="tag done">Corregido</span></h3><p>10 imágenes below-fold con <code>loading="lazy"</code> (hero excluido, correcto).</p></div>
+
+  <h2 class="sec">⚠️ Recomendaciones pendientes (no críticas)</h2>
+  <div class="fix"><h3>Backlinks y contenido <span class="tag todo">Off-page</span></h3><p>Dominio joven: el SEO técnico ya está, pero posicionar requiere enlaces externos (Capterra, directorios, prensa local) y volumen de contenido. No es on-page.</p></div>
+  <div class="fix"><h3>Enviar sitemap a Google Search Console <span class="tag todo">Manual</span></h3><p>Acción tuya: GSC → Sitemaps → enviar <code>narosasp.com/sitemap.xml</code> cuando el dominio sirva esta web.</p></div>
+  <div class="fix"><h3>Imagen OG dedicada <span class="tag todo">Opcional</span></h3><p>Las páginas-demo reutilizan <code>balloons.jpg</code>. Una imagen OG 1200×630 propia por página mejora el clic en redes.</p></div>
+
+  <h2 class="sec">📊 Desglose por categoría</h2>
+  <div class="cat"><div class="cat-top"><span class="name">1 · Meta Tags <span style="color:var(--tx2);font-weight:400">(20%)</span></span><span class="sc" style="color:var(--green)">96</span></div><div class="bar"><i style="width:96%"></i></div><ul><li class="ok">Titles 50-60 chars, descriptivos con keyword + ubicación</li><li class="ok">Meta description en las 5 páginas</li><li class="ok">Canonical, viewport, lang="es", robots correctos</li></ul></div>
+  <div class="cat"><div class="cat-top"><span class="name">2 · Headings <span style="color:var(--tx2);font-weight:400">(15%)</span></span><span class="sc" style="color:var(--green)">90</span></div><div class="bar"><i style="width:90%"></i></div><ul><li class="ok">Un único H1 por página pública, jerarquía correcta</li><li class="warn">Dashboard sin H1 (es app noindex — aceptable)</li></ul></div>
+  <div class="cat"><div class="cat-top"><span class="name">3 · Imágenes <span style="color:var(--tx2);font-weight:400">(10%)</span></span><span class="sc" style="color:var(--green)">92</span></div><div class="bar"><i style="width:92%"></i></div><ul><li class="ok">100% de imágenes con <code>alt</code> descriptivo + keyword</li><li class="ok">Lazy-load en index y sistema (hero excluido)</li><li class="warn">Formatos JPG (WebP/AVIF mejoraría peso)</li></ul></div>
+  <div class="cat"><div class="cat-top"><span class="name">4 · Enlaces <span style="color:var(--tx2);font-weight:400">(10%)</span></span><span class="sc" style="color:var(--green)">90</span></div><div class="bar"><i style="width:90%"></i></div><ul><li class="ok">0 enlaces rotos (404) en las 5 páginas</li><li class="ok">Externos (WhatsApp) con <code>target=_blank</code> + <code>rel=noopener</code></li></ul></div>
+  <div class="cat"><div class="cat-top"><span class="name">5 · Open Graph / Social <span style="color:var(--tx2);font-weight:400">(10%)</span></span><span class="sc" style="color:var(--green)">96</span></div><div class="bar"><i style="width:96%"></i></div><ul><li class="ok">OG (title, desc, image, url, type, locale) en las 4 públicas</li><li class="ok">Twitter Cards summary_large_image completas</li></ul></div>
+  <div class="cat"><div class="cat-top"><span class="name">6 · Schema / JSON-LD <span style="color:var(--tx2);font-weight:400">(10%)</span></span><span class="sc" style="color:var(--green)">94</span></div><div class="bar"><i style="width:94%"></i></div><ul><li class="ok">index: <code>Store</code> completo (dirección, geo, horarios, rating 4.8/266)</li><li class="ok">sistema/inversion/presupuesto: <code>LocalBusiness</code> válido</li></ul></div>
+  <div class="cat"><div class="cat-top"><span class="name">7 · Técnico <span style="color:var(--tx2);font-weight:400">(15%)</span></span><span class="sc" style="color:var(--green)">92</span></div><div class="bar"><i style="width:92%"></i></div><ul><li class="ok">HTTPS activo · respuesta 0,19 s (excelente)</li><li class="ok">robots.txt correcto · sitemap.xml regenerado y válido</li><li class="ok">Favicon presente</li></ul></div>
+  <div class="cat"><div class="cat-top"><span class="name">8 · Contenido <span style="color:var(--tx2);font-weight:400">(10%)</span></span><span class="sc" style="color:var(--green)">90</span></div><div class="bar"><i style="width:90%"></i></div><ul><li class="ok">index 2.140 · sistema 1.306 · presupuesto 1.115 · inversion 768 palabras</li><li class="ok">Todas superan el mínimo de 300 palabras</li></ul></div>
+
+  <h2 class="sec">📋 Detalle por página</h2>
+  <table>
+    <thead><tr><th>Página</th><th>Title</th><th>Desc</th><th>Canonical</th><th>OG</th><th>Schema</th><th>Robots</th><th>H1</th></tr></thead>
+    <tbody>
+      <tr><td>index</td><td>59 ✓</td><td>✓</td><td>✓</td><td>✓</td><td>Store</td><td><span class="pill g">index</span></td><td>1</td></tr>
+      <tr><td>sistema</td><td>62 ✓</td><td>✓</td><td>✓</td><td>✓</td><td>LocalBusiness</td><td><span class="pill g">index</span></td><td>1</td></tr>
+      <tr><td>inversion</td><td>62 ✓</td><td>✓</td><td>✓</td><td>✓</td><td>LocalBusiness</td><td><span class="pill g">index</span></td><td>1</td></tr>
+      <tr><td>presupuesto</td><td>56 ✓</td><td>✓</td><td>✓</td><td>✓</td><td>LocalBusiness</td><td><span class="pill g">index</span></td><td>1</td></tr>
+      <tr><td>dashboard</td><td>41</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td><span class="pill o">noindex</span></td><td>0*</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--tx2);margin-top:10px">* dashboard es un panel privado con login → noindex intencional, no requiere H1 ni schema.</p>
+</div>
+</body>
+</html>
